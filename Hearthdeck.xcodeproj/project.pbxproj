@@ -1,0 +1,690 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		651CEC1F1AF38A1600A7329E /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651CEC1E1AF38A1600A7329E /* CardCell.swift */; };
+		6520CD181B1C72520074EE57 /* Panton-BlackCaps.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6520CD141B1C71DB0074EE57 /* Panton-BlackCaps.otf */; };
+		6520CD191B1C72520074EE57 /* Panton-BlackitalicCaps.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6520CD151B1C71DB0074EE57 /* Panton-BlackitalicCaps.otf */; };
+		6520CD1A1B1C72520074EE57 /* Panton-LightCaps.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6520CD161B1C71DB0074EE57 /* Panton-LightCaps.otf */; };
+		6520CD1B1B1C72520074EE57 /* Panton-LightitalicCaps.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6520CD171B1C71DB0074EE57 /* Panton-LightitalicCaps.otf */; };
+		6533322D1AF8068B00C6D4C2 /* CardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6533322C1AF8068B00C6D4C2 /* CardDetailViewController.swift */; };
+		6535A3721AE6B9A6001F90B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6535A3711AE6B9A6001F90B6 /* AppDelegate.swift */; };
+		6535A3741AE6B9A6001F90B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6535A3731AE6B9A6001F90B6 /* ViewController.swift */; };
+		6535A3771AE6B9A6001F90B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6535A3751AE6B9A6001F90B6 /* Main.storyboard */; };
+		6535A3791AE6B9A6001F90B6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6535A3781AE6B9A6001F90B6 /* Images.xcassets */; };
+		6535A37C1AE6B9A6001F90B6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6535A37A1AE6B9A6001F90B6 /* LaunchScreen.xib */; };
+		6535A3961AE6BFDB001F90B6 /* CardListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6535A3951AE6BFDB001F90B6 /* CardListTableViewController.swift */; };
+		6535A3991AE6C02D001F90B6 /* cardList.json in Resources */ = {isa = PBXBuildFile; fileRef = 6535A3981AE6C02D001F90B6 /* cardList.json */; };
+		6542E4811B2472FF002588B6 /* Delete Sign-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 6542E4801B2472FF002588B6 /* Delete Sign-50.png */; };
+		654461631B024F3B00DC5BAD /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654461621B024F3B00DC5BAD /* IntroViewController.swift */; };
+		654461651B02539F00DC5BAD /* CustomThings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654461641B02539F00DC5BAD /* CustomThings.swift */; };
+		654CA46D1B24955F0079B4F2 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 654CA46C1B24955F0079B4F2 /* Podfile */; };
+		654CA4771B24AD290079B4F2 /* Anduin.png in Resources */ = {isa = PBXBuildFile; fileRef = 654CA46E1B24AD290079B4F2 /* Anduin.png */; };
+		654CA4781B24AD290079B4F2 /* Garrosh.png in Resources */ = {isa = PBXBuildFile; fileRef = 654CA46F1B24AD290079B4F2 /* Garrosh.png */; };
+		654CA4791B24AD290079B4F2 /* Gul'dan.png in Resources */ = {isa = PBXBuildFile; fileRef = 654CA4701B24AD290079B4F2 /* Gul'dan.png */; };
+		654CA47A1B24AD290079B4F2 /* Jaina.png in Resources */ = {isa = PBXBuildFile; fileRef = 654CA4711B24AD290079B4F2 /* Jaina.png */; };
+		654CA47B1B24AD290079B4F2 /* Malfurion.png in Resources */ = {isa = PBXBuildFile; fileRef = 654CA4721B24AD290079B4F2 /* Malfurion.png */; };
+		654CA47C1B24AD290079B4F2 /* Rexxar.png in Resources */ = {isa = PBXBuildFile; fileRef = 654CA4731B24AD290079B4F2 /* Rexxar.png */; };
+		654CA47D1B24AD290079B4F2 /* Thrall.png in Resources */ = {isa = PBXBuildFile; fileRef = 654CA4741B24AD290079B4F2 /* Thrall.png */; };
+		654CA47E1B24AD290079B4F2 /* Uther.png in Resources */ = {isa = PBXBuildFile; fileRef = 654CA4751B24AD290079B4F2 /* Uther.png */; };
+		654CA47F1B24AD290079B4F2 /* Valeera.png in Resources */ = {isa = PBXBuildFile; fileRef = 654CA4761B24AD290079B4F2 /* Valeera.png */; };
+		654CA48A1B24BDDF0079B4F2 /* Druid.png in Resources */ = {isa = PBXBuildFile; fileRef = 654CA4811B24BDDF0079B4F2 /* Druid.png */; };
+		654CA48B1B24BDDF0079B4F2 /* Hunter.png in Resources */ = {isa = PBXBuildFile; fileRef = 654CA4821B24BDDF0079B4F2 /* Hunter.png */; };
+		654CA48C1B24BDDF0079B4F2 /* Mage.png in Resources */ = {isa = PBXBuildFile; fileRef = 654CA4831B24BDDF0079B4F2 /* Mage.png */; };
+		654CA48D1B24BDDF0079B4F2 /* Paladin.png in Resources */ = {isa = PBXBuildFile; fileRef = 654CA4841B24BDDF0079B4F2 /* Paladin.png */; };
+		654CA48E1B24BDDF0079B4F2 /* Priest.png in Resources */ = {isa = PBXBuildFile; fileRef = 654CA4851B24BDDF0079B4F2 /* Priest.png */; };
+		654CA48F1B24BDDF0079B4F2 /* Rogue.png in Resources */ = {isa = PBXBuildFile; fileRef = 654CA4861B24BDDF0079B4F2 /* Rogue.png */; };
+		654CA4901B24BDDF0079B4F2 /* Shaman.png in Resources */ = {isa = PBXBuildFile; fileRef = 654CA4871B24BDDF0079B4F2 /* Shaman.png */; };
+		654CA4911B24BDDF0079B4F2 /* Warlock.png in Resources */ = {isa = PBXBuildFile; fileRef = 654CA4881B24BDDF0079B4F2 /* Warlock.png */; };
+		654CA4921B24BDDF0079B4F2 /* Warrior.png in Resources */ = {isa = PBXBuildFile; fileRef = 654CA4891B24BDDF0079B4F2 /* Warrior.png */; };
+		654E16BD1AFF531100CB0C04 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654E16BB1AFF531100CB0C04 /* Card.swift */; };
+		654E16BE1AFF531100CB0C04 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654E16BC1AFF531100CB0C04 /* Deck.swift */; };
+		6557CC071AEA98CC002B9D09 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6557CC061AEA98CC002B9D09 /* CoreData.framework */; };
+		6557CC0C1AEAA5BC002B9D09 /* cardListLocalized.json in Resources */ = {isa = PBXBuildFile; fileRef = 6557CC0B1AEAA5BC002B9D09 /* cardListLocalized.json */; };
+		6567559B1B2EF53800F9C816 /* DeckCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6567559A1B2EF53800F9C816 /* DeckCardCell.swift */; };
+		658FA86F1B10E684006BB184 /* taunt.png in Resources */ = {isa = PBXBuildFile; fileRef = 658FA86E1B10E684006BB184 /* taunt.png */; };
+		659458BF1B18CCE100D8675F /* DeckDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659458BE1B18CCE100D8675F /* DeckDetailTableViewController.swift */; };
+		659458C11B18CCF500D8675F /* DeckDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659458C01B18CCF500D8675F /* DeckDetailViewController.swift */; };
+		65A23B091B0FA065000D5980 /* HS_database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 65A23B071B0FA065000D5980 /* HS_database.xcdatamodeld */; };
+		65A23B0B1B0FB37D000D5980 /* DecksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A23B0A1B0FB37D000D5980 /* DecksTableViewController.swift */; };
+		65A454CA1B024043003CDEFC /* missing.png in Resources */ = {isa = PBXBuildFile; fileRef = 65A454C91B024043003CDEFC /* missing.png */; };
+		65E5C3231B1B183500F868ED /* Character Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65E5C31F1B1B183500F868ED /* Character Icon@2x.png */; };
+		65E5C3241B1B183500F868ED /* Character Icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65E5C3201B1B183500F868ED /* Character Icon@3x.png */; };
+		65E5C3251B1B183500F868ED /* Icon Card@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65E5C3211B1B183500F868ED /* Icon Card@2x.png */; };
+		65E5C3261B1B183500F868ED /* Icon Card@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65E5C3221B1B183500F868ED /* Icon Card@3x.png */; };
+		65E5C32D1B1B32F300F868ED /* Attention Filled-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 65E5C3271B1B32F300F868ED /* Attention Filled-50.png */; };
+		65E5C32E1B1B32F300F868ED /* Attention-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 65E5C3281B1B32F300F868ED /* Attention-50.png */; };
+		65E5C32F1B1B32F300F868ED /* Help-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 65E5C3291B1B32F300F868ED /* Help-50.png */; };
+		65E5C3311B1B32F300F868ED /* Settings Filled-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 65E5C32B1B1B32F300F868ED /* Settings Filled-50.png */; };
+		65E5C3321B1B32F300F868ED /* Settings-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 65E5C32C1B1B32F300F868ED /* Settings-50.png */; };
+		C4E43DBD209B36A157CF60C5 /* Pods_Hearthdeck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EC9B3B28E56A493093DB004 /* Pods_Hearthdeck.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1E7D46318D4AB4F97605D0B0 /* Pods-Hearthdeck.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hearthdeck.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hearthdeck/Pods-Hearthdeck.release.xcconfig"; sourceTree = "<group>"; };
+		3EC9B3B28E56A493093DB004 /* Pods_Hearthdeck.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hearthdeck.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		651CEC1E1AF38A1600A7329E /* CardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = SOURCE_ROOT; };
+		6520CD141B1C71DB0074EE57 /* Panton-BlackCaps.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Panton-BlackCaps.otf"; sourceTree = "<group>"; };
+		6520CD151B1C71DB0074EE57 /* Panton-BlackitalicCaps.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Panton-BlackitalicCaps.otf"; sourceTree = "<group>"; };
+		6520CD161B1C71DB0074EE57 /* Panton-LightCaps.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Panton-LightCaps.otf"; sourceTree = "<group>"; };
+		6520CD171B1C71DB0074EE57 /* Panton-LightitalicCaps.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Panton-LightitalicCaps.otf"; sourceTree = "<group>"; };
+		6533322C1AF8068B00C6D4C2 /* CardDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDetailViewController.swift; sourceTree = "<group>"; };
+		6535A36C1AE6B9A6001F90B6 /* Hearthdeck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hearthdeck.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6535A3701AE6B9A6001F90B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6535A3711AE6B9A6001F90B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6535A3731AE6B9A6001F90B6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6535A3761AE6B9A6001F90B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6535A3781AE6B9A6001F90B6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		6535A37B1AE6B9A6001F90B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		6535A3861AE6B9A6001F90B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6535A3871AE6B9A6001F90B6 /* HearthdeckTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HearthdeckTests.swift; sourceTree = "<group>"; };
+		6535A3951AE6BFDB001F90B6 /* CardListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardListTableViewController.swift; sourceTree = "<group>"; };
+		6535A3981AE6C02D001F90B6 /* cardList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = cardList.json; path = ../../../../Desktop/cardList.json; sourceTree = "<group>"; };
+		6542E4801B2472FF002588B6 /* Delete Sign-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Delete Sign-50.png"; sourceTree = "<group>"; };
+		654461621B024F3B00DC5BAD /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
+		654461641B02539F00DC5BAD /* CustomThings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomThings.swift; sourceTree = "<group>"; };
+		654CA46C1B24955F0079B4F2 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		654CA46E1B24AD290079B4F2 /* Anduin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Anduin.png; sourceTree = "<group>"; };
+		654CA46F1B24AD290079B4F2 /* Garrosh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Garrosh.png; sourceTree = "<group>"; };
+		654CA4701B24AD290079B4F2 /* Gul'dan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gul'dan.png"; sourceTree = "<group>"; };
+		654CA4711B24AD290079B4F2 /* Jaina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Jaina.png; sourceTree = "<group>"; };
+		654CA4721B24AD290079B4F2 /* Malfurion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Malfurion.png; sourceTree = "<group>"; };
+		654CA4731B24AD290079B4F2 /* Rexxar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Rexxar.png; sourceTree = "<group>"; };
+		654CA4741B24AD290079B4F2 /* Thrall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Thrall.png; sourceTree = "<group>"; };
+		654CA4751B24AD290079B4F2 /* Uther.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Uther.png; sourceTree = "<group>"; };
+		654CA4761B24AD290079B4F2 /* Valeera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Valeera.png; sourceTree = "<group>"; };
+		654CA4811B24BDDF0079B4F2 /* Druid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Druid.png; sourceTree = "<group>"; };
+		654CA4821B24BDDF0079B4F2 /* Hunter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hunter.png; sourceTree = "<group>"; };
+		654CA4831B24BDDF0079B4F2 /* Mage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mage.png; sourceTree = "<group>"; };
+		654CA4841B24BDDF0079B4F2 /* Paladin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Paladin.png; sourceTree = "<group>"; };
+		654CA4851B24BDDF0079B4F2 /* Priest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Priest.png; sourceTree = "<group>"; };
+		654CA4861B24BDDF0079B4F2 /* Rogue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Rogue.png; sourceTree = "<group>"; };
+		654CA4871B24BDDF0079B4F2 /* Shaman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Shaman.png; sourceTree = "<group>"; };
+		654CA4881B24BDDF0079B4F2 /* Warlock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Warlock.png; sourceTree = "<group>"; };
+		654CA4891B24BDDF0079B4F2 /* Warrior.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Warrior.png; sourceTree = "<group>"; };
+		654E16BB1AFF531100CB0C04 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		654E16BC1AFF531100CB0C04 /* Deck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
+		6557CC061AEA98CC002B9D09 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		6557CC0B1AEAA5BC002B9D09 /* cardListLocalized.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cardListLocalized.json; sourceTree = "<group>"; };
+		6567559A1B2EF53800F9C816 /* DeckCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckCardCell.swift; sourceTree = "<group>"; };
+		658FA86E1B10E684006BB184 /* taunt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taunt.png; sourceTree = "<group>"; };
+		659458BE1B18CCE100D8675F /* DeckDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckDetailTableViewController.swift; sourceTree = "<group>"; };
+		659458C01B18CCF500D8675F /* DeckDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckDetailViewController.swift; sourceTree = "<group>"; };
+		65A23B081B0FA065000D5980 /* HS_database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HS_database.xcdatamodel; sourceTree = "<group>"; };
+		65A23B0A1B0FB37D000D5980 /* DecksTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecksTableViewController.swift; sourceTree = "<group>"; };
+		65A454C91B024043003CDEFC /* missing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = missing.png; sourceTree = "<group>"; };
+		65E5C31F1B1B183500F868ED /* Character Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Character Icon@2x.png"; sourceTree = "<group>"; };
+		65E5C3201B1B183500F868ED /* Character Icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Character Icon@3x.png"; sourceTree = "<group>"; };
+		65E5C3211B1B183500F868ED /* Icon Card@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon Card@2x.png"; sourceTree = "<group>"; };
+		65E5C3221B1B183500F868ED /* Icon Card@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon Card@3x.png"; sourceTree = "<group>"; };
+		65E5C3271B1B32F300F868ED /* Attention Filled-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Attention Filled-50.png"; sourceTree = "<group>"; };
+		65E5C3281B1B32F300F868ED /* Attention-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Attention-50.png"; sourceTree = "<group>"; };
+		65E5C3291B1B32F300F868ED /* Help-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Help-50.png"; sourceTree = "<group>"; };
+		65E5C32B1B1B32F300F868ED /* Settings Filled-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings Filled-50.png"; sourceTree = "<group>"; };
+		65E5C32C1B1B32F300F868ED /* Settings-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings-50.png"; sourceTree = "<group>"; };
+		74D0B7D09AED1D9416E4B0D1 /* Pods-Hearthdeck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hearthdeck.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hearthdeck/Pods-Hearthdeck.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6535A3691AE6B9A6001F90B6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6557CC071AEA98CC002B9D09 /* CoreData.framework in Frameworks */,
+				C4E43DBD209B36A157CF60C5 /* Pods_Hearthdeck.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		54936CB64E24ADE433FBD0F1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				74D0B7D09AED1D9416E4B0D1 /* Pods-Hearthdeck.debug.xcconfig */,
+				1E7D46318D4AB4F97605D0B0 /* Pods-Hearthdeck.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		6515DACB1B03EB4E0089D1F1 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				65A23B071B0FA065000D5980 /* HS_database.xcdatamodeld */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		651CEC201AF38A2500A7329E /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				654E16BB1AFF531100CB0C04 /* Card.swift */,
+				654E16BC1AFF531100CB0C04 /* Deck.swift */,
+				654461641B02539F00DC5BAD /* CustomThings.swift */,
+				651CEC1E1AF38A1600A7329E /* CardCell.swift */,
+				6567559A1B2EF53800F9C816 /* DeckCardCell.swift */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		6520CD131B1C71C00074EE57 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				6520CD141B1C71DB0074EE57 /* Panton-BlackCaps.otf */,
+				6520CD151B1C71DB0074EE57 /* Panton-BlackitalicCaps.otf */,
+				6520CD161B1C71DB0074EE57 /* Panton-LightCaps.otf */,
+				6520CD171B1C71DB0074EE57 /* Panton-LightitalicCaps.otf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		6535A3631AE6B9A6001F90B6 = {
+			isa = PBXGroup;
+			children = (
+				654CA46C1B24955F0079B4F2 /* Podfile */,
+				6557CC061AEA98CC002B9D09 /* CoreData.framework */,
+				6535A36E1AE6B9A6001F90B6 /* Hearthdeck */,
+				6535A3841AE6B9A6001F90B6 /* HearthdeckTests */,
+				6535A36D1AE6B9A6001F90B6 /* Products */,
+				54936CB64E24ADE433FBD0F1 /* Pods */,
+				E72F5E9C42B19F2153FF39F8 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		6535A36D1AE6B9A6001F90B6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6535A36C1AE6B9A6001F90B6 /* Hearthdeck.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6535A36E1AE6B9A6001F90B6 /* Hearthdeck */ = {
+			isa = PBXGroup;
+			children = (
+				6535A3711AE6B9A6001F90B6 /* AppDelegate.swift */,
+				6515DACB1B03EB4E0089D1F1 /* Libraries */,
+				651CEC201AF38A2500A7329E /* Classes */,
+				6535A3971AE6BFF0001F90B6 /* ViewControllers */,
+				6535A3751AE6B9A6001F90B6 /* Main.storyboard */,
+				6535A3781AE6B9A6001F90B6 /* Images.xcassets */,
+				65A454C81B02402B003CDEFC /* Stuff */,
+				6535A37A1AE6B9A6001F90B6 /* LaunchScreen.xib */,
+				6535A3981AE6C02D001F90B6 /* cardList.json */,
+				6557CC0B1AEAA5BC002B9D09 /* cardListLocalized.json */,
+				6535A36F1AE6B9A6001F90B6 /* Supporting Files */,
+			);
+			path = Hearthdeck;
+			sourceTree = "<group>";
+		};
+		6535A36F1AE6B9A6001F90B6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6535A3701AE6B9A6001F90B6 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6535A3841AE6B9A6001F90B6 /* HearthdeckTests */ = {
+			isa = PBXGroup;
+			children = (
+				6535A3871AE6B9A6001F90B6 /* HearthdeckTests.swift */,
+				6535A3851AE6B9A6001F90B6 /* Supporting Files */,
+			);
+			path = HearthdeckTests;
+			sourceTree = "<group>";
+		};
+		6535A3851AE6B9A6001F90B6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6535A3861AE6B9A6001F90B6 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6535A3971AE6BFF0001F90B6 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				654461621B024F3B00DC5BAD /* IntroViewController.swift */,
+				6535A3731AE6B9A6001F90B6 /* ViewController.swift */,
+				6535A3951AE6BFDB001F90B6 /* CardListTableViewController.swift */,
+				6533322C1AF8068B00C6D4C2 /* CardDetailViewController.swift */,
+				65A23B0A1B0FB37D000D5980 /* DecksTableViewController.swift */,
+				659458BE1B18CCE100D8675F /* DeckDetailTableViewController.swift */,
+				659458C01B18CCF500D8675F /* DeckDetailViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		654CA4801B24AD2E0079B4F2 /* Heroes */ = {
+			isa = PBXGroup;
+			children = (
+				654CA46E1B24AD290079B4F2 /* Anduin.png */,
+				654CA46F1B24AD290079B4F2 /* Garrosh.png */,
+				654CA4701B24AD290079B4F2 /* Gul'dan.png */,
+				654CA4711B24AD290079B4F2 /* Jaina.png */,
+				654CA4721B24AD290079B4F2 /* Malfurion.png */,
+				654CA4731B24AD290079B4F2 /* Rexxar.png */,
+				654CA4741B24AD290079B4F2 /* Thrall.png */,
+				654CA4751B24AD290079B4F2 /* Uther.png */,
+				654CA4761B24AD290079B4F2 /* Valeera.png */,
+			);
+			name = Heroes;
+			sourceTree = "<group>";
+		};
+		654CA4931B24BDE40079B4F2 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				654CA4811B24BDDF0079B4F2 /* Druid.png */,
+				654CA4821B24BDDF0079B4F2 /* Hunter.png */,
+				654CA4831B24BDDF0079B4F2 /* Mage.png */,
+				654CA4841B24BDDF0079B4F2 /* Paladin.png */,
+				654CA4851B24BDDF0079B4F2 /* Priest.png */,
+				654CA4861B24BDDF0079B4F2 /* Rogue.png */,
+				654CA4871B24BDDF0079B4F2 /* Shaman.png */,
+				654CA4881B24BDDF0079B4F2 /* Warlock.png */,
+				654CA4891B24BDDF0079B4F2 /* Warrior.png */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		65A454C81B02402B003CDEFC /* Stuff */ = {
+			isa = PBXGroup;
+			children = (
+				6520CD131B1C71C00074EE57 /* Fonts */,
+				65E5C3181B1B139500F868ED /* Icons */,
+				65A454C91B024043003CDEFC /* missing.png */,
+			);
+			name = Stuff;
+			sourceTree = "<group>";
+		};
+		65E5C3181B1B139500F868ED /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				654CA4931B24BDE40079B4F2 /* Classes */,
+				654CA4801B24AD2E0079B4F2 /* Heroes */,
+				65E5C31A1B1B13B300F868ED /* UI */,
+				65E5C3191B1B13A600F868ED /* Card Types */,
+			);
+			name = Icons;
+			sourceTree = "<group>";
+		};
+		65E5C3191B1B13A600F868ED /* Card Types */ = {
+			isa = PBXGroup;
+			children = (
+				658FA86E1B10E684006BB184 /* taunt.png */,
+			);
+			name = "Card Types";
+			sourceTree = "<group>";
+		};
+		65E5C31A1B1B13B300F868ED /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				65E5C31F1B1B183500F868ED /* Character Icon@2x.png */,
+				65E5C3201B1B183500F868ED /* Character Icon@3x.png */,
+				65E5C3211B1B183500F868ED /* Icon Card@2x.png */,
+				65E5C3221B1B183500F868ED /* Icon Card@3x.png */,
+				65E5C3271B1B32F300F868ED /* Attention Filled-50.png */,
+				65E5C3281B1B32F300F868ED /* Attention-50.png */,
+				65E5C3291B1B32F300F868ED /* Help-50.png */,
+				6542E4801B2472FF002588B6 /* Delete Sign-50.png */,
+				65E5C32B1B1B32F300F868ED /* Settings Filled-50.png */,
+				65E5C32C1B1B32F300F868ED /* Settings-50.png */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		E72F5E9C42B19F2153FF39F8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3EC9B3B28E56A493093DB004 /* Pods_Hearthdeck.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6535A36B1AE6B9A6001F90B6 /* Hearthdeck */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6535A38B1AE6B9A6001F90B6 /* Build configuration list for PBXNativeTarget "Hearthdeck" */;
+			buildPhases = (
+				D631146227CCF08E58244AC7 /* Check Pods Manifest.lock */,
+				6535A3681AE6B9A6001F90B6 /* Sources */,
+				6535A3691AE6B9A6001F90B6 /* Frameworks */,
+				6535A36A1AE6B9A6001F90B6 /* Resources */,
+				F50AD06D95CD1FEA4CD99F32 /* Embed Pods Frameworks */,
+				86ADD4443AD9A6729EFCD37B /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Hearthdeck;
+			productName = Hearthdeck;
+			productReference = 6535A36C1AE6B9A6001F90B6 /* Hearthdeck.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6535A3641AE6B9A6001F90B6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = Qubex_;
+				TargetAttributes = {
+					6535A36B1AE6B9A6001F90B6 = {
+						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = SA96HGH9C6;
+					};
+				};
+			};
+			buildConfigurationList = 6535A3671AE6B9A6001F90B6 /* Build configuration list for PBXProject "Hearthdeck" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6535A3631AE6B9A6001F90B6;
+			productRefGroup = 6535A36D1AE6B9A6001F90B6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6535A36B1AE6B9A6001F90B6 /* Hearthdeck */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6535A36A1AE6B9A6001F90B6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				654CA4781B24AD290079B4F2 /* Garrosh.png in Resources */,
+				654CA47B1B24AD290079B4F2 /* Malfurion.png in Resources */,
+				654CA4921B24BDDF0079B4F2 /* Warrior.png in Resources */,
+				654CA48A1B24BDDF0079B4F2 /* Druid.png in Resources */,
+				6520CD181B1C72520074EE57 /* Panton-BlackCaps.otf in Resources */,
+				6520CD191B1C72520074EE57 /* Panton-BlackitalicCaps.otf in Resources */,
+				6520CD1A1B1C72520074EE57 /* Panton-LightCaps.otf in Resources */,
+				654CA46D1B24955F0079B4F2 /* Podfile in Resources */,
+				654CA4901B24BDDF0079B4F2 /* Shaman.png in Resources */,
+				654CA48E1B24BDDF0079B4F2 /* Priest.png in Resources */,
+				654CA4911B24BDDF0079B4F2 /* Warlock.png in Resources */,
+				6520CD1B1B1C72520074EE57 /* Panton-LightitalicCaps.otf in Resources */,
+				654CA47E1B24AD290079B4F2 /* Uther.png in Resources */,
+				654CA4791B24AD290079B4F2 /* Gul'dan.png in Resources */,
+				654CA47D1B24AD290079B4F2 /* Thrall.png in Resources */,
+				65E5C3261B1B183500F868ED /* Icon Card@3x.png in Resources */,
+				654CA47C1B24AD290079B4F2 /* Rexxar.png in Resources */,
+				65E5C32F1B1B32F300F868ED /* Help-50.png in Resources */,
+				65E5C32E1B1B32F300F868ED /* Attention-50.png in Resources */,
+				65E5C3241B1B183500F868ED /* Character Icon@3x.png in Resources */,
+				65E5C3231B1B183500F868ED /* Character Icon@2x.png in Resources */,
+				65A454CA1B024043003CDEFC /* missing.png in Resources */,
+				6535A3991AE6C02D001F90B6 /* cardList.json in Resources */,
+				658FA86F1B10E684006BB184 /* taunt.png in Resources */,
+				65E5C3321B1B32F300F868ED /* Settings-50.png in Resources */,
+				65E5C32D1B1B32F300F868ED /* Attention Filled-50.png in Resources */,
+				654CA48D1B24BDDF0079B4F2 /* Paladin.png in Resources */,
+				654CA48B1B24BDDF0079B4F2 /* Hunter.png in Resources */,
+				6535A3771AE6B9A6001F90B6 /* Main.storyboard in Resources */,
+				6535A37C1AE6B9A6001F90B6 /* LaunchScreen.xib in Resources */,
+				65E5C3311B1B32F300F868ED /* Settings Filled-50.png in Resources */,
+				654CA48C1B24BDDF0079B4F2 /* Mage.png in Resources */,
+				6542E4811B2472FF002588B6 /* Delete Sign-50.png in Resources */,
+				654CA47A1B24AD290079B4F2 /* Jaina.png in Resources */,
+				654CA4771B24AD290079B4F2 /* Anduin.png in Resources */,
+				6557CC0C1AEAA5BC002B9D09 /* cardListLocalized.json in Resources */,
+				65E5C3251B1B183500F868ED /* Icon Card@2x.png in Resources */,
+				654CA47F1B24AD290079B4F2 /* Valeera.png in Resources */,
+				654CA48F1B24BDDF0079B4F2 /* Rogue.png in Resources */,
+				6535A3791AE6B9A6001F90B6 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		86ADD4443AD9A6729EFCD37B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hearthdeck/Pods-Hearthdeck-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D631146227CCF08E58244AC7 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F50AD06D95CD1FEA4CD99F32 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hearthdeck/Pods-Hearthdeck-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6535A3681AE6B9A6001F90B6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				654461651B02539F00DC5BAD /* CustomThings.swift in Sources */,
+				654E16BE1AFF531100CB0C04 /* Deck.swift in Sources */,
+				6535A3741AE6B9A6001F90B6 /* ViewController.swift in Sources */,
+				6535A3721AE6B9A6001F90B6 /* AppDelegate.swift in Sources */,
+				6535A3961AE6BFDB001F90B6 /* CardListTableViewController.swift in Sources */,
+				654461631B024F3B00DC5BAD /* IntroViewController.swift in Sources */,
+				651CEC1F1AF38A1600A7329E /* CardCell.swift in Sources */,
+				6533322D1AF8068B00C6D4C2 /* CardDetailViewController.swift in Sources */,
+				654E16BD1AFF531100CB0C04 /* Card.swift in Sources */,
+				659458C11B18CCF500D8675F /* DeckDetailViewController.swift in Sources */,
+				659458BF1B18CCE100D8675F /* DeckDetailTableViewController.swift in Sources */,
+				65A23B0B1B0FB37D000D5980 /* DecksTableViewController.swift in Sources */,
+				6567559B1B2EF53800F9C816 /* DeckCardCell.swift in Sources */,
+				65A23B091B0FA065000D5980 /* HS_database.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		6535A3751AE6B9A6001F90B6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6535A3761AE6B9A6001F90B6 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6535A37A1AE6B9A6001F90B6 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6535A37B1AE6B9A6001F90B6 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6535A3891AE6B9A6001F90B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6535A38A1AE6B9A6001F90B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6535A38C1AE6B9A6001F90B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74D0B7D09AED1D9416E4B0D1 /* Pods-Hearthdeck.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Hearthdeck/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		6535A38D1AE6B9A6001F90B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E7D46318D4AB4F97605D0B0 /* Pods-Hearthdeck.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Hearthdeck/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6535A3671AE6B9A6001F90B6 /* Build configuration list for PBXProject "Hearthdeck" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6535A3891AE6B9A6001F90B6 /* Debug */,
+				6535A38A1AE6B9A6001F90B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6535A38B1AE6B9A6001F90B6 /* Build configuration list for PBXNativeTarget "Hearthdeck" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6535A38C1AE6B9A6001F90B6 /* Debug */,
+				6535A38D1AE6B9A6001F90B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		65A23B071B0FA065000D5980 /* HS_database.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				65A23B081B0FA065000D5980 /* HS_database.xcdatamodel */,
+			);
+			currentVersion = 65A23B081B0FA065000D5980 /* HS_database.xcdatamodel */;
+			path = HS_database.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 6535A3641AE6B9A6001F90B6 /* Project object */;
+}

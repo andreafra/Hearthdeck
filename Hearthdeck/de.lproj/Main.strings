@@ -1,0 +1,9 @@
+
+/* Class = "UINavigationItem"; title = "Root View Controller"; ObjectID = "Cm2-RE-osl"; */
+"Cm2-RE-osl.title" = "Root View Controller";
+
+/* Class = "UIButton"; normalTitle = "Go"; ObjectID = "GH4-2H-Q2W"; */
+"GH4-2H-Q2W.normalTitle" = "Go";
+
+/* Class = "UILabel"; text = "Card List"; ObjectID = "yOt-iH-ExG"; */
+"yOt-iH-ExG.text" = "Card List";

@@ -1,0 +1,634 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2FDEA531C714554C201DFAE6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08CCEBB8502FE0A389A92FB5 /* Foundation.framework */; };
+		349B5781BE09BE6562AFD9D0 /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6EE78E3FDC078691251317 /* KeyboardLayoutConstraint.swift */; };
+		37735FA7150098576BF11692 /* DesignableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D264277326FD65530481A73A /* DesignableTextView.swift */; };
+		37F01510807233201E9AE59B /* DesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9849F4B676308A2A081C1863 /* DesignableTextField.swift */; };
+		3C358F84B6FD8A664AD2C9EC /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E6DE8A593B4649128125A8 /* SoundPlayer.swift */; };
+		48F13F13C49C91E1FFF3BBC3 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29D36AB627BCCFA278629259 /* LoadingView.xib */; };
+		4C9179EC946D28155DC645C7 /* UnwindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D579873A2380B77CF647C79 /* UnwindSegue.swift */; };
+		5372C989E364C7DB4BD1955E /* Spring.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC10DD0984FBE40D5FEF8E2 /* Spring.swift */; };
+		655B63230F0CC9C64AF1DF52 /* SpringImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CBB432DC1B9D50BFE2EE0C /* SpringImageView.swift */; };
+		6C03EF374D502D325E04032A /* SpringButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCB14B661F8D87A2626DB7A /* SpringButton.swift */; };
+		6EBB2D72FF52AFCDE3A9959F /* SpringAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB222E6AC914C3E2BD6683E7 /* SpringAnimation.swift */; };
+		6ECB473D24D54DBD1630FA7A /* Pods-Hearthdeck-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9ACD38AA4B84D20820501A /* Pods-Hearthdeck-dummy.m */; };
+		7704AB593E13654C2424D0A3 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0ACBF61F36AAB83D7D74D6 /* ImageLoader.swift */; };
+		85C71AE7C65390B701AAD91F /* Pods-Hearthdeck-Spring-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 013BF14BECB1F798B894BD5C /* Pods-Hearthdeck-Spring-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		872EAED033B366F5107D12A7 /* DesignableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865E27015AE6F9CF221C38EA /* DesignableLabel.swift */; };
+		87D7E2082F8BF42A41BDF9B5 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0877A4E206B37DBDD7C92E9 /* LoadingView.swift */; };
+		8EC1B8D16981A3288A31B1F2 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1991C00E13D71A787F2CFD /* BlurView.swift */; };
+		97BAFBB76B50385973EA6F37 /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E14B86709094DD939DE55F /* Misc.swift */; };
+		A8CDD3C15F3AF9C3D29060A1 /* Pods-Hearthdeck-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 97AAFB76A9AA81C55DD9C2A8 /* Pods-Hearthdeck-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ADE2F13EE01654C0EC4EAAFA /* Pods-Hearthdeck-Spring-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F78050410DAA0AC77E9FC1 /* Pods-Hearthdeck-Spring-dummy.m */; };
+		B6136EEC516EB32B2B009ACC /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B572FBD2F39B3F283B7C2D /* AsyncImageView.swift */; };
+		BC12FE1142EB550985CBA59D /* DesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89A1EF15D0F2426E679C357 /* DesignableButton.swift */; };
+		BC446D89655F2459CE0EB676 /* SpringLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444853DEE5792B63CE41598C /* SpringLabel.swift */; };
+		CB0D07739176B9DD7BA67FC7 /* TransitionZoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE540E30023A2B01206832CA /* TransitionZoom.swift */; };
+		D3C25C66A9EBA4CB8873A759 /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D01D0BCE43757CD68E79C0 /* AsyncButton.swift */; };
+		D799A5C810764048A57CED31 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D4B447DB7EA949B3D31B5B /* DesignableView.swift */; };
+		D9FC7081374BEE565802EB4A /* SpringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76F3DEE19B7D31FD09730F1 /* SpringView.swift */; };
+		DBD46E91092D5D8597BB4F3F /* DesignableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FD5851D1C962A32E21FFFD /* DesignableImageView.swift */; };
+		DEB5CF895086807207A2FD44 /* DesignableTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40444FD5AACEFA877BB81950 /* DesignableTabBarController.swift */; };
+		E80E97864D9F4A184EFF5F1E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08CCEBB8502FE0A389A92FB5 /* Foundation.framework */; };
+		E960F3E21AC8F4CC0EEABDF6 /* SpringTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F447961C46A67132B230FD5D /* SpringTextField.swift */; };
+		EC8C2FE082A082AF22B16A12 /* AutoTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53496E868BE5DBD2AA47E6C /* AutoTextView.swift */; };
+		EE06F29E0FFB5ABCCAC476E2 /* SpringTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB66BC7A4369553FD91BA1B7 /* SpringTextView.swift */; };
+		F2213F6B97A83426A2C93A18 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEC8584DBC1CBD6ECF949A8 /* TransitionManager.swift */; };
+		F7C7AEBA33F9C8019E6C74E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7AEBD6CF3CBD99ECA304729 /* Images.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C716AE97E4DA3E12B726D358 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D84899E29159264090BDDDDD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7D9C921CF080387D5B43842B;
+			remoteInfo = "Pods-Hearthdeck-Spring";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		013BF14BECB1F798B894BD5C /* Pods-Hearthdeck-Spring-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Hearthdeck-Spring-umbrella.h"; sourceTree = "<group>"; };
+		01D01D0BCE43757CD68E79C0 /* AsyncButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AsyncButton.swift; path = Spring/AsyncButton.swift; sourceTree = "<group>"; };
+		06473C03533627FC6F6924AF /* Pods-Hearthdeck-Spring.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Hearthdeck-Spring.xcconfig"; sourceTree = "<group>"; };
+		08CCEBB8502FE0A389A92FB5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		0F1991C00E13D71A787F2CFD /* BlurView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BlurView.swift; path = Spring/BlurView.swift; sourceTree = "<group>"; };
+		12939E5F4B2E388438912DBE /* Pods-Hearthdeck-Spring.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Hearthdeck-Spring.modulemap"; sourceTree = "<group>"; };
+		14E14B86709094DD939DE55F /* Misc.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Misc.swift; path = Spring/Misc.swift; sourceTree = "<group>"; };
+		1DEC8584DBC1CBD6ECF949A8 /* TransitionManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransitionManager.swift; path = Spring/TransitionManager.swift; sourceTree = "<group>"; };
+		29D36AB627BCCFA278629259 /* LoadingView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = LoadingView.xib; path = Spring/LoadingView.xib; sourceTree = "<group>"; };
+		375B30154DE90420F94D7E7C /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; };
+		40444FD5AACEFA877BB81950 /* DesignableTabBarController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignableTabBarController.swift; path = Spring/DesignableTabBarController.swift; sourceTree = "<group>"; };
+		4065E4A3F6D52A9477E2D5D4 /* Pods-Hearthdeck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Hearthdeck.debug.xcconfig"; sourceTree = "<group>"; };
+		43A4B51ECFC7ED25DFF63FFB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		444853DEE5792B63CE41598C /* SpringLabel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringLabel.swift; path = Spring/SpringLabel.swift; sourceTree = "<group>"; };
+		4B350BB7C461CF8AAC7237A2 /* Pods-Hearthdeck-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Hearthdeck-frameworks.sh"; sourceTree = "<group>"; };
+		4CCB14B661F8D87A2626DB7A /* SpringButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringButton.swift; path = Spring/SpringButton.swift; sourceTree = "<group>"; };
+		4FC0F40E1B685EA11053CE62 /* Pods-Hearthdeck-Spring-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Hearthdeck-Spring-prefix.pch"; sourceTree = "<group>"; };
+		5214B166D81DB156E985272B /* Pods-Hearthdeck-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Hearthdeck-acknowledgements.markdown"; sourceTree = "<group>"; };
+		5BFD6379A83783CE25F29763 /* Pods-Hearthdeck-Spring-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Hearthdeck-Spring-Private.xcconfig"; sourceTree = "<group>"; };
+		8339D28EDE915E825B025C82 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		865E27015AE6F9CF221C38EA /* DesignableLabel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignableLabel.swift; path = Spring/DesignableLabel.swift; sourceTree = "<group>"; };
+		8D579873A2380B77CF647C79 /* UnwindSegue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UnwindSegue.swift; path = Spring/UnwindSegue.swift; sourceTree = "<group>"; };
+		9360E43FDC9BC33E79C81039 /* Spring.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Spring.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		97AAFB76A9AA81C55DD9C2A8 /* Pods-Hearthdeck-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Hearthdeck-umbrella.h"; sourceTree = "<group>"; };
+		9849F4B676308A2A081C1863 /* DesignableTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignableTextField.swift; path = Spring/DesignableTextField.swift; sourceTree = "<group>"; };
+		AE9ACD38AA4B84D20820501A /* Pods-Hearthdeck-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Hearthdeck-dummy.m"; sourceTree = "<group>"; };
+		B1F78050410DAA0AC77E9FC1 /* Pods-Hearthdeck-Spring-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Hearthdeck-Spring-dummy.m"; sourceTree = "<group>"; };
+		B3FD5851D1C962A32E21FFFD /* DesignableImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignableImageView.swift; path = Spring/DesignableImageView.swift; sourceTree = "<group>"; };
+		B6E6DE8A593B4649128125A8 /* SoundPlayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SoundPlayer.swift; path = Spring/SoundPlayer.swift; sourceTree = "<group>"; };
+		B703EA6F4A706002660A85BE /* Pods-Hearthdeck.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Hearthdeck.modulemap"; sourceTree = "<group>"; };
+		B76F3DEE19B7D31FD09730F1 /* SpringView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringView.swift; path = Spring/SpringView.swift; sourceTree = "<group>"; };
+		B7AEBD6CF3CBD99ECA304729 /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SpringApp/Images.xcassets; sourceTree = "<group>"; };
+		C3CBB432DC1B9D50BFE2EE0C /* SpringImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringImageView.swift; path = Spring/SpringImageView.swift; sourceTree = "<group>"; };
+		C6EC272E330ECB4A51C67D32 /* Pods_Hearthdeck.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hearthdeck.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8D5D3A49CB0E5040A4012D5 /* Pods-Hearthdeck.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Hearthdeck.release.xcconfig"; sourceTree = "<group>"; };
+		CDC10DD0984FBE40D5FEF8E2 /* Spring.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Spring.swift; path = Spring/Spring.swift; sourceTree = "<group>"; };
+		CE0ACBF61F36AAB83D7D74D6 /* ImageLoader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageLoader.swift; path = Spring/ImageLoader.swift; sourceTree = "<group>"; };
+		D0877A4E206B37DBDD7C92E9 /* LoadingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LoadingView.swift; path = Spring/LoadingView.swift; sourceTree = "<group>"; };
+		D1B572FBD2F39B3F283B7C2D /* AsyncImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AsyncImageView.swift; path = Spring/AsyncImageView.swift; sourceTree = "<group>"; };
+		D264277326FD65530481A73A /* DesignableTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignableTextView.swift; path = Spring/DesignableTextView.swift; sourceTree = "<group>"; };
+		D4D4B447DB7EA949B3D31B5B /* DesignableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignableView.swift; path = Spring/DesignableView.swift; sourceTree = "<group>"; };
+		DE540E30023A2B01206832CA /* TransitionZoom.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransitionZoom.swift; path = Spring/TransitionZoom.swift; sourceTree = "<group>"; };
+		E53496E868BE5DBD2AA47E6C /* AutoTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AutoTextView.swift; path = Spring/AutoTextView.swift; sourceTree = "<group>"; };
+		E89A1EF15D0F2426E679C357 /* DesignableButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignableButton.swift; path = Spring/DesignableButton.swift; sourceTree = "<group>"; };
+		EB222E6AC914C3E2BD6683E7 /* SpringAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringAnimation.swift; path = Spring/SpringAnimation.swift; sourceTree = "<group>"; };
+		EB66BC7A4369553FD91BA1B7 /* SpringTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringTextView.swift; path = Spring/SpringTextView.swift; sourceTree = "<group>"; };
+		EB727A12D8F5A7500E4AE4B2 /* Pods-Hearthdeck-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Hearthdeck-environment.h"; sourceTree = "<group>"; };
+		F447961C46A67132B230FD5D /* SpringTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringTextField.swift; path = Spring/SpringTextField.swift; sourceTree = "<group>"; };
+		F6BE99E489F7C5BAEE5CC063 /* Pods-Hearthdeck-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Hearthdeck-resources.sh"; sourceTree = "<group>"; };
+		F90DF197EE5EBEA8CEFD582C /* Pods-Hearthdeck-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Hearthdeck-acknowledgements.plist"; sourceTree = "<group>"; };
+		FE6EE78E3FDC078691251317 /* KeyboardLayoutConstraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyboardLayoutConstraint.swift; path = Spring/KeyboardLayoutConstraint.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3A91C3A88CB739B62CD42D18 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FDEA531C714554C201DFAE6 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		411CAB3AFB86FA008337FDAC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E80E97864D9F4A184EFF5F1E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1323C8EADEC64E33EC2C999C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				567BD77FD9D196977E1799DE /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1ABEF49919CEB3A311AA8940 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				3AD7AFF1789F28DE53C05EEE /* Pods-Hearthdeck */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		27DB81F32C4B363EB455B158 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AD3A0DCFFFE0CCF4B88D7756 /* Spring */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		3AD7AFF1789F28DE53C05EEE /* Pods-Hearthdeck */ = {
+			isa = PBXGroup;
+			children = (
+				8339D28EDE915E825B025C82 /* Info.plist */,
+				B703EA6F4A706002660A85BE /* Pods-Hearthdeck.modulemap */,
+				5214B166D81DB156E985272B /* Pods-Hearthdeck-acknowledgements.markdown */,
+				F90DF197EE5EBEA8CEFD582C /* Pods-Hearthdeck-acknowledgements.plist */,
+				AE9ACD38AA4B84D20820501A /* Pods-Hearthdeck-dummy.m */,
+				EB727A12D8F5A7500E4AE4B2 /* Pods-Hearthdeck-environment.h */,
+				4B350BB7C461CF8AAC7237A2 /* Pods-Hearthdeck-frameworks.sh */,
+				F6BE99E489F7C5BAEE5CC063 /* Pods-Hearthdeck-resources.sh */,
+				97AAFB76A9AA81C55DD9C2A8 /* Pods-Hearthdeck-umbrella.h */,
+				4065E4A3F6D52A9477E2D5D4 /* Pods-Hearthdeck.debug.xcconfig */,
+				C8D5D3A49CB0E5040A4012D5 /* Pods-Hearthdeck.release.xcconfig */,
+			);
+			name = "Pods-Hearthdeck";
+			path = "Target Support Files/Pods-Hearthdeck";
+			sourceTree = "<group>";
+		};
+		567BD77FD9D196977E1799DE /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				08CCEBB8502FE0A389A92FB5 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		79227DD168F332842E358E8A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B7AEBD6CF3CBD99ECA304729 /* Images.xcassets */,
+				29D36AB627BCCFA278629259 /* LoadingView.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		8B97C00264462B61A73769B5 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				43A4B51ECFC7ED25DFF63FFB /* Info.plist */,
+				12939E5F4B2E388438912DBE /* Pods-Hearthdeck-Spring.modulemap */,
+				06473C03533627FC6F6924AF /* Pods-Hearthdeck-Spring.xcconfig */,
+				5BFD6379A83783CE25F29763 /* Pods-Hearthdeck-Spring-Private.xcconfig */,
+				B1F78050410DAA0AC77E9FC1 /* Pods-Hearthdeck-Spring-dummy.m */,
+				4FC0F40E1B685EA11053CE62 /* Pods-Hearthdeck-Spring-prefix.pch */,
+				013BF14BECB1F798B894BD5C /* Pods-Hearthdeck-Spring-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-Hearthdeck-Spring";
+			sourceTree = "<group>";
+		};
+		AD3A0DCFFFE0CCF4B88D7756 /* Spring */ = {
+			isa = PBXGroup;
+			children = (
+				01D01D0BCE43757CD68E79C0 /* AsyncButton.swift */,
+				D1B572FBD2F39B3F283B7C2D /* AsyncImageView.swift */,
+				E53496E868BE5DBD2AA47E6C /* AutoTextView.swift */,
+				0F1991C00E13D71A787F2CFD /* BlurView.swift */,
+				E89A1EF15D0F2426E679C357 /* DesignableButton.swift */,
+				B3FD5851D1C962A32E21FFFD /* DesignableImageView.swift */,
+				865E27015AE6F9CF221C38EA /* DesignableLabel.swift */,
+				40444FD5AACEFA877BB81950 /* DesignableTabBarController.swift */,
+				9849F4B676308A2A081C1863 /* DesignableTextField.swift */,
+				D264277326FD65530481A73A /* DesignableTextView.swift */,
+				D4D4B447DB7EA949B3D31B5B /* DesignableView.swift */,
+				CE0ACBF61F36AAB83D7D74D6 /* ImageLoader.swift */,
+				FE6EE78E3FDC078691251317 /* KeyboardLayoutConstraint.swift */,
+				D0877A4E206B37DBDD7C92E9 /* LoadingView.swift */,
+				14E14B86709094DD939DE55F /* Misc.swift */,
+				B6E6DE8A593B4649128125A8 /* SoundPlayer.swift */,
+				CDC10DD0984FBE40D5FEF8E2 /* Spring.swift */,
+				EB222E6AC914C3E2BD6683E7 /* SpringAnimation.swift */,
+				4CCB14B661F8D87A2626DB7A /* SpringButton.swift */,
+				C3CBB432DC1B9D50BFE2EE0C /* SpringImageView.swift */,
+				444853DEE5792B63CE41598C /* SpringLabel.swift */,
+				F447961C46A67132B230FD5D /* SpringTextField.swift */,
+				EB66BC7A4369553FD91BA1B7 /* SpringTextView.swift */,
+				B76F3DEE19B7D31FD09730F1 /* SpringView.swift */,
+				1DEC8584DBC1CBD6ECF949A8 /* TransitionManager.swift */,
+				DE540E30023A2B01206832CA /* TransitionZoom.swift */,
+				8D579873A2380B77CF647C79 /* UnwindSegue.swift */,
+				79227DD168F332842E358E8A /* Resources */,
+				8B97C00264462B61A73769B5 /* Support Files */,
+			);
+			path = Spring;
+			sourceTree = "<group>";
+		};
+		D610B02A4013E76F00A1C9A2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C6EC272E330ECB4A51C67D32 /* Pods_Hearthdeck.framework */,
+				9360E43FDC9BC33E79C81039 /* Spring.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FBE669FD8D034E43526A741F = {
+			isa = PBXGroup;
+			children = (
+				375B30154DE90420F94D7E7C /* Podfile */,
+				1323C8EADEC64E33EC2C999C /* Frameworks */,
+				27DB81F32C4B363EB455B158 /* Pods */,
+				D610B02A4013E76F00A1C9A2 /* Products */,
+				1ABEF49919CEB3A311AA8940 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		8AD48DE2EA9F08147C8E5BE2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				85C71AE7C65390B701AAD91F /* Pods-Hearthdeck-Spring-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BEC94E38DA390D3D52600865 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8CDD3C15F3AF9C3D29060A1 /* Pods-Hearthdeck-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		7BE5B2892582B94AE141F59A /* Pods-Hearthdeck */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 617D3ACA4BB8F343CE28818F /* Build configuration list for PBXNativeTarget "Pods-Hearthdeck" */;
+			buildPhases = (
+				32B5BA602B9F64413551D43C /* Sources */,
+				411CAB3AFB86FA008337FDAC /* Frameworks */,
+				BEC94E38DA390D3D52600865 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				90D3284EA0308D0DBE63BB13 /* PBXTargetDependency */,
+			);
+			name = "Pods-Hearthdeck";
+			productName = "Pods-Hearthdeck";
+			productReference = C6EC272E330ECB4A51C67D32 /* Pods_Hearthdeck.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		7D9C921CF080387D5B43842B /* Pods-Hearthdeck-Spring */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6FA1C10CBA7D9D2768ADEE70 /* Build configuration list for PBXNativeTarget "Pods-Hearthdeck-Spring" */;
+			buildPhases = (
+				D964E252F96EBF3F6D2DE75A /* Sources */,
+				3A91C3A88CB739B62CD42D18 /* Frameworks */,
+				4A36FD3E5D486CBE3B742D39 /* Resources */,
+				8AD48DE2EA9F08147C8E5BE2 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-Hearthdeck-Spring";
+			productName = "Pods-Hearthdeck-Spring";
+			productReference = 9360E43FDC9BC33E79C81039 /* Spring.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D84899E29159264090BDDDDD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+			};
+			buildConfigurationList = 271BA095E656830744BEF5FC /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FBE669FD8D034E43526A741F;
+			productRefGroup = D610B02A4013E76F00A1C9A2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7BE5B2892582B94AE141F59A /* Pods-Hearthdeck */,
+				7D9C921CF080387D5B43842B /* Pods-Hearthdeck-Spring */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4A36FD3E5D486CBE3B742D39 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7C7AEBA33F9C8019E6C74E5 /* Images.xcassets in Resources */,
+				48F13F13C49C91E1FFF3BBC3 /* LoadingView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		32B5BA602B9F64413551D43C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6ECB473D24D54DBD1630FA7A /* Pods-Hearthdeck-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D964E252F96EBF3F6D2DE75A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3C25C66A9EBA4CB8873A759 /* AsyncButton.swift in Sources */,
+				B6136EEC516EB32B2B009ACC /* AsyncImageView.swift in Sources */,
+				EC8C2FE082A082AF22B16A12 /* AutoTextView.swift in Sources */,
+				8EC1B8D16981A3288A31B1F2 /* BlurView.swift in Sources */,
+				BC12FE1142EB550985CBA59D /* DesignableButton.swift in Sources */,
+				DBD46E91092D5D8597BB4F3F /* DesignableImageView.swift in Sources */,
+				872EAED033B366F5107D12A7 /* DesignableLabel.swift in Sources */,
+				DEB5CF895086807207A2FD44 /* DesignableTabBarController.swift in Sources */,
+				37F01510807233201E9AE59B /* DesignableTextField.swift in Sources */,
+				37735FA7150098576BF11692 /* DesignableTextView.swift in Sources */,
+				D799A5C810764048A57CED31 /* DesignableView.swift in Sources */,
+				7704AB593E13654C2424D0A3 /* ImageLoader.swift in Sources */,
+				349B5781BE09BE6562AFD9D0 /* KeyboardLayoutConstraint.swift in Sources */,
+				87D7E2082F8BF42A41BDF9B5 /* LoadingView.swift in Sources */,
+				97BAFBB76B50385973EA6F37 /* Misc.swift in Sources */,
+				ADE2F13EE01654C0EC4EAAFA /* Pods-Hearthdeck-Spring-dummy.m in Sources */,
+				3C358F84B6FD8A664AD2C9EC /* SoundPlayer.swift in Sources */,
+				5372C989E364C7DB4BD1955E /* Spring.swift in Sources */,
+				6EBB2D72FF52AFCDE3A9959F /* SpringAnimation.swift in Sources */,
+				6C03EF374D502D325E04032A /* SpringButton.swift in Sources */,
+				655B63230F0CC9C64AF1DF52 /* SpringImageView.swift in Sources */,
+				BC446D89655F2459CE0EB676 /* SpringLabel.swift in Sources */,
+				E960F3E21AC8F4CC0EEABDF6 /* SpringTextField.swift in Sources */,
+				EE06F29E0FFB5ABCCAC476E2 /* SpringTextView.swift in Sources */,
+				D9FC7081374BEE565802EB4A /* SpringView.swift in Sources */,
+				F2213F6B97A83426A2C93A18 /* TransitionManager.swift in Sources */,
+				CB0D07739176B9DD7BA67FC7 /* TransitionZoom.swift in Sources */,
+				4C9179EC946D28155DC645C7 /* UnwindSegue.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		90D3284EA0308D0DBE63BB13 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-Hearthdeck-Spring";
+			target = 7D9C921CF080387D5B43842B /* Pods-Hearthdeck-Spring */;
+			targetProxy = C716AE97E4DA3E12B726D358 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		3A8DD59A197FE21B1E131966 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5BFD6379A83783CE25F29763 /* Pods-Hearthdeck-Spring-Private.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-Hearthdeck-Spring/Pods-Hearthdeck-Spring-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Pods-Hearthdeck-Spring/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-Hearthdeck-Spring/Pods-Hearthdeck-Spring.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Spring;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		5A13B04FCCC7E393D38503BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		A95D9F24003594B09DD943F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C8D5D3A49CB0E5040A4012D5 /* Pods-Hearthdeck.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Hearthdeck/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-Hearthdeck/Pods-Hearthdeck.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_Hearthdeck;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		EA819EA5783743816D61AB61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5BFD6379A83783CE25F29763 /* Pods-Hearthdeck-Spring-Private.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-Hearthdeck-Spring/Pods-Hearthdeck-Spring-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Pods-Hearthdeck-Spring/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-Hearthdeck-Spring/Pods-Hearthdeck-Spring.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Spring;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		ECBB19E0807D554E0F9BC445 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FFBAC9F242224453CA7EB572 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4065E4A3F6D52A9477E2D5D4 /* Pods-Hearthdeck.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Hearthdeck/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-Hearthdeck/Pods-Hearthdeck.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_Hearthdeck;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		271BA095E656830744BEF5FC /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A13B04FCCC7E393D38503BB /* Debug */,
+				ECBB19E0807D554E0F9BC445 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		617D3ACA4BB8F343CE28818F /* Build configuration list for PBXNativeTarget "Pods-Hearthdeck" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFBAC9F242224453CA7EB572 /* Debug */,
+				A95D9F24003594B09DD943F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6FA1C10CBA7D9D2768ADEE70 /* Build configuration list for PBXNativeTarget "Pods-Hearthdeck-Spring" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A8DD59A197FE21B1E131966 /* Debug */,
+				EA819EA5783743816D61AB61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D84899E29159264090BDDDDD /* Project object */;
+}
