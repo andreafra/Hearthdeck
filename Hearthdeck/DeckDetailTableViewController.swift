@@ -197,6 +197,7 @@ class DeckDetailTableViewController: UITableViewController {
             if fetchResults.count != 0 {
 
                 var managedObject = fetchResults[0]
+                
                 let cardsOfDeck: String = managedObject.cards
                 
                 // Parse string into array

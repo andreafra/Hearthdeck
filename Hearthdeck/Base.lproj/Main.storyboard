@@ -347,7 +347,7 @@
                                                 <constraint firstAttribute="width" secondItem="gGX-24-lI6" secondAttribute="height" multiplier="1:1" id="fbn-A8-HGp"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2bk-Q5-Bye">
@@ -366,7 +366,7 @@
                                                 <constraint firstAttribute="height" constant="20" id="M3D-20-m3j"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -391,30 +391,6 @@
                                     <outlet property="quantityLabel" destination="gGX-24-lI6" id="ILU-kT-cUW"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="40" id="L3x-wC-338">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="L3x-wC-338" id="iPT-Q5-vR9">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j67-hG-ODx">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="39"/>
-                                            <state key="normal" title="Add cards">
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="pickSomeCards:" destination="ZhV-iY-jnE" eventType="touchUpInside" id="fl4-n2-Yj1"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="j67-hG-ODx" firstAttribute="leading" secondItem="iPT-Q5-vR9" secondAttribute="leadingMargin" constant="-8" id="E0c-bo-CfQ"/>
-                                        <constraint firstItem="j67-hG-ODx" firstAttribute="top" secondItem="iPT-Q5-vR9" secondAttribute="topMargin" constant="-8" id="J9d-0f-X46"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="j67-hG-ODx" secondAttribute="trailing" constant="-8" id="TdV-a9-mAb"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="j67-hG-ODx" secondAttribute="bottom" constant="-8" id="zDx-CE-WPB"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="ZhV-iY-jnE" id="ENg-Sf-3nS"/>
@@ -436,7 +412,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nsx-eL-7RR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3062.5" y="728.5"/>
+            <point key="canvasLocation" x="3690.5" y="600.5"/>
         </scene>
         <!--Title-->
         <scene sceneID="seu-AO-8XX">
@@ -567,7 +543,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K37-nm-5Aa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3062.5" y="1529.5"/>
+            <point key="canvasLocation" x="3690.5" y="1401.5"/>
         </scene>
         <!--All Cards-->
         <scene sceneID="LIo-Va-7L6">
@@ -930,14 +906,13 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="52M-1c-PEN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1931.5" y="1244.5"/>
+            <point key="canvasLocation" x="2559.5" y="1116.5"/>
         </scene>
         <!--Cards-->
         <scene sceneID="xpB-8R-zSM">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ITu-x2-bCi" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7A1-Tg-rp8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Cards" id="4jm-ud-gbv"/>
+                    <tabBarItem key="tabBarItem" title="Cards" image="Icon Card.png" id="4jm-ud-gbv"/>
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -951,15 +926,15 @@
                         <segue destination="ZhV-iY-jnE" kind="relationship" relationship="rootViewController" id="bWR-XF-4Ba"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ITu-x2-bCi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2604.5" y="728.5"/>
+            <point key="canvasLocation" x="3232.5" y="600.5"/>
         </scene>
         <!--Deck-->
         <scene sceneID="V8V-Ut-IT5">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dGT-cJ-AjE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oep-AT-u4E" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Deck" id="Bpm-YF-Orc"/>
+                    <tabBarItem key="tabBarItem" title="Deck" image="Character Icon.png" id="Bpm-YF-Orc"/>
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -973,12 +948,15 @@
                         <segue destination="Alr-cR-edU" kind="relationship" relationship="rootViewController" id="HN9-QD-tXI"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dGT-cJ-AjE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2604.5" y="1529.5"/>
+            <point key="canvasLocation" x="3232.5" y="1401.5"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Character Icon.png" width="16" height="22"/>
         <image name="Delete Sign-50.png" width="50" height="50"/>
+        <image name="Icon Card.png" width="21" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="wvW-rz-FlT"/>

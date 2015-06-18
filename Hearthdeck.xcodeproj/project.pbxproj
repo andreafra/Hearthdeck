@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		651CEC1F1AF38A1600A7329E /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651CEC1E1AF38A1600A7329E /* CardCell.swift */; };
 		6520CD181B1C72520074EE57 /* Panton-BlackCaps.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6520CD141B1C71DB0074EE57 /* Panton-BlackCaps.otf */; };
 		6520CD191B1C72520074EE57 /* Panton-BlackitalicCaps.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6520CD151B1C71DB0074EE57 /* Panton-BlackitalicCaps.otf */; };
 		6520CD1A1B1C72520074EE57 /* Panton-LightCaps.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6520CD161B1C71DB0074EE57 /* Panton-LightCaps.otf */; };
@@ -62,13 +61,13 @@
 		65E5C32F1B1B32F300F868ED /* Help-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 65E5C3291B1B32F300F868ED /* Help-50.png */; };
 		65E5C3311B1B32F300F868ED /* Settings Filled-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 65E5C32B1B1B32F300F868ED /* Settings Filled-50.png */; };
 		65E5C3321B1B32F300F868ED /* Settings-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 65E5C32C1B1B32F300F868ED /* Settings-50.png */; };
+		65F7D3761B32FF2B003F5301 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F7D3751B32FF2B003F5301 /* CardCell.swift */; };
 		C4E43DBD209B36A157CF60C5 /* Pods_Hearthdeck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EC9B3B28E56A493093DB004 /* Pods_Hearthdeck.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1E7D46318D4AB4F97605D0B0 /* Pods-Hearthdeck.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hearthdeck.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hearthdeck/Pods-Hearthdeck.release.xcconfig"; sourceTree = "<group>"; };
 		3EC9B3B28E56A493093DB004 /* Pods_Hearthdeck.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hearthdeck.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		651CEC1E1AF38A1600A7329E /* CardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = SOURCE_ROOT; };
 		6520CD141B1C71DB0074EE57 /* Panton-BlackCaps.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Panton-BlackCaps.otf"; sourceTree = "<group>"; };
 		6520CD151B1C71DB0074EE57 /* Panton-BlackitalicCaps.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Panton-BlackitalicCaps.otf"; sourceTree = "<group>"; };
 		6520CD161B1C71DB0074EE57 /* Panton-LightCaps.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Panton-LightCaps.otf"; sourceTree = "<group>"; };
@@ -127,6 +126,7 @@
 		65E5C3291B1B32F300F868ED /* Help-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Help-50.png"; sourceTree = "<group>"; };
 		65E5C32B1B1B32F300F868ED /* Settings Filled-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings Filled-50.png"; sourceTree = "<group>"; };
 		65E5C32C1B1B32F300F868ED /* Settings-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings-50.png"; sourceTree = "<group>"; };
+		65F7D3751B32FF2B003F5301 /* CardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		74D0B7D09AED1D9416E4B0D1 /* Pods-Hearthdeck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hearthdeck.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hearthdeck/Pods-Hearthdeck.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,7 +166,7 @@
 				654E16BB1AFF531100CB0C04 /* Card.swift */,
 				654E16BC1AFF531100CB0C04 /* Deck.swift */,
 				654461641B02539F00DC5BAD /* CustomThings.swift */,
-				651CEC1E1AF38A1600A7329E /* CardCell.swift */,
+				65F7D3751B32FF2B003F5301 /* CardCell.swift */,
 				6567559A1B2EF53800F9C816 /* DeckCardCell.swift */,
 			);
 			name = Classes;
@@ -512,8 +512,8 @@
 				6535A3721AE6B9A6001F90B6 /* AppDelegate.swift in Sources */,
 				6535A3961AE6BFDB001F90B6 /* CardListTableViewController.swift in Sources */,
 				654461631B024F3B00DC5BAD /* IntroViewController.swift in Sources */,
-				651CEC1F1AF38A1600A7329E /* CardCell.swift in Sources */,
 				6533322D1AF8068B00C6D4C2 /* CardDetailViewController.swift in Sources */,
+				65F7D3761B32FF2B003F5301 /* CardCell.swift in Sources */,
 				654E16BD1AFF531100CB0C04 /* Card.swift in Sources */,
 				659458C11B18CCF500D8675F /* DeckDetailViewController.swift in Sources */,
 				659458BF1B18CCE100D8675F /* DeckDetailTableViewController.swift in Sources */,
