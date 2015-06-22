@@ -44,9 +44,10 @@ class Card: NSManagedObject {
         newCard.image = image
         newCard.hasImage = hasImage
         
-        var saveError:NSError?
-        if !moc.save(&saveError) {
-            println("Error saving: \(saveError), \(saveError?.userInfo)")
+        do {
+            try moc.save()
+        } catch {
+            print("Error saving: \(error)")
         }
         
         return newCard

@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-import Spring
 
 class DeckDetailViewController: UIViewController {
 
@@ -47,16 +46,16 @@ class DeckDetailViewController: UIViewController {
         // Hide promptClassPicker
         self.promptClassPicker.hidden = true
         
-        let moc = self.managedObjectContext
         let fetchRequest = NSFetchRequest(entityName: "Deck")
         fetchRequest.predicate = NSPredicate(format: "name = %@", deckTitle.title!)
         
-        if let fetchResults = self.appDel.managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [Deck] {
+        do {
+            let fetchResults = try self.appDel.managedObjectContext.executeFetchRequest(fetchRequest)
             if fetchResults.count != 0 {
                 
-                var managedObject = fetchResults[0]
+                let managedObject = fetchResults[0] as!Deck
                 let type = managedObject.type
-                let name = charactersNames[find(playerClasses, managedObject.type)!]
+                let name = charactersNames[playerClasses.indexOf(managedObject.type)!]
                 self.characterType.text = type
                 self.characterName.text = name
                 self.characterImage.image = UIImage(named: name+".png")
@@ -65,10 +64,12 @@ class DeckDetailViewController: UIViewController {
                 self.characterType.text = "Name"
                 self.characterName.text = "Type"
             }
+        } catch {
+            print("Error: \(error)")
         }
         
         for index in 0...playerClasses.count-1 {
-            let button = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+            let button = UIButton(type: UIButtonType.Custom) as UIButton
             let image = UIImage(named: (playerClasses[index]+".png")) as UIImage?
             button.setImage(image, forState: .Normal)
             button.setTitle(playerClasses[index], forState: .Normal)
@@ -152,20 +153,29 @@ class DeckDetailViewController: UIViewController {
         
         let alertController = UIAlertController(title: deckTitle.title, message: "Change name?", preferredStyle: .Alert)
         
-        let deckEditAction = UIAlertAction(title: "Rename", style: .Default) { (_) in
-            let deckNameTextField = alertController.textFields![0] as! UITextField
+        let deckEditAction = UIAlertAction(title: "Rename Deck", style: .Default, handler: {
+            _ in
             
-            if let fetchResults = self.appDel.managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [NSManagedObject] {
+            let deckNameTextField = alertController.textFields![0] as UITextField
+            
+            do {
+                let fetchResults = try self.appDel.managedObjectContext.executeFetchRequest(fetchRequest)
                 if fetchResults.count != 0{
                     
-                    var managedObject = fetchResults[0]
+                    let managedObject = fetchResults[0] as!NSManagedObject
                     managedObject.setValue(deckNameTextField.text, forKey: "name")
                     self.deckTitle.title = deckNameTextField.text
                     
-                    moc!.save(nil)
+                    do {
+                        try moc.save()
+                    } catch _ {
+                    }
                 }
+            } catch {
+                
             }
-        }
+        })
+        
         deckEditAction.enabled = false
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (_) in }
@@ -183,7 +193,7 @@ class DeckDetailViewController: UIViewController {
         alertController.addAction(cancelAction)
         
         self.presentViewController(alertController, animated: true) {
-            println("changing name...")
+            print("changing name...")
         }
     }
     func classPickerAction() {
@@ -203,7 +213,7 @@ class DeckDetailViewController: UIViewController {
                 (_) in
         })
         
-        println("showing classes...")
+        print("showing classes...")
         
         classPickerState = true
     }
@@ -219,24 +229,30 @@ class DeckDetailViewController: UIViewController {
     func didSelectClass(sender: UIButton) {
         if let type = sender.titleLabel?.text {
             
-            let name = charactersNames[find(playerClasses, type)!]
+            let name = charactersNames[playerClasses.indexOf(type)!]
             
             let moc = self.managedObjectContext
             let fetchRequest = NSFetchRequest(entityName: "Deck")
             fetchRequest.predicate = NSPredicate(format: "name = %@", deckTitle.title!)
             
-            if let fetchResults = self.appDel.managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [NSManagedObject] {
+            do {
+                let fetchResults = try self.appDel.managedObjectContext.executeFetchRequest(fetchRequest)
                 if fetchResults.count != 0{
                     
-                    var managedObject = fetchResults[0]
+                    let managedObject = fetchResults[0] as! Deck
                     managedObject.setValue(type, forKey: "type") //"type" has first letter uppercase
                     self.characterType.text = type
                     self.characterName.text = name
                     self.characterImage.image = UIImage(named: name+".png")
-                    moc!.save(nil)
+                    do {
+                        try moc.save()
+                    } catch _ {
+                    }
                     
                     dismissClassPicker()
                 }
+            } catch {
+                print(error)
             }
         }
         

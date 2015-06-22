@@ -23,13 +23,13 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         // Test for first launch
-        var firstLaunch = NSUserDefaults.standardUserDefaults().boolForKey("FirstLaunch")
+        let firstLaunch = NSUserDefaults.standardUserDefaults().boolForKey("FirstLaunch")
         if firstLaunch {
-            println("Not first launch")
+            print("Not first launch")
             firstLaunchLabel.text = "Not first launch"
             
         } else {
-            println("First launch")
+            print("First launch")
             firstLaunchLabel.text = "First Launch"
             
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: "FirstLaunch")

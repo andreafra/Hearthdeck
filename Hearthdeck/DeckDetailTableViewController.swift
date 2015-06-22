@@ -68,7 +68,8 @@ class DeckDetailTableViewController: UITableViewController {
         let fetchRequest: NSFetchRequest = NSFetchRequest(entityName: "Card")
         fetchRequest.predicate = NSPredicate(format: "id = %@", pickedCards[indexPath.row])
         
-        if let results = self.managedObjectContext?.executeFetchRequest(fetchRequest, error: nil) {
+        do {
+            let results = try self.managedObjectContext.executeFetchRequest(fetchRequest)
             let card = results[0] as! Card
             
             // set labels
@@ -80,19 +81,19 @@ class DeckDetailTableViewController: UITableViewController {
             } else {
                 // If current card has no image
                 // Download image
-                var downloadImageError: NSError?
-                var imageError: NSError?
                 let baseUrl = "http://wow.zamimg.com/images/hearthstone/cards/enus/medium/" + card.id + ".png"
-                card.image = NSData(contentsOfURL: NSURL(string: baseUrl)!, options: NSDataReadingOptions.DataReadingMappedIfSafe, error: &imageError)!
+                card.image = try! NSData(contentsOfURL: NSURL(string: baseUrl)!, options: NSDataReadingOptions.DataReadingMappedIfSafe)
                 card.hasImage = true
-                println("Downloaded image")
-                self.managedObjectContext!.save(&downloadImageError)
-                if downloadImageError != nil {
-                    println(downloadImageError)
+                print("Downloaded image")
+                do {
+                    try self.managedObjectContext.save()
+                } catch  {
+                    print(error)
                 }
                 
                 cell.cardImage.image = UIImage(data: card.image)
             }
+        } catch _ {
         }
         
         
@@ -125,16 +126,24 @@ class DeckDetailTableViewController: UITableViewController {
             }
             
             // Save data
-            if let fetchResults = self.appDel.managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [Deck] {
+            do { let fetchResults = try self.appDel.managedObjectContext.executeFetchRequest(fetchRequest)
                 if fetchResults.count != 0 {
-                    var managedObject = fetchResults[0]
+                    let managedObject = fetchResults[0] as! Deck
                     
                     managedObject.setValue(resultString, forKey: "cards")
-                    self.managedObjectContext!.save(nil)
+                    do {
+                        try self.managedObjectContext.save()
+                    } catch _ {
+                    }
                 }
+            } catch {
+                print(error)
             }
             
-            self.managedObjectContext!.save(nil)
+            do {
+                try self.managedObjectContext.save()
+            } catch _ {
+            }
             // Delete the row from the data source
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             
@@ -193,10 +202,11 @@ class DeckDetailTableViewController: UITableViewController {
         let fetchRequest = NSFetchRequest(entityName: "Deck")
         fetchRequest.predicate = NSPredicate(format: "name = %@", deckTitle!)
         
-        if let fetchResults = self.appDel.managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [Deck] {
+        do {
+            let fetchResults = try self.appDel.managedObjectContext.executeFetchRequest(fetchRequest)
             if fetchResults.count != 0 {
 
-                var managedObject = fetchResults[0]
+                let managedObject = fetchResults[0] as! Deck
                 
                 let cardsOfDeck: String = managedObject.cards
                 
@@ -209,12 +219,14 @@ class DeckDetailTableViewController: UITableViewController {
                         
                         // SETUP CARDS IN CELLS
                         pickedCards.append(cardRaw[0])
-                        pickedCardsQuantity.append(cardRaw[1].toInt()!)
+                        pickedCardsQuantity.append(Int(cardRaw[1])!)
                     }
                 }
             }
+        } catch {
+            
         }
-        println(pickedCards)
+        print(pickedCards)
     }
     
 }

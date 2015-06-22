@@ -53,18 +53,19 @@ class DecksTableViewController: UITableViewController {
 
     @IBAction func addNewItem(sender: AnyObject) {
         
-        let newDeck: Deck = NSEntityDescription.insertNewObjectForEntityForName("Deck", inManagedObjectContext: moc!) as! Deck
+        let newDeck: Deck = NSEntityDescription.insertNewObjectForEntityForName("Deck", inManagedObjectContext: moc) as! Deck
         newDeck.name = "Deck " + String(decks.count+1)
         newDeck.desc = "A new deck"
         newDeck.type = "Mage"
         newDeck.cards = ""
         
-        var saveError:NSError?
-        if !moc!.save(&saveError) {
-            println("Error saving: \(saveError), \(saveError?.userInfo)")
+        do {
+            try moc.save()
+        } catch {
+            print("Error saving: \(error)")
         }
 
-        println(newDeck.name)
+        print(newDeck.name)
         fetchDeck()
         tableView.reloadData()
     }
@@ -84,7 +85,7 @@ class DecksTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(DeckCellIdentifier, forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(DeckCellIdentifier, forIndexPath: indexPath) as UITableViewCell
 
         // Configure the cell...
         cell.textLabel?.text = decks[indexPath.row].name
@@ -102,9 +103,12 @@ class DecksTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             
-            moc?.deleteObject(decks[indexPath.row] as Deck)
+            moc.deleteObject(decks[indexPath.row] as Deck)
             decks.removeAtIndex(indexPath.row)
-            moc?.save(nil)
+            do {
+                try moc.save()
+            } catch _ {
+            }
             // Delete the row from the data source
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             
@@ -141,7 +145,7 @@ class DecksTableViewController: UITableViewController {
             let NC2 = tabBarController.viewControllers![1] as! UINavigationController
             let deckOverviewVC = NC1.topViewController as! DeckDetailViewController
             let deckTableVC = NC2.topViewController as! DeckDetailTableViewController
-            let indexPath = self.tableView.indexPathForSelectedRow()!
+            let indexPath = self.tableView.indexPathForSelectedRow!
             
             deckOverviewVC.deckTitle.title = decks[indexPath.row].name
             deckTableVC.deckTitle = decks[indexPath.row].name
@@ -153,16 +157,15 @@ class DecksTableViewController: UITableViewController {
     func fetchDeck() {
         
         let fetchRequest: NSFetchRequest = NSFetchRequest(entityName: "Deck")
-        var sorter: NSSortDescriptor = NSSortDescriptor(key: "name" , ascending: true)
+        let sorter: NSSortDescriptor = NSSortDescriptor(key: "name" , ascending: true)
         fetchRequest.sortDescriptors = [sorter]
         fetchRequest.returnsObjectsAsFaults = false
         
-        var error : NSError?
-        if let results = moc!.executeFetchRequest(fetchRequest, error: &error) as? [Deck] {
-            decks = results
-        } else {
-            println("Fetch failed: \(error)")
-            // Handle error ...
+        do {
+            let results = try moc.executeFetchRequest(fetchRequest)
+            decks = results as! [Deck]
+        } catch {
+            print("Fetch failed: \(error)")
         }
     }
     

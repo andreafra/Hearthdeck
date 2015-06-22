@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class CardListTableViewController: UITableViewController, UITableViewDataSource, UISearchResultsUpdating, UISearchControllerDelegate {
+class CardListTableViewController: UITableViewController, UISearchResultsUpdating, UISearchControllerDelegate {
     
     var isPickingCard: Bool = false
     
@@ -56,10 +56,11 @@ class CardListTableViewController: UITableViewController, UITableViewDataSource,
             let fetchRequest = NSFetchRequest(entityName: "Deck")
             fetchRequest.predicate = NSPredicate(format: "name = %@", deckName!)
             
-            if let fetchResults = self.appDel.managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [Deck] {
+            do {
+                let fetchResults = try self.appDel.managedObjectContext.executeFetchRequest(fetchRequest)
                 if fetchResults.count != 0 {
 
-                    var managedObject = fetchResults[0]
+                    let managedObject = fetchResults[0] as! Deck
                     let cardsOfDeck: String = managedObject.cards
                     
                     // Parse string into array
@@ -69,10 +70,12 @@ class CardListTableViewController: UITableViewController, UITableViewDataSource,
                         for card in cardsArrayRaw {
                             let cardRaw = card.componentsSeparatedByString("@_")
                             pickedCards.append(cardRaw[0])
-                            pickedCardsQuantity.append(cardRaw[1].toInt()!)
+                            pickedCardsQuantity.append(Int(cardRaw[1])!)
                         }
                     }
                 }
+            } catch {
+                print("Error")
             }
         }
     }
@@ -88,23 +91,22 @@ class CardListTableViewController: UITableViewController, UITableViewDataSource,
     func fetchCard() {
         
         let fetchRequest: NSFetchRequest = NSFetchRequest(entityName: "Card")
-        var sorter: NSSortDescriptor = NSSortDescriptor(key: "name" , ascending: true)
+        let sorter: NSSortDescriptor = NSSortDescriptor(key: "name" , ascending: true)
         fetchRequest.sortDescriptors = [sorter]
         fetchRequest.returnsObjectsAsFaults = false
         
-        var error : NSError?
-        if let results = moc!.executeFetchRequest(fetchRequest, error: &error) as? [Card] {
-            cards = results
-            /*if (cards.count > 0) { // Debug purpose
-                for card in cards as [Card] {
-                    println(card.name)
-                }
-            } else {
-                println("No Cards")
-            }*/
-        } else {
-            println("Fetch failed: \(error)")
-            // Handle error ...
+        do {
+            let results = try moc.executeFetchRequest(fetchRequest)
+            cards = results as! [Card]
+                /*if (cards.count > 0) { // Debug purpose
+                    for card in cards as [Card] {
+                        println(card.name)
+                    }
+                } else {
+                    println("No Cards")
+                }*/
+        } catch {
+            print("Fetch failed: \(error)")
         }
     }
     
@@ -121,7 +123,7 @@ class CardListTableViewController: UITableViewController, UITableViewDataSource,
         filteredCards.removeAll(keepCapacity: true)
         for card in cards {
             var justOne = false
-            for (i, type) in enumerate(card.type) {
+            for (i, type) in card.type.characters.enumerate() {
                 if (scope == "All") || (card.type == scope) {
                     if((card.name.rangeOfString(searchedText) != nil) && justOne == false) {
 
@@ -140,7 +142,7 @@ class CardListTableViewController: UITableViewController, UITableViewDataSource,
         //let scopes = resultSearchController.searchBar.scopeButtonTitles as! [String]
         //let currentScope = scopes[resultSearchController.searchBar.selectedScopeButtonIndex] as String
         
-        filterContent(searchController.searchBar.text, scope: "All")
+        filterContent(searchController.searchBar.text!, scope: "All")
     }
     
     // MARK: - Table view data source
@@ -186,8 +188,8 @@ class CardListTableViewController: UITableViewController, UITableViewDataSource,
             
             cell.costLabel.hidden = true
             
-            if contains(pickedCards, card!.id) {
-                if pickedCardsQuantity[find(pickedCards, card!.id)!] == 2 {
+            if pickedCards.contains(card!.id) {
+                if pickedCardsQuantity[pickedCards.indexOf(card!.id)!] == 2 {
                     cell.costLabel.hidden = false
                     cell.costLabel.text = "2x"
                 }
@@ -227,9 +229,9 @@ class CardListTableViewController: UITableViewController, UITableViewDataSource,
                     
                     // Cycle in this way: NO CARD -> 1 CARD -> 2 CARD -> NO CARD ...
                     
-                    if contains(pickedCards, card) {
+                    if pickedCards.contains(card) {
                         
-                        let cardIndex = find(pickedCards, card)!
+                        let cardIndex = pickedCards.indexOf(card)!
                         
                         if pickedCardsQuantity[cardIndex] >= 2 {
                             // Delete card
@@ -252,9 +254,9 @@ class CardListTableViewController: UITableViewController, UITableViewDataSource,
                 } else {
                     let card = cards[indexPath.row].id
                     
-                    if contains(pickedCards, card) {
+                    if pickedCards.contains(card) {
                         
-                        let cardIndex = find(pickedCards, card)!
+                        let cardIndex = pickedCards.indexOf(card)!
                         
                         if pickedCardsQuantity[cardIndex] >= 2 {
                             // Delete card
@@ -279,8 +281,8 @@ class CardListTableViewController: UITableViewController, UITableViewDataSource,
                 if self.searchController.active {
                     let card = filteredCards[indexPath.row].id
 
-                    if contains(pickedCards, card) {
-                        let cardIndex = find(pickedCards, card)!
+                    if pickedCards.contains(card) {
+                        let cardIndex = pickedCards.indexOf(card)!
                         
                         if pickedCardsQuantity[cardIndex] >= 1 {
                             // Delete card
@@ -295,8 +297,8 @@ class CardListTableViewController: UITableViewController, UITableViewDataSource,
                 } else {
                     let card = cards[indexPath.row].id
                     
-                    if contains(pickedCards, card) {
-                        let cardIndex = find(pickedCards, card)!
+                    if pickedCards.contains(card) {
+                        let cardIndex = pickedCards.indexOf(card)!
                         
                         if pickedCardsQuantity[cardIndex] >= 2 {
                             // Delete card
@@ -314,8 +316,8 @@ class CardListTableViewController: UITableViewController, UITableViewDataSource,
                     tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
                 }
             }
-            println(pickedCards)
-            println(pickedCardsQuantity)
+            print(pickedCards)
+            print(pickedCardsQuantity)
             self.title = "\(numOfPickedCards)/30"
             
             // Then, deselect the row
@@ -347,13 +349,19 @@ class CardListTableViewController: UITableViewController, UITableViewDataSource,
             }
             
             // Save data
-            if let fetchResults = self.appDel.managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [Deck] {
+            do {
+                let fetchResults = try self.appDel.managedObjectContext.executeFetchRequest(fetchRequest)
                 if fetchResults.count != 0 {
-                    var managedObject = fetchResults[0]
+                    let managedObject = fetchResults[0] as! Deck
                     
                     managedObject.setValue(resultString, forKey: "cards")
-                    self.moc?.save(nil)
+                    do {
+                        try self.moc.save()
+                    } catch _ {
+                    }
                 }
+            } catch {
+                
             }
         }
     }
@@ -361,7 +369,7 @@ class CardListTableViewController: UITableViewController, UITableViewDataSource,
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == "CardDetailSegue" {
             let cardDetailViewController = segue.destinationViewController as! CardDetailViewController
-            let indexPath = self.tableView.indexPathForSelectedRow()
+            let indexPath = self.tableView.indexPathForSelectedRow
             
             var thisCard: Card
             if self.searchController.active {
@@ -384,14 +392,18 @@ class CardListTableViewController: UITableViewController, UITableViewDataSource,
             if !thisCard.hasImage {
                 // If current card has no image
                 // Download image
-                var downloadImageError: NSError?
-                var imageError: NSError?
+                
                 let baseUrl = "http://wow.zamimg.com/images/hearthstone/cards/enus/medium/" + thisCard.id + ".png"
-                thisCard.image = NSData(contentsOfURL: NSURL(string: baseUrl)!, options: NSDataReadingOptions.DataReadingMappedIfSafe, error: &imageError)!
-                thisCard.hasImage = true
-                moc?.save(&downloadImageError)
-                if downloadImageError != nil {
-                    println(downloadImageError)
+                do {
+                    thisCard.image = try NSData(contentsOfURL: NSURL(string: baseUrl)!, options: NSDataReadingOptions.DataReadingMappedIfSafe)
+                    thisCard.hasImage = true
+                    do {
+                        try moc.save()
+                    } catch {
+                        print("Cannot save: \(error)")
+                    }
+                } catch {
+                    print("Cannot convert image!")
                 }
             }
             cardDetailViewController.imageData = thisCard.image

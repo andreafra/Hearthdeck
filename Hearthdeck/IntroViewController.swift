@@ -68,7 +68,7 @@ class IntroViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
                 
                 self.initialiseHearthdeckDatabase()
                 
-                println("Setting up complete!")
+                print("Setting up complete!")
                 self.view.userInteractionEnabled = true
                 
                 // Back to main menu
@@ -99,7 +99,7 @@ class IntroViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         return languagesDescription.count
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return languagesDescription[row]
     }
     
@@ -109,129 +109,138 @@ class IntroViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     
     func updateLabel(){
         let theLang = languages[languagePicker.selectedRowInComponent(0)]
-        println(theLang)
+        print(theLang)
         selectedLanguage = theLang
     }
     
     func initialiseHearthdeckDatabase() {
         
-        if let moc = self.managedObjectContext {
-            
-            // DO: - Setup JSON
-            
-            // Data path
-            let path = NSBundle.mainBundle().pathForResource("cardListLocalized", ofType: "json"),
-            url = NSURL(fileURLWithPath: path!),
-            data = NSData(contentsOfURL: url!)
-            
-            // Placeholder image
-            
-            let placeholderImage = UIImage(named: "missing.png")
-            
-            // JSON error
-            var jsonOptionalError: NSError?
-            
-            let jsonOptional: AnyObject! = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions(0), error: &jsonOptionalError)
+        let moc = self.managedObjectContext
+        
+        // DO: - Setup JSON
+        
+        // Data path
+        let path = NSBundle.mainBundle().pathForResource("cardListLocalized", ofType: "json"),
+        url = NSURL(fileURLWithPath: path!),
+        data = NSData(contentsOfURL: url)
+        
+        // Placeholder image
+        
+        let placeholderImage = UIImage(named: "missing.png")
+        
+        let jsonOptional: AnyObject!
+        do {
+            jsonOptional = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions(rawValue: 0))
+        } catch {
+            print(error)
+            jsonOptional = nil
+        }
 
-            // DO: - Count how many card in total
+        // DO: - Count how many card in total
+        
+        // Count how many cards
+        if let json = jsonOptional as? Dictionary<String, AnyObject> {
             
-            // Count how many cards
-            if let json = jsonOptional as? Dictionary<String, AnyObject> {
+            // for theLanguage in languages  //LET'S USE A LANGUAGE THAT THE USER CHOOSE.
+            if let language = json[selectedLanguage] as? Dictionary<String, AnyObject> {
                 
-                // for theLanguage in languages  //LET'S USE A LANGUAGE THAT THE USER CHOOSE.
-                if let language = json[selectedLanguage] as? Dictionary<String, AnyObject> {
-                    
-                    for set in cardSets {
-                        if let theSet = language[set] as? Array<Dictionary<String, AnyObject>> {
-                        howManyCards += theSet.count
-                        }
+                for set in cardSets {
+                    if let theSet = language[set] as? Array<Dictionary<String, AnyObject>> {
+                    howManyCards += theSet.count
                     }
                 }
             }
+        }
 
-            // Cycle through sets
-            if let json = jsonOptional as? Dictionary<String, AnyObject> {
+        // Cycle through sets
+        if let json = jsonOptional as? Dictionary<String, AnyObject> {
+            
+            //LET'S USE A LANGUAGE THAT THE USER CHOOSE.
+            if let language = json[selectedLanguage] as? Dictionary<String, AnyObject> {
                 
-                //LET'S USE A LANGUAGE THAT THE USER CHOOSE.
-                if let language = json[selectedLanguage] as? Dictionary<String, AnyObject> {
-                    
-                    for set in cardSets {
-                        if let theSet = language[set] as? Array<Dictionary<String, AnyObject>> {
-                            
-                            for (var i = 0; i < theSet.count; i++) {
-                                let card = theSet[i] as Dictionary<String, AnyObject>
-                                if let name = card["name"] as? String { // all
-                                    if let id = card["id"] as? String { // all
-                                        
-                                        // DO: - Fetch existing cards
-                                        var error: NSError?
-                                        var fetchRequest = NSFetchRequest(entityName: "Card")
-                                        if let results = moc.executeFetchRequest(fetchRequest, error: &error) as? [Card] {
-                                            
-                                            if !results.isEmpty {
-                                                for x in results {
-                                                    if x.id == id {
-                                                        //println("ID c'è già")
-                                                        moc.deleteObject(x)
-                                                        moc.save(nil)
+                for set in cardSets {
+                    if let theSet = language[set] as? Array<Dictionary<String, AnyObject>> {
+                        
+                        for (var i = 0; i < theSet.count; i++) {
+                            let card = theSet[i] as Dictionary<String, AnyObject>
+                            if let name = card["name"] as? String { // all
+                                if let id = card["id"] as? String { // all
+                                    
+                                    // DO: - Fetch existing cards
+                                    let fetchRequest = NSFetchRequest(entityName: "Card")
+                                    do {
+                                        let results = try moc.executeFetchRequest(fetchRequest)
+                                        let cards = results as! [Card]
+                                        if !results.isEmpty {
+                                            for x: Card in cards {
+                                                if x.id == id {
+                                                    //println("ID c'è già")
+                                                    moc.deleteObject(x)
+                                                    do {
+                                                        try moc.save()
+                                                    } catch _ {
                                                     }
                                                 }
                                             }
-                                            
-                                            
-                                        } else {
-                                            println(error)
                                         }
                                         
-                                        if let cost = card["cost"] as? Int { // all
-                                            if let type = card["type"] as? String { // all
-                                                if let rarity = card["rarity"] as? String { // all
-                                                    if let text = card["text"] as? String { // all
-                                                        if let flavor = card["flavor"] as? String {
-                                                            // EVERY CARD HAS THE FOLLOWING VALUES.
-                                                            // STOP CHECKING SAFELY FOR JSON.
-                                                            
-                                                            var playerClass = card["playerClass"] as? String
-                                                            var mechanics = card["mechanics"] as? Array<String>
-                                                            var attack = card["attack"] as? Int
-                                                            var health = card["health"] as? Int
-                                                            var durability = card["durability"] as? Int
-                                                            
-                                                            if playerClass == nil {
-                                                                playerClass = "All"
+                                        
+                                    } catch {
+                                        print(error)
+                                    }
+                                    
+                                    if let cost = card["cost"] as? Int { // all
+                                        if let type = card["type"] as? String { // all
+                                            if let rarity = card["rarity"] as? String { // all
+                                                if let text = card["text"] as? String { // all
+                                                    if let flavor = card["flavor"] as? String {
+                                                        // EVERY CARD HAS THE FOLLOWING VALUES.
+                                                        // STOP CHECKING SAFELY FOR JSON.
+                                                        
+                                                        var playerClass = card["playerClass"] as? String
+                                                        var mechanics = card["mechanics"] as? Array<String>
+                                                        var attack = card["attack"] as? Int
+                                                        var health = card["health"] as? Int
+                                                        var durability = card["durability"] as? Int
+                                                        
+                                                        if playerClass == nil {
+                                                            playerClass = "All"
+                                                        }
+                                                        if mechanics == nil {
+                                                            mechanics = []
+                                                        }
+                                                        if attack == nil {
+                                                            attack = 0
+                                                        }
+                                                        if health == nil {
+                                                            health = 0
+                                                        }
+                                                        if durability == nil {
+                                                            durability = 0
+                                                        }
+                                                        
+                                                        var imageData: NSData?
+                                                        
+                                                        if downloadImages.on {
+                                                            // Download image
+                                                            let baseUrl = "http://wow.zamimg.com/images/hearthstone/cards/enus/medium/" + id + ".png"
+                                                            do {
+                                                                imageData = try NSData(contentsOfURL: NSURL(string: baseUrl)!, options: NSDataReadingOptions.DataReadingMappedIfSafe)
+                                                            } catch {
+                                                                print(error)
+                                                                imageData = nil
                                                             }
-                                                            if mechanics == nil {
-                                                                mechanics = []
-                                                            }
-                                                            if attack == nil {
-                                                                attack = 0
-                                                            }
-                                                            if health == nil {
-                                                                health = 0
-                                                            }
-                                                            if durability == nil {
-                                                                durability = 0
-                                                            }
-                                                            
-                                                            var imageData: NSData?
-                                                            
-                                                            if downloadImages.on {
-                                                                // Download image
-                                                                let baseUrl = "http://wow.zamimg.com/images/hearthstone/cards/enus/medium/" + id + ".png"
-                                                                var imageError: NSError?
-                                                                imageData = NSData(contentsOfURL: NSURL(string: baseUrl)!, options: NSDataReadingOptions.DataReadingMappedIfSafe, error: &imageError)
-                                                                println("Downloaded \(name)")
-                                                            } else {
-                                                                // Used placeholder
-                                                                imageData = UIImagePNGRepresentation(placeholderImage)
-                                                                println("Placeholdered \(name)")
-                                                            }
-                                                            
-                                                            // Save the card to the Core Data
-                                                            Card.createCardInManagedObjectContext(moc, name: name, id: id, cost: cost, type: type, rarity: rarity, text: text, flavor: flavor, attack: attack!, health: health!, playerClass: playerClass!, durability: durability!, image: imageData!, hasImage: downloadImages.on)
-                                                            
-                                                        } //END OF "TEXT" - SAFE JSON
-                                                    }
+                                                            print("Downloaded \(name)")
+                                                        } else {
+                                                            // Used placeholder
+                                                            imageData = UIImagePNGRepresentation(placeholderImage!)
+                                                            print("Placeholdered \(name)")
+                                                        }
+                                                        
+                                                        // Save the card to the Core Data
+                                                        Card.createCardInManagedObjectContext(moc, name: name, id: id, cost: cost, type: type, rarity: rarity, text: text, flavor: flavor, attack: attack!, health: health!, playerClass: playerClass!, durability: durability!, image: imageData!, hasImage: downloadImages.on)
+                                                        
+                                                    } //END OF "TEXT" - SAFE JSON
                                                 }
                                             }
                                         }
