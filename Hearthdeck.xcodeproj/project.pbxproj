@@ -22,7 +22,6 @@
 		6542E4811B2472FF002588B6 /* Delete Sign-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 6542E4801B2472FF002588B6 /* Delete Sign-50.png */; };
 		654461631B024F3B00DC5BAD /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654461621B024F3B00DC5BAD /* IntroViewController.swift */; };
 		654461651B02539F00DC5BAD /* CustomThings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654461641B02539F00DC5BAD /* CustomThings.swift */; };
-		654CA46D1B24955F0079B4F2 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 654CA46C1B24955F0079B4F2 /* Podfile */; };
 		654CA4771B24AD290079B4F2 /* Anduin.png in Resources */ = {isa = PBXBuildFile; fileRef = 654CA46E1B24AD290079B4F2 /* Anduin.png */; };
 		654CA4781B24AD290079B4F2 /* Garrosh.png in Resources */ = {isa = PBXBuildFile; fileRef = 654CA46F1B24AD290079B4F2 /* Garrosh.png */; };
 		654CA4791B24AD290079B4F2 /* Gul'dan.png in Resources */ = {isa = PBXBuildFile; fileRef = 654CA4701B24AD290079B4F2 /* Gul'dan.png */; };
@@ -62,12 +61,9 @@
 		65E5C3311B1B32F300F868ED /* Settings Filled-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 65E5C32B1B1B32F300F868ED /* Settings Filled-50.png */; };
 		65E5C3321B1B32F300F868ED /* Settings-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 65E5C32C1B1B32F300F868ED /* Settings-50.png */; };
 		65F7D3761B32FF2B003F5301 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F7D3751B32FF2B003F5301 /* CardCell.swift */; };
-		C4E43DBD209B36A157CF60C5 /* Pods_Hearthdeck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EC9B3B28E56A493093DB004 /* Pods_Hearthdeck.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1E7D46318D4AB4F97605D0B0 /* Pods-Hearthdeck.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hearthdeck.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hearthdeck/Pods-Hearthdeck.release.xcconfig"; sourceTree = "<group>"; };
-		3EC9B3B28E56A493093DB004 /* Pods_Hearthdeck.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hearthdeck.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6520CD141B1C71DB0074EE57 /* Panton-BlackCaps.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Panton-BlackCaps.otf"; sourceTree = "<group>"; };
 		6520CD151B1C71DB0074EE57 /* Panton-BlackitalicCaps.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Panton-BlackitalicCaps.otf"; sourceTree = "<group>"; };
 		6520CD161B1C71DB0074EE57 /* Panton-LightCaps.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Panton-LightCaps.otf"; sourceTree = "<group>"; };
@@ -87,7 +83,6 @@
 		6542E4801B2472FF002588B6 /* Delete Sign-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Delete Sign-50.png"; sourceTree = "<group>"; };
 		654461621B024F3B00DC5BAD /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		654461641B02539F00DC5BAD /* CustomThings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomThings.swift; sourceTree = "<group>"; };
-		654CA46C1B24955F0079B4F2 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		654CA46E1B24AD290079B4F2 /* Anduin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Anduin.png; sourceTree = "<group>"; };
 		654CA46F1B24AD290079B4F2 /* Garrosh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Garrosh.png; sourceTree = "<group>"; };
 		654CA4701B24AD290079B4F2 /* Gul'dan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gul'dan.png"; sourceTree = "<group>"; };
@@ -127,7 +122,6 @@
 		65E5C32B1B1B32F300F868ED /* Settings Filled-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings Filled-50.png"; sourceTree = "<group>"; };
 		65E5C32C1B1B32F300F868ED /* Settings-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings-50.png"; sourceTree = "<group>"; };
 		65F7D3751B32FF2B003F5301 /* CardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
-		74D0B7D09AED1D9416E4B0D1 /* Pods-Hearthdeck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hearthdeck.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hearthdeck/Pods-Hearthdeck.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,22 +130,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				6557CC071AEA98CC002B9D09 /* CoreData.framework in Frameworks */,
-				C4E43DBD209B36A157CF60C5 /* Pods_Hearthdeck.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		54936CB64E24ADE433FBD0F1 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				74D0B7D09AED1D9416E4B0D1 /* Pods-Hearthdeck.debug.xcconfig */,
-				1E7D46318D4AB4F97605D0B0 /* Pods-Hearthdeck.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		6515DACB1B03EB4E0089D1F1 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,13 +170,10 @@
 		6535A3631AE6B9A6001F90B6 = {
 			isa = PBXGroup;
 			children = (
-				654CA46C1B24955F0079B4F2 /* Podfile */,
 				6557CC061AEA98CC002B9D09 /* CoreData.framework */,
 				6535A36E1AE6B9A6001F90B6 /* Hearthdeck */,
 				6535A3841AE6B9A6001F90B6 /* HearthdeckTests */,
 				6535A36D1AE6B9A6001F90B6 /* Products */,
-				54936CB64E24ADE433FBD0F1 /* Pods */,
-				E72F5E9C42B19F2153FF39F8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -339,14 +320,6 @@
 			name = UI;
 			sourceTree = "<group>";
 		};
-		E72F5E9C42B19F2153FF39F8 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				3EC9B3B28E56A493093DB004 /* Pods_Hearthdeck.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -354,12 +327,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6535A38B1AE6B9A6001F90B6 /* Build configuration list for PBXNativeTarget "Hearthdeck" */;
 			buildPhases = (
-				D631146227CCF08E58244AC7 /* Check Pods Manifest.lock */,
 				6535A3681AE6B9A6001F90B6 /* Sources */,
 				6535A3691AE6B9A6001F90B6 /* Frameworks */,
 				6535A36A1AE6B9A6001F90B6 /* Resources */,
-				F50AD06D95CD1FEA4CD99F32 /* Embed Pods Frameworks */,
-				86ADD4443AD9A6729EFCD37B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -416,7 +386,6 @@
 				6520CD181B1C72520074EE57 /* Panton-BlackCaps.otf in Resources */,
 				6520CD191B1C72520074EE57 /* Panton-BlackitalicCaps.otf in Resources */,
 				6520CD1A1B1C72520074EE57 /* Panton-LightCaps.otf in Resources */,
-				654CA46D1B24955F0079B4F2 /* Podfile in Resources */,
 				654CA4901B24BDDF0079B4F2 /* Shaman.png in Resources */,
 				654CA48E1B24BDDF0079B4F2 /* Priest.png in Resources */,
 				654CA4911B24BDDF0079B4F2 /* Warlock.png in Resources */,
@@ -453,54 +422,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		86ADD4443AD9A6729EFCD37B /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "";
-			showEnvVarsInLog = 0;
-		};
-		D631146227CCF08E58244AC7 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		F50AD06D95CD1FEA4CD99F32 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6535A3681AE6B9A6001F90B6 /* Sources */ = {
@@ -630,7 +551,6 @@
 		};
 		6535A38C1AE6B9A6001F90B6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1E7D46318D4AB4F97605D0B0 /* Pods-Hearthdeck.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -640,6 +560,8 @@
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
+				PODS_FRAMEWORK_BUILD_PATH = "";
+				PODS_ROOT = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.qubex.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -656,6 +578,7 @@
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
+				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.qubex.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
