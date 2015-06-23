@@ -565,6 +565,7 @@
                         <outlet property="classScrollView" destination="rnU-Di-CrO" id="O3y-zi-tya"/>
                         <outlet property="deckTitle" destination="40g-8T-zoA" id="ffE-NU-r2h"/>
                         <outlet property="promptClassPicker" destination="FXd-cd-DvF" id="Xrl-w3-YES"/>
+                        <segue destination="ZhV-iY-jnE" kind="show" identifier="goToDeckCards" id="LIs-Il-rtI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K37-nm-5Aa" userLabel="First Responder" sceneMemberID="firstResponder"/>
