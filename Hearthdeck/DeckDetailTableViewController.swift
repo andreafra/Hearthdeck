@@ -170,10 +170,11 @@ class DeckDetailTableViewController: UITableViewController {
 
     // MARK: - Navigation
 
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if segue.identifier == "pickSomeCardsSegue" {
+        if segue.identifier == "goPickSomeCards" {
             
             let nc = segue.destinationViewController as! UINavigationController
             let vc = nc.topViewController as! CardListTableViewController
@@ -188,7 +189,7 @@ class DeckDetailTableViewController: UITableViewController {
 
     @IBAction func pickSomeCards(sender: AnyObject) {
         
-        performSegueWithIdentifier("pickSomeCardsSegue", sender: self)
+        //performSegueWithIdentifier("goPickSomeCards", sender: self)
         
     }
     

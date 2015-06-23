@@ -140,15 +140,10 @@ class DecksTableViewController: UITableViewController {
         
         if segue.identifier == "goToNewDeck" {
             
-            let tabBarController = segue.destinationViewController as! UITabBarController
-            let NC1 = tabBarController.viewControllers![0] as! UINavigationController
-            let NC2 = tabBarController.viewControllers![1] as! UINavigationController
-            let deckOverviewVC = NC1.topViewController as! DeckDetailViewController
-            let deckTableVC = NC2.topViewController as! DeckDetailTableViewController
+            let deckOverviewVC = segue.destinationViewController as! DeckDetailViewController
             let indexPath = self.tableView.indexPathForSelectedRow!
             
             deckOverviewVC.deckTitle.title = decks[indexPath.row].name
-            deckTableVC.deckTitle = decks[indexPath.row].name
         }
     }
 

@@ -45,7 +45,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="goToCardsIsClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="9ZY-bT-CeD"/>
+                                    <segue destination="Wsv-ZV-5F0" kind="show" id="Cc9-xn-RsB"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aNm-Mz-6Dq">
@@ -54,7 +54,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="pT4-pP-kaj" kind="show" identifier="goToDeckList" id="qCp-k2-mS8"/>
+                                    <segue destination="IaA-Zx-Wd1" kind="show" id="Ga6-Yp-F6D"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="First Launch:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kkj-AJ-2xz">
@@ -79,12 +79,11 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="firstLaunchLabel" destination="kkj-AJ-2xz" id="0oy-sX-sQW"/>
-                        <segue destination="kkR-8B-gxB" kind="show" identifier="goToAllCardsSegue" id="tIB-Ys-UX4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="559.5" y="426.5"/>
+            <point key="canvasLocation" x="786.5" y="426.5"/>
         </scene>
         <!--My Decks-->
         <scene sceneID="vCh-gQ-pDL">
@@ -120,7 +119,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <segue destination="3Hc-eb-CcX" kind="show" identifier="goToNewDeck" id="51J-Vw-kFA"/>
+                        <segue destination="Alr-cR-edU" kind="show" identifier="goToNewDeck" id="9Ri-MG-nQp"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ch0-0r-xai" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -333,10 +332,10 @@
             </objects>
             <point key="canvasLocation" x="1975.5" y="426.5"/>
         </scene>
-        <!--Title-->
+        <!--Deck Detail Cards-->
         <scene sceneID="ATh-qx-rWy">
             <objects>
-                <tableViewController id="ZhV-iY-jnE" customClass="DeckDetailTableViewController" customModule="Hearthdeck" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Deck Detail Cards" id="ZhV-iY-jnE" customClass="DeckDetailTableViewController" customModule="Hearthdeck" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="22" sectionFooterHeight="22" id="xzx-JH-Ab5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -411,27 +410,26 @@
                             <outlet property="delegate" destination="ZhV-iY-jnE" id="ehJ-OR-A6Y"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Deck" image="Character Icon.png" id="izP-8r-u1h"/>
                     <navigationItem key="navigationItem" title="Title" id="Nxz-4O-ruy">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="lZI-eY-aAB">
                             <connections>
-                                <action selector="pickSomeCards:" destination="ZhV-iY-jnE" id="4Dj-By-VEu"/>
+                                <action selector="pickSomeCards:" destination="ZhV-iY-jnE" id="kIN-Fb-J1f"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <connections>
-                        <segue destination="kkR-8B-gxB" kind="show" identifier="pickSomeCardsSegue" id="wvW-rz-FlT"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nsx-eL-7RR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3690.5" y="600.5"/>
+            <point key="canvasLocation" x="2477.5" y="1244.5"/>
         </scene>
-        <!--Title-->
+        <!--Deck Detail Overview-->
         <scene sceneID="seu-AO-8XX">
             <objects>
-                <viewController id="Alr-cR-edU" customClass="DeckDetailViewController" customModule="Hearthdeck" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Deck Detail Overview" id="Alr-cR-edU" customClass="DeckDetailViewController" customModule="Hearthdeck" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8iz-Yf-L1w"/>
                         <viewControllerLayoutGuide type="bottom" id="kNg-sc-IYp"/>
@@ -465,8 +463,19 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zwp-4G-4aO">
+                                <rect key="frame" x="321" y="609" width="38" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="BhF-gb-Qpc"/>
+                                    <constraint firstAttribute="width" constant="38" id="fLg-My-mUP"/>
+                                </constraints>
+                                <state key="normal" image="Icon Card.png"/>
+                                <connections>
+                                    <action selector="goToDeckCards:" destination="Alr-cR-edU" eventType="touchUpInside" id="acc-xs-33u"/>
+                                </connections>
+                            </button>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FXd-cd-DvF">
-                                <rect key="frame" x="0.0" y="623" width="375" height="153"/>
+                                <rect key="frame" x="0.0" y="667" width="375" height="153"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="3Et-S4-WCG">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="153"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -535,16 +544,19 @@
                             <constraint firstItem="kNg-sc-IYp" firstAttribute="top" secondItem="FXd-cd-DvF" secondAttribute="bottom" constant="-153" id="V87-Zz-WHh"/>
                             <constraint firstItem="jzc-eh-iIM" firstAttribute="top" secondItem="u7R-gh-N0R" secondAttribute="bottom" constant="8" id="a0b-05-7hz"/>
                             <constraint firstItem="FXd-cd-DvF" firstAttribute="leading" secondItem="UrT-ne-krI" secondAttribute="leadingMargin" constant="-16" id="eWD-b5-qao"/>
+                            <constraint firstItem="kNg-sc-IYp" firstAttribute="top" secondItem="Zwp-4G-4aO" secondAttribute="bottom" constant="20" id="p24-2n-QwM"/>
                             <constraint firstItem="ciC-1X-Cht" firstAttribute="top" secondItem="8iz-Yf-L1w" secondAttribute="bottom" constant="8" id="rMd-bq-XcH"/>
                             <constraint firstItem="P9v-Sr-oBC" firstAttribute="trailing" secondItem="UrT-ne-krI" secondAttribute="trailingMargin" id="sjQ-Rp-TNx"/>
+                            <constraint firstItem="Zwp-4G-4aO" firstAttribute="trailing" secondItem="UrT-ne-krI" secondAttribute="trailingMargin" id="weR-SP-pV5"/>
                             <constraint firstItem="jzc-eh-iIM" firstAttribute="trailing" secondItem="UrT-ne-krI" secondAttribute="trailingMargin" id="yVZ-k1-OGi"/>
                             <constraint firstItem="P9v-Sr-oBC" firstAttribute="top" secondItem="8iz-Yf-L1w" secondAttribute="bottom" constant="8" id="zMj-W5-vKM"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Cards" image="Icon Card.png" id="Zaa-lG-VrM"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Title" id="40g-8T-zoA"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="characterImage" destination="ciC-1X-Cht" id="X84-OF-keZ"/>
@@ -557,7 +569,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K37-nm-5Aa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3690.5" y="1401.5"/>
+            <point key="canvasLocation" x="1975.5" y="1244.5"/>
         </scene>
         <!--All Cards-->
         <scene sceneID="LIo-Va-7L6">
@@ -624,27 +636,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0bZ-iU-LoE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1463.5" y="426.5"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="hN2-LR-D3v">
-            <objects>
-                <navigationController id="kkR-8B-gxB" sceneMemberID="viewController">
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="O0V-yW-Nui">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="pxf-kI-Ir3">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
-                    <connections>
-                        <segue destination="Wsv-ZV-5F0" kind="relationship" relationship="rootViewController" id="3nL-OL-CBs"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mk3-im-B1A" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1016.5" y="426.5"/>
         </scene>
         <!--Intro-->
         <scene sceneID="SX4-Jk-XN4">
@@ -851,97 +842,10 @@
             </objects>
             <point key="canvasLocation" x="100.5" y="426.5"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="BsC-eL-OIf">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pT4-pP-kaj" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SRa-WD-TBF">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="IaA-Zx-Wd1" kind="relationship" relationship="rootViewController" id="Ofv-lN-G53"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kFE-V8-s9U" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1016.5" y="1244.5"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="4bt-VA-75c">
-            <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="3Hc-eb-CcX" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="psT-TZ-SeZ">
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="oep-AT-u4E" kind="relationship" relationship="viewControllers" id="kec-9b-VCF"/>
-                        <segue destination="7A1-Tg-rp8" kind="relationship" relationship="viewControllers" id="BuH-cc-zsa"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="52M-1c-PEN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2559.5" y="1116.5"/>
-        </scene>
-        <!--Cards-->
-        <scene sceneID="xpB-8R-zSM">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7A1-Tg-rp8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Cards" image="Icon Card.png" id="4jm-ud-gbv"/>
-                    <toolbarItems/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="G30-RY-ygN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="ZhV-iY-jnE" kind="relationship" relationship="rootViewController" id="bWR-XF-4Ba"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ITu-x2-bCi" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3232.5" y="600.5"/>
-        </scene>
-        <!--Deck-->
-        <scene sceneID="V8V-Ut-IT5">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oep-AT-u4E" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Deck" image="Character Icon.png" id="Bpm-YF-Orc"/>
-                    <toolbarItems/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Oy5-ue-aQa">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Alr-cR-edU" kind="relationship" relationship="rootViewController" id="HN9-QD-tXI"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dGT-cJ-AjE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3232.5" y="1401.5"/>
-        </scene>
     </scenes>
     <resources>
         <image name="Character Icon.png" width="16" height="22"/>
         <image name="Delete Sign-50.png" width="50" height="50"/>
         <image name="Icon Card.png" width="21" height="22"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="tIB-Ys-UX4"/>
-    </inferredMetricsTieBreakers>
 </document>

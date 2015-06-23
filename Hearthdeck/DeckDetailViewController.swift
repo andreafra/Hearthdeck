@@ -105,8 +105,7 @@ class DeckDetailViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "goToDeckCards" {
-            let nc = segue.destinationViewController as! UINavigationController
-            let tvc = nc.topViewController as! DeckDetailTableViewController
+            let tvc = segue.destinationViewController as! DeckDetailTableViewController
             
             tvc.deckTitle = deckTitle.title!
         }
