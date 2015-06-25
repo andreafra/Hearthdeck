@@ -72,7 +72,7 @@ class IntroViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
                 self.view.userInteractionEnabled = true
                 
                 // Back to main menu
-                self.performSegueWithIdentifier("backToHome", sender: self)
+                self.dismissViewControllerAnimated(true, completion: nil)
         })
     }
     

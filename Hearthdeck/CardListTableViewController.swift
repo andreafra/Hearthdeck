@@ -123,13 +123,11 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
         filteredCards.removeAll(keepCapacity: true)
         for card in cards {
             var justOne = false
-            for (i, type) in card.type.characters.enumerate() {
-                if (scope == "All") || (card.type == scope) {
-                    if((card.name.rangeOfString(searchedText) != nil) && justOne == false) {
+            if (scope == "All") || (card.type == scope) {
+                if((card.name.rangeOfString(searchedText) != nil) && justOne == false) {
 
-                        filteredCards.append(card)
-                        justOne = true
-                    }
+                    filteredCards.append(card)
+                    justOne = true
                 }
             }
             self.tableView.reloadData()

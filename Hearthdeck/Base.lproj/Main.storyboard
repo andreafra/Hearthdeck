@@ -98,7 +98,7 @@
                                 <rect key="frame" x="0.0" y="86" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8lU-O5-R2A" id="8YR-KE-51a">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -184,7 +184,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Class:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VFo-Y8-aEb">
-                                <rect key="frame" x="16" y="568" width="98" height="21"/>
+                                <rect key="frame" x="16" y="568" width="97.5" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="kbf-SU-O6t"/>
                                 </constraints>
@@ -202,7 +202,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbt-WG-ekh">
-                                <rect key="frame" x="16" y="626" width="43" height="21"/>
+                                <rect key="frame" x="16" y="626" width="42.5" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="ggo-4A-7ed"/>
                                 </constraints>
@@ -236,7 +236,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlD-dS-2p2">
-                                <rect key="frame" x="339" y="597" width="24" height="21"/>
+                                <rect key="frame" x="339" y="597" width="24" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -268,7 +268,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mana:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="00o-lR-AAi">
-                                <rect key="frame" x="272" y="597" width="59" height="21"/>
+                                <rect key="frame" x="272" y="597" width="59" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="59" id="gKp-56-BuB"/>
                                 </constraints>
@@ -345,7 +345,7 @@
                                 <rect key="frame" x="0.0" y="86" width="375" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Aw9-1W-qJZ" id="LqN-5X-Ne1">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="64.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bfU-jr-WRf">
@@ -421,6 +421,9 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <segue destination="Wsv-ZV-5F0" kind="show" identifier="goPickCards" id="2va-95-ySh"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nsx-eL-7RR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -585,7 +588,7 @@
                                 <rect key="frame" x="0.0" y="86" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="n0u-4T-o2Z" id="cHK-YL-qlw">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cost" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wpR-aW-ouh">
@@ -631,7 +634,7 @@
                     <keyCommands/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <segue destination="flg-h5-ln8" kind="show" identifier="CardDetailSegue" id="Lrz-8o-cso"/>
+                        <segue destination="flg-h5-ln8" kind="show" identifier="CardDetailSegue" id="bcQ-aS-NBI"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0bZ-iU-LoE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -817,7 +820,6 @@
                         <outlet property="languagePicker" destination="K7u-Sr-0DL" id="IMa-0S-Qxc"/>
                         <outlet property="languagePickerView" destination="cWg-aw-l8A" id="e1b-gQ-qgR"/>
                         <outlet property="loadingView" destination="OcR-bh-uFs" id="oWt-Pp-1YO"/>
-                        <segue destination="G9u-jK-elP" kind="show" identifier="backToHome" id="yga-Mk-0F3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lyN-Bd-4Qr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -849,4 +851,7 @@
         <image name="Delete Sign-50.png" width="50" height="50"/>
         <image name="Icon Card.png" width="21" height="22"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="2va-95-ySh"/>
+    </inferredMetricsTieBreakers>
 </document>

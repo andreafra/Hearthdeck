@@ -174,10 +174,9 @@ class DeckDetailTableViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if segue.identifier == "goPickSomeCards" {
+        if segue.identifier == "goPickCards" {
             
-            let nc = segue.destinationViewController as! UINavigationController
-            let vc = nc.topViewController as! CardListTableViewController
+            let vc = segue.destinationViewController as! CardListTableViewController
             
             vc.isPickingCard = true
             vc.deckName = deckTitle
@@ -187,9 +186,10 @@ class DeckDetailTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
 
+    
     @IBAction func pickSomeCards(sender: AnyObject) {
         
-        //performSegueWithIdentifier("goPickSomeCards", sender: self)
+        performSegueWithIdentifier("goPickCards", sender: self)
         
     }
     
