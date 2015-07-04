@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6502FEC31B45A0BC00E93919 /* Attack-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 6502FEC01B45A0BC00E93919 /* Attack-50.png */; };
+		6502FEC41B45A0BC00E93919 /* Durability-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 6502FEC11B45A0BC00E93919 /* Durability-50.png */; };
+		65043B2F1B42FF67001DFD92 /* Play Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65043B2D1B42FF67001DFD92 /* Play Icon@2x.png */; };
+		65043B301B42FF67001DFD92 /* Play Icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65043B2E1B42FF67001DFD92 /* Play Icon@3x.png */; };
+		65043B321B4302A6001DFD92 /* PlayDeckTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65043B311B4302A6001DFD92 /* PlayDeckTableViewController.swift */; };
+		65043B361B4303AC001DFD92 /* btn_primary_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 65043B331B4303AC001DFD92 /* btn_primary_down.png */; };
+		65043B371B4303AC001DFD92 /* btn_primary_over.png in Resources */ = {isa = PBXBuildFile; fileRef = 65043B341B4303AC001DFD92 /* btn_primary_over.png */; };
+		65043B381B4303AC001DFD92 /* btn_primary_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 65043B351B4303AC001DFD92 /* btn_primary_normal.png */; };
+		65043B3B1B431E72001DFD92 /* PlayDeckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65043B3A1B431E72001DFD92 /* PlayDeckCell.swift */; };
 		6520CD181B1C72520074EE57 /* Panton-BlackCaps.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6520CD141B1C71DB0074EE57 /* Panton-BlackCaps.otf */; };
 		6520CD191B1C72520074EE57 /* Panton-BlackitalicCaps.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6520CD151B1C71DB0074EE57 /* Panton-BlackitalicCaps.otf */; };
 		6520CD1A1B1C72520074EE57 /* Panton-LightCaps.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6520CD161B1C71DB0074EE57 /* Panton-LightCaps.otf */; };
@@ -40,6 +49,10 @@
 		654CA4901B24BDDF0079B4F2 /* Shaman.png in Resources */ = {isa = PBXBuildFile; fileRef = 654CA4871B24BDDF0079B4F2 /* Shaman.png */; };
 		654CA4911B24BDDF0079B4F2 /* Warlock.png in Resources */ = {isa = PBXBuildFile; fileRef = 654CA4881B24BDDF0079B4F2 /* Warlock.png */; };
 		654CA4921B24BDDF0079B4F2 /* Warrior.png in Resources */ = {isa = PBXBuildFile; fileRef = 654CA4891B24BDDF0079B4F2 /* Warrior.png */; };
+		654DBFED1B46CA1A0084E0C5 /* Health-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 654DBFEC1B46CA1A0084E0C5 /* Health-50.png */; };
+		654DBFEF1B46DF600084E0C5 /* Mana-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 654DBFEE1B46DF600084E0C5 /* Mana-50.png */; };
+		654DBFF31B46E47E0084E0C5 /* Card-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 654DBFF21B46E47E0084E0C5 /* Card-50.png */; };
+		654DBFF51B470B340084E0C5 /* Card-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 654DBFF41B470B340084E0C5 /* Card-50@2x.png */; };
 		654E16BD1AFF531100CB0C04 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654E16BB1AFF531100CB0C04 /* Card.swift */; };
 		654E16BE1AFF531100CB0C04 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654E16BC1AFF531100CB0C04 /* Deck.swift */; };
 		6557CC071AEA98CC002B9D09 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6557CC061AEA98CC002B9D09 /* CoreData.framework */; };
@@ -64,6 +77,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6502FEC01B45A0BC00E93919 /* Attack-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Attack-50.png"; sourceTree = "<group>"; };
+		6502FEC11B45A0BC00E93919 /* Durability-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Durability-50.png"; sourceTree = "<group>"; };
+		65043B2D1B42FF67001DFD92 /* Play Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Play Icon@2x.png"; sourceTree = "<group>"; };
+		65043B2E1B42FF67001DFD92 /* Play Icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Play Icon@3x.png"; sourceTree = "<group>"; };
+		65043B311B4302A6001DFD92 /* PlayDeckTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayDeckTableViewController.swift; sourceTree = "<group>"; };
+		65043B331B4303AC001DFD92 /* btn_primary_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_primary_down.png; sourceTree = "<group>"; };
+		65043B341B4303AC001DFD92 /* btn_primary_over.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_primary_over.png; sourceTree = "<group>"; };
+		65043B351B4303AC001DFD92 /* btn_primary_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_primary_normal.png; sourceTree = "<group>"; };
+		65043B3A1B431E72001DFD92 /* PlayDeckCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayDeckCell.swift; sourceTree = "<group>"; };
 		6520CD141B1C71DB0074EE57 /* Panton-BlackCaps.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Panton-BlackCaps.otf"; sourceTree = "<group>"; };
 		6520CD151B1C71DB0074EE57 /* Panton-BlackitalicCaps.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Panton-BlackitalicCaps.otf"; sourceTree = "<group>"; };
 		6520CD161B1C71DB0074EE57 /* Panton-LightCaps.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Panton-LightCaps.otf"; sourceTree = "<group>"; };
@@ -101,6 +123,10 @@
 		654CA4871B24BDDF0079B4F2 /* Shaman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Shaman.png; sourceTree = "<group>"; };
 		654CA4881B24BDDF0079B4F2 /* Warlock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Warlock.png; sourceTree = "<group>"; };
 		654CA4891B24BDDF0079B4F2 /* Warrior.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Warrior.png; sourceTree = "<group>"; };
+		654DBFEC1B46CA1A0084E0C5 /* Health-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Health-50.png"; sourceTree = "<group>"; };
+		654DBFEE1B46DF600084E0C5 /* Mana-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Mana-50.png"; sourceTree = "<group>"; };
+		654DBFF21B46E47E0084E0C5 /* Card-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Card-50.png"; sourceTree = "<group>"; };
+		654DBFF41B470B340084E0C5 /* Card-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Card-50@2x.png"; sourceTree = "<group>"; };
 		654E16BB1AFF531100CB0C04 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		654E16BC1AFF531100CB0C04 /* Deck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		6557CC061AEA98CC002B9D09 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -136,6 +162,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		65043B391B4303B0001DFD92 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				65043B331B4303AC001DFD92 /* btn_primary_down.png */,
+				65043B341B4303AC001DFD92 /* btn_primary_over.png */,
+				65043B351B4303AC001DFD92 /* btn_primary_normal.png */,
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
 		6515DACB1B03EB4E0089D1F1 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +188,7 @@
 				654461641B02539F00DC5BAD /* CustomThings.swift */,
 				65F7D3751B32FF2B003F5301 /* CardCell.swift */,
 				6567559A1B2EF53800F9C816 /* DeckCardCell.swift */,
+				65043B3A1B431E72001DFD92 /* PlayDeckCell.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -238,6 +275,7 @@
 				65A23B0A1B0FB37D000D5980 /* DecksTableViewController.swift */,
 				659458BE1B18CCE100D8675F /* DeckDetailTableViewController.swift */,
 				659458C01B18CCF500D8675F /* DeckDetailViewController.swift */,
+				65043B311B4302A6001DFD92 /* PlayDeckTableViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -306,8 +344,15 @@
 		65E5C31A1B1B13B300F868ED /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				65043B391B4303B0001DFD92 /* New Group */,
 				65E5C31F1B1B183500F868ED /* Character Icon@2x.png */,
 				65E5C3201B1B183500F868ED /* Character Icon@3x.png */,
+				6502FEC01B45A0BC00E93919 /* Attack-50.png */,
+				654DBFF21B46E47E0084E0C5 /* Card-50.png */,
+				654DBFF41B470B340084E0C5 /* Card-50@2x.png */,
+				6502FEC11B45A0BC00E93919 /* Durability-50.png */,
+				654DBFEE1B46DF600084E0C5 /* Mana-50.png */,
+				654DBFEC1B46CA1A0084E0C5 /* Health-50.png */,
 				65E5C3211B1B183500F868ED /* Icon Card@2x.png */,
 				65E5C3221B1B183500F868ED /* Icon Card@3x.png */,
 				65E5C3271B1B32F300F868ED /* Attention Filled-50.png */,
@@ -316,6 +361,8 @@
 				6542E4801B2472FF002588B6 /* Delete Sign-50.png */,
 				65E5C32B1B1B32F300F868ED /* Settings Filled-50.png */,
 				65E5C32C1B1B32F300F868ED /* Settings-50.png */,
+				65043B2D1B42FF67001DFD92 /* Play Icon@2x.png */,
+				65043B2E1B42FF67001DFD92 /* Play Icon@3x.png */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -384,24 +431,33 @@
 				654CA4921B24BDDF0079B4F2 /* Warrior.png in Resources */,
 				654CA48A1B24BDDF0079B4F2 /* Druid.png in Resources */,
 				6520CD181B1C72520074EE57 /* Panton-BlackCaps.otf in Resources */,
+				654DBFF31B46E47E0084E0C5 /* Card-50.png in Resources */,
+				65043B301B42FF67001DFD92 /* Play Icon@3x.png in Resources */,
 				6520CD191B1C72520074EE57 /* Panton-BlackitalicCaps.otf in Resources */,
 				6520CD1A1B1C72520074EE57 /* Panton-LightCaps.otf in Resources */,
 				654CA4901B24BDDF0079B4F2 /* Shaman.png in Resources */,
+				65043B2F1B42FF67001DFD92 /* Play Icon@2x.png in Resources */,
 				654CA48E1B24BDDF0079B4F2 /* Priest.png in Resources */,
 				654CA4911B24BDDF0079B4F2 /* Warlock.png in Resources */,
 				6520CD1B1B1C72520074EE57 /* Panton-LightitalicCaps.otf in Resources */,
 				654CA47E1B24AD290079B4F2 /* Uther.png in Resources */,
 				654CA4791B24AD290079B4F2 /* Gul'dan.png in Resources */,
 				654CA47D1B24AD290079B4F2 /* Thrall.png in Resources */,
+				6502FEC31B45A0BC00E93919 /* Attack-50.png in Resources */,
 				65E5C3261B1B183500F868ED /* Icon Card@3x.png in Resources */,
 				654CA47C1B24AD290079B4F2 /* Rexxar.png in Resources */,
+				65043B371B4303AC001DFD92 /* btn_primary_over.png in Resources */,
 				65E5C32F1B1B32F300F868ED /* Help-50.png in Resources */,
+				65043B361B4303AC001DFD92 /* btn_primary_down.png in Resources */,
 				65E5C32E1B1B32F300F868ED /* Attention-50.png in Resources */,
 				65E5C3241B1B183500F868ED /* Character Icon@3x.png in Resources */,
 				65E5C3231B1B183500F868ED /* Character Icon@2x.png in Resources */,
 				65A454CA1B024043003CDEFC /* missing.png in Resources */,
+				654DBFED1B46CA1A0084E0C5 /* Health-50.png in Resources */,
 				6535A3991AE6C02D001F90B6 /* cardList.json in Resources */,
+				6502FEC41B45A0BC00E93919 /* Durability-50.png in Resources */,
 				658FA86F1B10E684006BB184 /* taunt.png in Resources */,
+				654DBFF51B470B340084E0C5 /* Card-50@2x.png in Resources */,
 				65E5C3321B1B32F300F868ED /* Settings-50.png in Resources */,
 				65E5C32D1B1B32F300F868ED /* Attention Filled-50.png in Resources */,
 				654CA48D1B24BDDF0079B4F2 /* Paladin.png in Resources */,
@@ -415,7 +471,9 @@
 				654CA4771B24AD290079B4F2 /* Anduin.png in Resources */,
 				6557CC0C1AEAA5BC002B9D09 /* cardListLocalized.json in Resources */,
 				65E5C3251B1B183500F868ED /* Icon Card@2x.png in Resources */,
+				65043B381B4303AC001DFD92 /* btn_primary_normal.png in Resources */,
 				654CA47F1B24AD290079B4F2 /* Valeera.png in Resources */,
+				654DBFEF1B46DF600084E0C5 /* Mana-50.png in Resources */,
 				654CA48F1B24BDDF0079B4F2 /* Rogue.png in Resources */,
 				6535A3791AE6B9A6001F90B6 /* Images.xcassets in Resources */,
 			);
@@ -438,10 +496,12 @@
 				65F7D3761B32FF2B003F5301 /* CardCell.swift in Sources */,
 				654E16BD1AFF531100CB0C04 /* Card.swift in Sources */,
 				659458C11B18CCF500D8675F /* DeckDetailViewController.swift in Sources */,
+				65043B3B1B431E72001DFD92 /* PlayDeckCell.swift in Sources */,
 				659458BF1B18CCE100D8675F /* DeckDetailTableViewController.swift in Sources */,
 				65A23B0B1B0FB37D000D5980 /* DecksTableViewController.swift in Sources */,
 				6567559B1B2EF53800F9C816 /* DeckCardCell.swift in Sources */,
 				65A23B091B0FA065000D5980 /* HS_database.xcdatamodeld in Sources */,
+				65043B321B4302A6001DFD92 /* PlayDeckTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

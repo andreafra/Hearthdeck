@@ -25,6 +25,7 @@ class DeckDetailTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.title = deckTitle
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -74,7 +75,7 @@ class DeckDetailTableViewController: UITableViewController {
             
             // set labels
             cell.nameLabel.text = card.name
-            cell.quantityLabel.text = String(pickedCardsQuantity[indexPath.row])
+            cell.quantityLabel.text = String(pickedCardsQuantity[indexPath.row]) + "x"
             cell.costLabel.text = card.cost.description // String() doesn't work
             if card.hasImage {
                 cell.cardImage.image = UIImage(data: card.image)
@@ -121,7 +122,7 @@ class DeckDetailTableViewController: UITableViewController {
             // " " divides two cards, quantity is expressed by "@_" and a number
             var resultString: String = ""
             for var i = 0; i < pickedCards.count; i++ {
-                let block = pickedCards[i] + "@_" + String(pickedCardsQuantity[i])
+                let block = pickedCards[i] + "@" + String(pickedCardsQuantity[i])
                 resultString += block + " "
             }
             
@@ -216,7 +217,7 @@ class DeckDetailTableViewController: UITableViewController {
                     var cardsArrayRaw = cardsOfDeck.componentsSeparatedByString(" ")
                     cardsArrayRaw.removeLast()
                     for card in cardsArrayRaw {
-                        let cardRaw = card.componentsSeparatedByString("@_")
+                        let cardRaw = card.componentsSeparatedByString("@")
                         
                         // SETUP CARDS IN CELLS
                         pickedCards.append(cardRaw[0])
@@ -225,7 +226,7 @@ class DeckDetailTableViewController: UITableViewController {
                 }
             }
         } catch {
-            
+            print(error)
         }
         print(pickedCards)
     }

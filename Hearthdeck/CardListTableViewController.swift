@@ -68,7 +68,7 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
                         var cardsArrayRaw = cardsOfDeck.componentsSeparatedByString(" ")
                         cardsArrayRaw.removeLast()
                         for card in cardsArrayRaw {
-                            let cardRaw = card.componentsSeparatedByString("@_")
+                            let cardRaw = card.componentsSeparatedByString("@")
                             pickedCards.append(cardRaw[0])
                             pickedCardsQuantity.append(Int(cardRaw[1])!)
                         }
@@ -77,6 +77,9 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
             } catch {
                 print("Error")
             }
+        }
+        for i in pickedCardsQuantity {
+            numOfPickedCards += i
         }
     }
 
@@ -339,10 +342,10 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
             fetchRequest.predicate = NSPredicate(format: "name = %@", deckName!)
             
             // Parse the 2 picked cards array into one string.
-            // " " divides two cards, quantity is expressed by "@_" and a number
+            // " " divides two cards, quantity is expressed by "@" and a number
             var resultString: String = ""
             for var i = 0; i < pickedCards.count; i++ {
-                let block = pickedCards[i] + "@_" + String(pickedCardsQuantity[i])
+                let block = pickedCards[i] + "@" + String(pickedCardsQuantity[i])
                 resultString += block + " "
             }
             

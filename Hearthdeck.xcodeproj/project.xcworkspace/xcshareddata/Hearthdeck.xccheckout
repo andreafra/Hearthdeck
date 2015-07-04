@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>2011E7DA-B452-4EAC-B9A5-99A6932655DE</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Hearthdeck</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>154BE2DD7DE3CC57F61E3C73830BE73992E58D2F</key>
+		<string>https://github.com/QUB3X/Hearthdeck.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Hearthdeck.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>154BE2DD7DE3CC57F61E3C73830BE73992E58D2F</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/QUB3X/Hearthdeck.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>154BE2DD7DE3CC57F61E3C73830BE73992E58D2F</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>154BE2DD7DE3CC57F61E3C73830BE73992E58D2F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Hearthdeck</string>
+		</dict>
+	</array>
+</dict>
+</plist>

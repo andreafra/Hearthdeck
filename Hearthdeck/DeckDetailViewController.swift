@@ -108,6 +108,11 @@ class DeckDetailViewController: UIViewController {
             let tvc = segue.destinationViewController as! DeckDetailTableViewController
             
             tvc.deckTitle = deckTitle.title!
+        } else if segue.identifier == "playDeck" {
+            let tvc = segue.destinationViewController as! PlayDeckTableViewController
+            
+            tvc.deckName = deckTitle.title!
+            tvc.deckTitle.title = deckTitle.title!
         }
     }
     
@@ -255,9 +260,16 @@ class DeckDetailViewController: UIViewController {
             }
         }
         
-}
+    }
     
     @IBAction func closeClassPickerButton(sender: AnyObject) {
         dismissClassPicker()
     }
+    
+    @IBAction func playDeckIsClicked(sender: AnyObject) {
+        
+        performSegueWithIdentifier("playDeck", sender: self)
+        
+    }
+    
 }
