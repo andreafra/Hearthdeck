@@ -20,7 +20,7 @@ class PlayDeckTableViewController: UITableViewController {
     var pickedCards = [String]()
     var pickedCardsQuantity = [Int]()
     var usedCardsQuantity = [Int]()
-    
+    var cardImages = [UIImage]()
     @IBOutlet var deckTitle: UINavigationItem!
     
     override func viewDidLoad() {
@@ -69,13 +69,64 @@ class PlayDeckTableViewController: UITableViewController {
             
             // set labels
             cell.name.text = card.name
-            cell.quantity.text = String(pickedCardsQuantity[indexPath.row])
+            cell.quantity.text = String(usedCardsQuantity[indexPath.row])
             cell.manaValue.text = String(card.cost)
             cell.healthValue.text = String(card.health)
             cell.attackValue.text = String(card.attack)
             
             let durability = String(card.durability)
             let cardType = card.type
+            
+            cell.attackIcon.image = cell.attackIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+            cell.attackIcon.tintColor = UIColor(red:0.826, green:0.696, blue:0.063, alpha:1)
+            
+            // Card counter rotation and antialiasing
+            let degrees: Double = 15
+            let angle = CGFloat(degrees * M_PI/180)
+            cell.backCard.transform = CGAffineTransformMakeRotation(angle)
+            cell.backCard.layer.allowsEdgeAntialiasing = true
+            
+            // Show the right number of detail
+            if usedCardsQuantity[indexPath.row] == 2 {
+
+                cell.backCard.hidden = false
+                cell.topCard.hidden = false
+                cell.manaIcon.hidden = false
+                cell.manaValue.hidden = false
+                cell.attackIcon.hidden = false
+                cell.attackValue.hidden = false
+                cell.healthIcon.hidden = false
+                cell.healthValue.hidden = false
+                cell.quantity.hidden = false
+                cell.cardImage.hidden = false
+                
+            } else if usedCardsQuantity[indexPath.row] == 1 {
+                
+                cell.backCard.hidden = true
+                cell.topCard.hidden = false
+                cell.manaIcon.hidden = false
+                cell.manaValue.hidden = false
+                cell.attackIcon.hidden = false
+                cell.attackValue.hidden = false
+                cell.healthIcon.hidden = false
+                cell.healthValue.hidden = false
+                cell.quantity.hidden = false
+                cell.cardImage.hidden = false
+                
+            } else if usedCardsQuantity[indexPath.row] == 0 {
+                
+                cell.backCard.hidden = true
+                cell.topCard.hidden = true
+                cell.manaIcon.hidden = true
+                cell.manaValue.hidden = true
+                cell.attackIcon.hidden = true
+                cell.attackValue.hidden = true
+                cell.healthIcon.hidden = true
+                cell.healthValue.hidden = true
+                cell.quantity.hidden = true
+                cell.cardImage.hidden = true
+                
+            }
             
             if cardType == "Minion" {
                 cell.healthIcon.image = cell.healthIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
@@ -91,41 +142,6 @@ class PlayDeckTableViewController: UITableViewController {
                 cell.attackIcon.hidden = true
                 cell.healthValue.hidden = true
                 cell.attackValue.hidden = true
-            }
-            cell.attackIcon.image = cell.attackIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-            cell.attackIcon.tintColor = UIColor(red:0.826, green:0.696, blue:0.063, alpha:1)
-            
-            // Card counter rotation and antialiasing
-            let degrees: Double = 15
-            let angle = CGFloat(degrees * M_PI/180)
-            cell.backCard.transform = CGAffineTransformMakeRotation(angle)
-            cell.backCard.layer.allowsEdgeAntialiasing = true
-            
-            // Show the right number of detail
-            if usedCardsQuantity[indexPath.row] == 2 {
-                cell.backCard.hidden = false
-                cell.topCard.hidden = false
-                cell.manaIcon.hidden = false
-                cell.manaValue.hidden = false
-                cell.attackIcon.hidden = false
-                cell.attackValue.hidden = false
-                cell.healthIcon.hidden = false
-                cell.healthValue.hidden = false
-                cell.quantity.hidden = false
-                cell.cardImage.hidden = false
-            } else if usedCardsQuantity[indexPath.row] == 1 {
-                cell.backCard.hidden = true
-            } else if usedCardsQuantity[indexPath.row] == 0 {
-                cell.backCard.hidden = true
-                cell.topCard.hidden = true
-                cell.manaIcon.hidden = true
-                cell.manaValue.hidden = true
-                cell.attackIcon.hidden = true
-                cell.attackValue.hidden = true
-                cell.healthIcon.hidden = true
-                cell.healthValue.hidden = true
-                cell.quantity.hidden = true
-                cell.cardImage.hidden = true
             }
             
             if card.hasImage {
@@ -145,6 +161,9 @@ class PlayDeckTableViewController: UITableViewController {
                 
                 cell.cardImage.image = UIImage(data: card.image)
             }
+            
+            cardImages.append(UIImage(data: card.image)!)
+            
         } catch _ {
         }
         
@@ -220,7 +239,17 @@ class PlayDeckTableViewController: UITableViewController {
             print("longpress but not on a row")
         } else if gestureRecognizer.state == UIGestureRecognizerState.Began {
             print("long press on table view at row \(indexPath!.row)")
-            showAlert()
+            
+            let fetchRequest: NSFetchRequest = NSFetchRequest(entityName: "Card")
+            fetchRequest.predicate = NSPredicate(format: "id = %@", pickedCards[indexPath!.row])
+            
+            do {
+                let results = try self.managedObjectContext.executeFetchRequest(fetchRequest)
+                let card = results[0] as! Card
+                showAlert(UIImage(data: card.image)!)
+            } catch {
+                print(error)
+            }
         }
         
     }
@@ -243,10 +272,10 @@ class PlayDeckTableViewController: UITableViewController {
     func createAlert() {
         // Here the red alert view is created. It is created with rounded corners and given a shadow around it
         let alertWidth: CGFloat = 250
-        let alertHeight: CGFloat = 150
+        let alertHeight: CGFloat = 350
         let alertViewFrame: CGRect = CGRectMake(0, 0, alertWidth, alertHeight)
         alertView = UIView(frame: alertViewFrame)
-        alertView.backgroundColor = UIColor.redColor()
+        alertView.backgroundColor = UIColor.whiteColor()
         alertView.alpha = 0.0
         alertView.layer.cornerRadius = 10;
         alertView.layer.shadowColor = UIColor.blackColor().CGColor;
@@ -256,7 +285,7 @@ class PlayDeckTableViewController: UITableViewController {
         
         // Create a button and set a listener on it for when it is tapped. Then the button is added to the alert view
         let button = UIButton(type: UIButtonType.System) as UIButton
-        button.setTitle("Dismiss", forState: UIControlState.Normal)
+        button.setTitle("Close", forState: UIControlState.Normal)
         button.backgroundColor = UIColor.whiteColor()
         button.frame = CGRectMake(0, 0, alertWidth, 40.0)
         
@@ -266,13 +295,18 @@ class PlayDeckTableViewController: UITableViewController {
         view.addSubview(alertView)
     }
     
-    func showAlert() {
+    func showAlert(image: UIImage) {
         // When the alert view is dismissed, I destroy it, so I check for this condition here
         // since if the Show Alert button is tapped again after dismissing, alertView will be nil
         // and so should be created again
         if (alertView == nil) {
             createAlert()
         }
+        
+        let imageView = UIImageView(image: image)
+        imageView.frame = alertView.frame
+        imageView.contentMode = .ScaleAspectFit
+        alertView.addSubview(imageView)
         
         // I create the pan gesture recognizer here and not in ViewDidLoad() to
         // prevent the user moving the alert view on the screen before it is shown.

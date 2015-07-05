@@ -21,6 +21,7 @@
 		6520CD1A1B1C72520074EE57 /* Panton-LightCaps.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6520CD161B1C71DB0074EE57 /* Panton-LightCaps.otf */; };
 		6520CD1B1B1C72520074EE57 /* Panton-LightitalicCaps.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6520CD171B1C71DB0074EE57 /* Panton-LightitalicCaps.otf */; };
 		6533322D1AF8068B00C6D4C2 /* CardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6533322C1AF8068B00C6D4C2 /* CardDetailViewController.swift */; };
+		653596631B47EC4800FDC10B /* cardListLocalized.json in Resources */ = {isa = PBXBuildFile; fileRef = 653596621B47EC4800FDC10B /* cardListLocalized.json */; };
 		6535A3721AE6B9A6001F90B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6535A3711AE6B9A6001F90B6 /* AppDelegate.swift */; };
 		6535A3741AE6B9A6001F90B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6535A3731AE6B9A6001F90B6 /* ViewController.swift */; };
 		6535A3771AE6B9A6001F90B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6535A3751AE6B9A6001F90B6 /* Main.storyboard */; };
@@ -56,7 +57,6 @@
 		654E16BD1AFF531100CB0C04 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654E16BB1AFF531100CB0C04 /* Card.swift */; };
 		654E16BE1AFF531100CB0C04 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654E16BC1AFF531100CB0C04 /* Deck.swift */; };
 		6557CC071AEA98CC002B9D09 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6557CC061AEA98CC002B9D09 /* CoreData.framework */; };
-		6557CC0C1AEAA5BC002B9D09 /* cardListLocalized.json in Resources */ = {isa = PBXBuildFile; fileRef = 6557CC0B1AEAA5BC002B9D09 /* cardListLocalized.json */; };
 		6567559B1B2EF53800F9C816 /* DeckCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6567559A1B2EF53800F9C816 /* DeckCardCell.swift */; };
 		658FA86F1B10E684006BB184 /* taunt.png in Resources */ = {isa = PBXBuildFile; fileRef = 658FA86E1B10E684006BB184 /* taunt.png */; };
 		659458BF1B18CCE100D8675F /* DeckDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659458BE1B18CCE100D8675F /* DeckDetailTableViewController.swift */; };
@@ -91,6 +91,7 @@
 		6520CD161B1C71DB0074EE57 /* Panton-LightCaps.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Panton-LightCaps.otf"; sourceTree = "<group>"; };
 		6520CD171B1C71DB0074EE57 /* Panton-LightitalicCaps.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Panton-LightitalicCaps.otf"; sourceTree = "<group>"; };
 		6533322C1AF8068B00C6D4C2 /* CardDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDetailViewController.swift; sourceTree = "<group>"; };
+		653596621B47EC4800FDC10B /* cardListLocalized.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cardListLocalized.json; sourceTree = "<group>"; };
 		6535A36C1AE6B9A6001F90B6 /* Hearthdeck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hearthdeck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6535A3701AE6B9A6001F90B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6535A3711AE6B9A6001F90B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -130,7 +131,6 @@
 		654E16BB1AFF531100CB0C04 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		654E16BC1AFF531100CB0C04 /* Deck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		6557CC061AEA98CC002B9D09 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		6557CC0B1AEAA5BC002B9D09 /* cardListLocalized.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cardListLocalized.json; sourceTree = "<group>"; };
 		6567559A1B2EF53800F9C816 /* DeckCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckCardCell.swift; sourceTree = "<group>"; };
 		658FA86E1B10E684006BB184 /* taunt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taunt.png; sourceTree = "<group>"; };
 		659458BE1B18CCE100D8675F /* DeckDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckDetailTableViewController.swift; sourceTree = "<group>"; };
@@ -234,7 +234,7 @@
 				65A454C81B02402B003CDEFC /* Stuff */,
 				6535A37A1AE6B9A6001F90B6 /* LaunchScreen.xib */,
 				6535A3981AE6C02D001F90B6 /* cardList.json */,
-				6557CC0B1AEAA5BC002B9D09 /* cardListLocalized.json */,
+				653596621B47EC4800FDC10B /* cardListLocalized.json */,
 				6535A36F1AE6B9A6001F90B6 /* Supporting Files */,
 			);
 			path = Hearthdeck;
@@ -432,6 +432,7 @@
 				654CA48A1B24BDDF0079B4F2 /* Druid.png in Resources */,
 				6520CD181B1C72520074EE57 /* Panton-BlackCaps.otf in Resources */,
 				654DBFF31B46E47E0084E0C5 /* Card-50.png in Resources */,
+				653596631B47EC4800FDC10B /* cardListLocalized.json in Resources */,
 				65043B301B42FF67001DFD92 /* Play Icon@3x.png in Resources */,
 				6520CD191B1C72520074EE57 /* Panton-BlackitalicCaps.otf in Resources */,
 				6520CD1A1B1C72520074EE57 /* Panton-LightCaps.otf in Resources */,
@@ -469,7 +470,6 @@
 				6542E4811B2472FF002588B6 /* Delete Sign-50.png in Resources */,
 				654CA47A1B24AD290079B4F2 /* Jaina.png in Resources */,
 				654CA4771B24AD290079B4F2 /* Anduin.png in Resources */,
-				6557CC0C1AEAA5BC002B9D09 /* cardListLocalized.json in Resources */,
 				65E5C3251B1B183500F868ED /* Icon Card@2x.png in Resources */,
 				65043B381B4303AC001DFD92 /* btn_primary_normal.png in Resources */,
 				654CA47F1B24AD290079B4F2 /* Valeera.png in Resources */,
@@ -620,8 +620,6 @@
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
-				PODS_FRAMEWORK_BUILD_PATH = "";
-				PODS_ROOT = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.qubex.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
