@@ -21,6 +21,8 @@ class DeckDetailViewController: UIViewController {
     @IBOutlet var characterName: UILabel!
     @IBOutlet var characterType: UILabel!
     
+    @IBOutlet var playDeckButton: UIButton!
+    
     @IBOutlet var promptClassPicker: UIVisualEffectView!
     @IBOutlet var classScrollView: UIScrollView!
     var classPickerState = false
@@ -28,6 +30,8 @@ class DeckDetailViewController: UIViewController {
     var prova: String?
     let charactersNames = ["Jaina", "Anduin", "Thrall", "Valeera", "Garrosh", "Gul'dan", "Uther", "Rexxar", "Malfurion"]
     let playerClasses = ["Mage", "Priest", "Shaman", "Rogue", "Warrior", "Warlock", "Paladin", "Hunter", "Druid"]
+    
+    var playerClass: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +63,8 @@ class DeckDetailViewController: UIViewController {
                 self.characterType.text = type
                 self.characterName.text = name
                 self.characterImage.image = UIImage(named: name+".png")
-
+                
+                playerClass = type
             } else {
                 self.characterType.text = "Name"
                 self.characterName.text = "Type"
@@ -108,6 +113,7 @@ class DeckDetailViewController: UIViewController {
             let tvc = segue.destinationViewController as! DeckDetailTableViewController
             
             tvc.deckTitle = deckTitle.title!
+            tvc.playerClass = playerClass
         } else if segue.identifier == "playDeck" {
             let tvc = segue.destinationViewController as! PlayDeckTableViewController
             

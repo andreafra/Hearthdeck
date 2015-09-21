@@ -29,7 +29,7 @@ class IntroViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     
     var howManyCards: Int = 0
     var howManyCardsAdded: Int = 0
-    let cardSets = ["Basic","Blackrock Mountain","Classic","Credits","Curse of Naxxramas",/*"Debug",*/"Goblins vs Gnomes","Missions","Promotion","Reward","System"]
+    let cardSets = ["Basic","Blackrock Mountain","Classic",/*"Credits",*/"Curse of Naxxramas",/*"Debug",*/"Goblins vs Gnomes",/*"Missions",*/ "Promotion","Reward", "System"]
     
     // core data
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
@@ -192,56 +192,57 @@ class IntroViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
                                     if let cost = card["cost"] as? Int { // all
                                         if let type = card["type"] as? String { // all
                                             if let rarity = card["rarity"] as? String { // all
-                                                if let text = card["text"] as? String { // all
-                                                    if let flavor = card["flavor"] as? String {
-                                                        // EVERY CARD HAS THE FOLLOWING VALUES.
-                                                        // STOP CHECKING SAFELY FOR JSON.
-                                                        
-                                                        var playerClass = card["playerClass"] as? String
-                                                        var mechanics = card["mechanics"] as? Array<String>
-                                                        var attack = card["attack"] as? Int
-                                                        var health = card["health"] as? Int
-                                                        var durability = card["durability"] as? Int
-                                                        
-                                                        if playerClass == nil {
-                                                            playerClass = "All"
-                                                        }
-                                                        if mechanics == nil {
-                                                            mechanics = []
-                                                        }
-                                                        if attack == nil {
-                                                            attack = 0
-                                                        }
-                                                        if health == nil {
-                                                            health = 0
-                                                        }
-                                                        if durability == nil {
-                                                            durability = 0
-                                                        }
-                                                        
-                                                        var imageData: NSData?
-                                                        
-                                                        if downloadImages.on {
-                                                            // Download image
-                                                            let baseUrl = "http://wow.zamimg.com/images/hearthstone/cards/enus/medium/" + id + ".png"
-                                                            do {
-                                                                imageData = try NSData(contentsOfURL: NSURL(string: baseUrl)!, options: NSDataReadingOptions.DataReadingMappedIfSafe)
-                                                            } catch {
-                                                                print(error)
-                                                                imageData = nil
-                                                            }
-                                                            print("Downloaded \(name)")
-                                                        } else {
-                                                            // Used placeholder
-                                                            imageData = UIImagePNGRepresentation(placeholderImage!)
-                                                            print("Placeholdered \(name)")
-                                                        }
-                                                        
-                                                        // Save the card to the Core Data
-                                                        Card.createCardInManagedObjectContext(moc, name: name, id: id, cost: cost, type: type, rarity: rarity, text: text, flavor: flavor, attack: attack!, health: health!, playerClass: playerClass!, durability: durability!, image: imageData!, hasImage: downloadImages.on)
-                                                        
-                                                    } //END OF "TEXT" - SAFE JSON
+                                                var text = card["text"] as? String
+                                                var flavor = card["flavor"] as? String
+                                                var playerClass = card["playerClass"] as? String
+                                                var mechanics = card["mechanics"] as? Array<String>
+                                                var attack = card["attack"] as? Int
+                                                var health = card["health"] as? Int
+                                                var durability = card["durability"] as? Int
+                                                
+                                                if text == nil {
+                                                    text = ""
                                                 }
+                                                if flavor == nil {
+                                                    flavor = ""
+                                                }
+                                                if playerClass == nil {
+                                                    playerClass = "Neutral"
+                                                }
+                                                if mechanics == nil {
+                                                    mechanics = []
+                                                }
+                                                if attack == nil {
+                                                    attack = 0
+                                                }
+                                                if health == nil {
+                                                    health = 0
+                                                }
+                                                if durability == nil {
+                                                    durability = 0
+                                                }
+                                                
+                                                var imageData: NSData?
+                                                
+                                                if downloadImages.on {
+                                                    // Download image
+                                                    let baseUrl = "http://wow.zamimg.com/images/hearthstone/cards/enus/medium/" + id + ".png"
+                                                    do {
+                                                        imageData = try NSData(contentsOfURL: NSURL(string: baseUrl)!, options: NSDataReadingOptions.DataReadingMappedIfSafe)
+                                                    } catch {
+                                                        print(error)
+                                                        imageData = nil
+                                                    }
+                                                    print("Downloaded \(name)")
+                                                } else {
+                                                    // Used placeholder
+                                                    imageData = UIImagePNGRepresentation(placeholderImage!)
+                                                    print("Placeholdered \(name)")
+                                                }
+                                                
+                                                // Save the card to the Core Data
+                                                Card.createCardInManagedObjectContext(moc, name: name, id: id, cost: cost, type: type, rarity: rarity, text: text!, flavor: flavor!, attack: attack!, health: health!, playerClass: playerClass!, durability: durability!, image: imageData!, hasImage: downloadImages.on)
+                                                
                                             }
                                         }
                                     }

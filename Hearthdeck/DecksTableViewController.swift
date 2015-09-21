@@ -11,6 +11,9 @@ import CoreData
 
 class DecksTableViewController: UITableViewController {
 
+    // for new deck segue
+    var newDeckCreated = false
+    
     // MOC
     let moc = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     // Error
@@ -42,6 +45,7 @@ class DecksTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        newDeckCreated = false
         self.tableView.reloadData()
         self.navigationController?.setToolbarHidden(false, animated: true)
     }
@@ -66,8 +70,13 @@ class DecksTableViewController: UITableViewController {
         }
 
         print(newDeck.name)
+        newDeckCreated = true
+        
         fetchDeck()
         tableView.reloadData()
+        performSegueWithIdentifier("goToNewDeck", sender: tableView)
+        
+        
     }
     
     // MARK: - Table view data source
@@ -85,10 +94,12 @@ class DecksTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(DeckCellIdentifier, forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(DeckCellIdentifier, forIndexPath: indexPath) as! DeckCell
 
         // Configure the cell...
-        cell.textLabel?.text = decks[indexPath.row].name
+        let deck = decks[indexPath.row]
+        cell.deckTitle.text = deck.name
+        cell.deckClassThumbnail.image = UIImage(named: (deck.type+"_thumb.png"))
         
         return cell
     }
@@ -141,9 +152,17 @@ class DecksTableViewController: UITableViewController {
         if segue.identifier == "goToNewDeck" {
             
             let deckOverviewVC = segue.destinationViewController as! DeckDetailViewController
-            let indexPath = self.tableView.indexPathForSelectedRow!
             
-            deckOverviewVC.deckTitle.title = decks[indexPath.row].name
+            var indexPath:NSIndexPath?
+            
+            if newDeckCreated {
+                indexPath = NSIndexPath(forRow: decks.count-1, inSection: 0)
+            } else {
+                indexPath = self.tableView.indexPathForSelectedRow!
+            }
+            
+            
+            deckOverviewVC.deckTitle.title = decks[indexPath!.row].name
         }
     }
 

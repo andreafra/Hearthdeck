@@ -30,9 +30,7 @@ class PlayDeckTableViewController: UITableViewController {
         longPressGestureRecognizer.minimumPressDuration = 1.0
         self.tableView.addGestureRecognizer(longPressGestureRecognizer)
         
-        animator = UIDynamicAnimator(referenceView: view)
         createOverlay()
-        createAlert()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -99,6 +97,7 @@ class PlayDeckTableViewController: UITableViewController {
                 cell.healthValue.hidden = false
                 cell.quantity.hidden = false
                 cell.cardImage.hidden = false
+                cell.name.textColor = UIColor.blackColor()
                 
             } else if usedCardsQuantity[indexPath.row] == 1 {
                 
@@ -112,6 +111,7 @@ class PlayDeckTableViewController: UITableViewController {
                 cell.healthValue.hidden = false
                 cell.quantity.hidden = false
                 cell.cardImage.hidden = false
+                cell.name.textColor = UIColor.blackColor()
                 
             } else if usedCardsQuantity[indexPath.row] == 0 {
                 
@@ -125,7 +125,7 @@ class PlayDeckTableViewController: UITableViewController {
                 cell.healthValue.hidden = true
                 cell.quantity.hidden = true
                 cell.cardImage.hidden = true
-                
+                cell.name.textColor = UIColor.lightGrayColor()
             }
             
             if cardType == "Minion" {
@@ -257,9 +257,6 @@ class PlayDeckTableViewController: UITableViewController {
     // PHYSICAL BASED ALERT VIEW
     var overlayView: UIView!
     var alertView: UIView!
-    var animator: UIDynamicAnimator!
-    var attachmentBehavior : UIAttachmentBehavior!
-    var snapBehavior : UISnapBehavior!
     
     func createOverlay() {
         // Create a gray view and set its alpha to 0 so it isn't visible
@@ -270,136 +267,76 @@ class PlayDeckTableViewController: UITableViewController {
     }
     
     func createAlert() {
-        // Here the red alert view is created. It is created with rounded corners and given a shadow around it
-        let alertWidth: CGFloat = 250
-        let alertHeight: CGFloat = 350
-        let alertViewFrame: CGRect = CGRectMake(0, 0, alertWidth, alertHeight)
-        alertView = UIView(frame: alertViewFrame)
+        alertView = UIView()
+        let width: CGFloat = 300
+        let heigth: CGFloat = 400
+        alertView.frame = CGRectMake(0, 0, width, heigth)
         alertView.backgroundColor = UIColor.whiteColor()
+        alertView.layer.cornerRadius = 10
+        alertView.layer.shadowColor = UIColor.blackColor().CGColor
+        alertView.layer.shadowOpacity = 0.5
+        alertView.layer.shadowRadius = 3
+        alertView.layer.shadowOffset = CGSizeMake(2, 2)
         alertView.alpha = 0.0
-        alertView.layer.cornerRadius = 10;
-        alertView.layer.shadowColor = UIColor.blackColor().CGColor;
-        alertView.layer.shadowOffset = CGSizeMake(0, 5);
-        alertView.layer.shadowOpacity = 0.3;
-        alertView.layer.shadowRadius = 10.0;
+        alertView.center = self.tableView.center
         
-        // Create a button and set a listener on it for when it is tapped. Then the button is added to the alert view
-        let button = UIButton(type: UIButtonType.System) as UIButton
-        button.setTitle("Close", forState: UIControlState.Normal)
-        button.backgroundColor = UIColor.whiteColor()
-        button.frame = CGRectMake(0, 0, alertWidth, 40.0)
-        
-        button.addTarget(self, action: Selector("dismissAlert"), forControlEvents: UIControlEvents.TouchUpInside)
-        
-        alertView.addSubview(button)
         view.addSubview(alertView)
     }
     
+    var alertViewAlreadyPresented = false
+    
     func showAlert(image: UIImage) {
-        // When the alert view is dismissed, I destroy it, so I check for this condition here
-        // since if the Show Alert button is tapped again after dismissing, alertView will be nil
-        // and so should be created again
-        if (alertView == nil) {
+        
+        if alertViewAlreadyPresented == false {
+            print("No alertview")
             createAlert()
         }
         
+        //Scroll to top
+        tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: .Top, animated: false)
+        tableView.scrollEnabled = false
+        
+        // Image
         let imageView = UIImageView(image: image)
-        imageView.frame = alertView.frame
-        imageView.contentMode = .ScaleAspectFit
+        imageView.frame = CGRectMake(0, 40, alertView.frame.width, alertView.frame.height-100)
+        imageView.contentMode = UIViewContentMode.ScaleAspectFit
         alertView.addSubview(imageView)
+        // Close button
+        let closeButton = UIButton(type: UIButtonType.System)
+        closeButton.frame = CGRectMake(0, 0, alertView.frame.width, 40)
+        closeButton.setTitle("Close", forState: .Normal)
+        closeButton.addTarget(self, action: "closeButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        alertView.addSubview(closeButton)
         
-        // I create the pan gesture recognizer here and not in ViewDidLoad() to
-        // prevent the user moving the alert view on the screen before it is shown.
-        // Remember, on load, the alert view is created but invisible to user, so you
-        // don't want the user moving it around when they swipe or drag on the screen.
-        createGestureRecognizer()
-        
-        animator.removeAllBehaviors()
-        
-        // Animate in the overlay
-        UIView.animateWithDuration(0.4) {
+        alertView.center.y += self.view.frame.height
+        // Move alert view
+        UIView.animateWithDuration(0.4, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .CurveEaseIn, animations: {
             self.overlayView.alpha = 0.5
-        }
-        
-        // Animate the alert view using UIKit Dynamics.
-        alertView.alpha = 1.0
-        
-        let snapBehaviour: UISnapBehavior = UISnapBehavior(item: alertView, snapToPoint: view.center)
-        animator.addBehavior(snapBehaviour)
+            self.overlayView.userInteractionEnabled = false
+            
+            self.alertView.center = self.view.center
+            self.alertView.alpha = 1.0
+            }, completion: {_ in})
+
+        alertViewAlreadyPresented = true
     }
     
     func dismissAlert() {
-        
-        animator.removeAllBehaviors()
-        
-        let gravityBehaviour: UIGravityBehavior = UIGravityBehavior(items: [alertView])
-        gravityBehaviour.gravityDirection = CGVectorMake(0.0, 10.0);
-        animator.addBehavior(gravityBehaviour)
-        
-        // This behaviour is included so that the alert view tilts when it falls, otherwise it will go straight down
-        let itemBehaviour: UIDynamicItemBehavior = UIDynamicItemBehavior(items: [alertView])
-        itemBehaviour.addAngularVelocity(CGFloat(-M_PI_2), forItem: alertView)
-        animator.addBehavior(itemBehaviour)
-        
-        // Animate out the overlay, remove the alert view from its superview and set it to nil
-        // If you don't set it to nil, it keeps falling off the screen and when Show Alert button is
-        // tapped again, it will snap into view from below. It won't have the location settings we defined in createAlert()
-        // And the more it 'falls' off the screen, the longer it takes to come back into view, so when the Show Alert button
-        // is tapped again after a considerable time passes, the app seems unresponsive for a bit of time as the alert view
-        // comes back up to the screen
         UIView.animateWithDuration(0.4, animations: {
             self.overlayView.alpha = 0.0
+            self.overlayView.userInteractionEnabled = true
+            self.alertView.alpha = 0.0
+            self.alertView.center.y += self.view.frame.height
             }, completion: {
-                (value: Bool) in
+            _ in
                 self.alertView.removeFromSuperview()
-                self.alertView = nil
+                self.tableView.scrollEnabled = true
         })
-        
+        alertViewAlreadyPresented = false
     }
     
-    func createGestureRecognizer() {
-        let panGestureRecognizer: UIPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: Selector("handlePan:"))
-        view.addGestureRecognizer(panGestureRecognizer)
+    func closeButtonAction(sender: AnyObject) {
+        dismissAlert()
     }
     
-    // This gets called when a pan gesture is recognized. It was set as the selector for the UIPanGestureRecognizer in the
-    // createGestureRecognizer() function
-    // We check for different states of the pan and do something different in each state
-    // In Began, we create an attachment behaviour. We add an offset from the center to make the alert view twist in the
-    // the direction of the pan
-    // In Changed we set the attachment behaviour's anchor point to the location of the user's touch
-    // When the user stops dragging (In Ended), we snap the alert view back to the view's center (which is where it was originally located)
-    // When the user drags the view too far down, we dismiss the view
-    // I check whether the alert view is not nil before taking action. This ensures that when the user dismisses the alert view
-    // and drags on the screen, the app will not crash as it tries to move a view that hasn't been initialized.
-    func handlePan(sender: UIPanGestureRecognizer) {
-        
-        if (alertView != nil) {
-            let panLocationInView = sender.locationInView(view)
-            let panLocationInAlertView = sender.locationInView(alertView)
-            
-            if sender.state == UIGestureRecognizerState.Began {
-                animator.removeAllBehaviors()
-                
-                let offset = UIOffsetMake(panLocationInAlertView.x - CGRectGetMidX(alertView.bounds), panLocationInAlertView.y - CGRectGetMidY(alertView.bounds));
-                attachmentBehavior = UIAttachmentBehavior(item: alertView, offsetFromCenter: offset, attachedToAnchor: panLocationInView)
-                
-                animator.addBehavior(attachmentBehavior)
-            }
-            else if sender.state == UIGestureRecognizerState.Changed {
-                attachmentBehavior.anchorPoint = panLocationInView
-            }
-            else if sender.state == UIGestureRecognizerState.Ended {
-                animator.removeAllBehaviors()
-                
-                snapBehavior = UISnapBehavior(item: alertView, snapToPoint: view.center)
-                animator.addBehavior(snapBehavior)
-                
-                if sender.translationInView(view).y > 100 {
-                    dismissAlert()
-                }
-            }
-        }
-        
-    }
 }

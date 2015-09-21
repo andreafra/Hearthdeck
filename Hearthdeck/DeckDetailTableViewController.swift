@@ -18,9 +18,11 @@ class DeckDetailTableViewController: UITableViewController {
     // Card arrays for quantity
     var pickedCards = [String]()
     var pickedCardsQuantity = [Int]()
+
     
     // Utility for prepareforsegue:
     var deckTitle: String?
+    var playerClass: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -181,6 +183,7 @@ class DeckDetailTableViewController: UITableViewController {
             
             vc.isPickingCard = true
             vc.deckName = deckTitle
+            vc.isPickingCardClass = playerClass!
             
         }
         // Get the new view controller using [segue destinationViewController].

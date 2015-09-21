@@ -16,19 +16,27 @@
 		65043B371B4303AC001DFD92 /* btn_primary_over.png in Resources */ = {isa = PBXBuildFile; fileRef = 65043B341B4303AC001DFD92 /* btn_primary_over.png */; };
 		65043B381B4303AC001DFD92 /* btn_primary_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 65043B351B4303AC001DFD92 /* btn_primary_normal.png */; };
 		65043B3B1B431E72001DFD92 /* PlayDeckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65043B3A1B431E72001DFD92 /* PlayDeckCell.swift */; };
+		6512A9A91BAEBE1600C35020 /* DeckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6512A9A81BAEBE1600C35020 /* DeckCell.swift */; settings = {ASSET_TAGS = (); }; };
+		6512A9C61BAEDBE500C35020 /* Druid_thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 6512A9BD1BAEDBE500C35020 /* Druid_thumb.png */; settings = {ASSET_TAGS = (); }; };
+		6512A9C71BAEDBE500C35020 /* Hunter_thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 6512A9BE1BAEDBE500C35020 /* Hunter_thumb.png */; settings = {ASSET_TAGS = (); }; };
+		6512A9C81BAEDBE500C35020 /* Mage_thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 6512A9BF1BAEDBE500C35020 /* Mage_thumb.png */; settings = {ASSET_TAGS = (); }; };
+		6512A9C91BAEDBE500C35020 /* Paladin_thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 6512A9C01BAEDBE500C35020 /* Paladin_thumb.png */; settings = {ASSET_TAGS = (); }; };
+		6512A9CA1BAEDBE500C35020 /* Priest_thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 6512A9C11BAEDBE500C35020 /* Priest_thumb.png */; settings = {ASSET_TAGS = (); }; };
+		6512A9CB1BAEDBE500C35020 /* Rogue_thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 6512A9C21BAEDBE500C35020 /* Rogue_thumb.png */; settings = {ASSET_TAGS = (); }; };
+		6512A9CC1BAEDBE500C35020 /* Shaman_thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 6512A9C31BAEDBE500C35020 /* Shaman_thumb.png */; settings = {ASSET_TAGS = (); }; };
+		6512A9CD1BAEDBE500C35020 /* Warlock_thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 6512A9C41BAEDBE500C35020 /* Warlock_thumb.png */; settings = {ASSET_TAGS = (); }; };
+		6512A9CE1BAEDBE500C35020 /* Warrior_thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 6512A9C51BAEDBE500C35020 /* Warrior_thumb.png */; settings = {ASSET_TAGS = (); }; };
 		6520CD181B1C72520074EE57 /* Panton-BlackCaps.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6520CD141B1C71DB0074EE57 /* Panton-BlackCaps.otf */; };
 		6520CD191B1C72520074EE57 /* Panton-BlackitalicCaps.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6520CD151B1C71DB0074EE57 /* Panton-BlackitalicCaps.otf */; };
 		6520CD1A1B1C72520074EE57 /* Panton-LightCaps.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6520CD161B1C71DB0074EE57 /* Panton-LightCaps.otf */; };
 		6520CD1B1B1C72520074EE57 /* Panton-LightitalicCaps.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6520CD171B1C71DB0074EE57 /* Panton-LightitalicCaps.otf */; };
 		6533322D1AF8068B00C6D4C2 /* CardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6533322C1AF8068B00C6D4C2 /* CardDetailViewController.swift */; };
-		653596631B47EC4800FDC10B /* cardListLocalized.json in Resources */ = {isa = PBXBuildFile; fileRef = 653596621B47EC4800FDC10B /* cardListLocalized.json */; };
 		6535A3721AE6B9A6001F90B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6535A3711AE6B9A6001F90B6 /* AppDelegate.swift */; };
 		6535A3741AE6B9A6001F90B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6535A3731AE6B9A6001F90B6 /* ViewController.swift */; };
 		6535A3771AE6B9A6001F90B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6535A3751AE6B9A6001F90B6 /* Main.storyboard */; };
 		6535A3791AE6B9A6001F90B6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6535A3781AE6B9A6001F90B6 /* Images.xcassets */; };
 		6535A37C1AE6B9A6001F90B6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6535A37A1AE6B9A6001F90B6 /* LaunchScreen.xib */; };
 		6535A3961AE6BFDB001F90B6 /* CardListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6535A3951AE6BFDB001F90B6 /* CardListTableViewController.swift */; };
-		6535A3991AE6C02D001F90B6 /* cardList.json in Resources */ = {isa = PBXBuildFile; fileRef = 6535A3981AE6C02D001F90B6 /* cardList.json */; };
 		6542E4811B2472FF002588B6 /* Delete Sign-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 6542E4801B2472FF002588B6 /* Delete Sign-50.png */; };
 		654461631B024F3B00DC5BAD /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654461621B024F3B00DC5BAD /* IntroViewController.swift */; };
 		654461651B02539F00DC5BAD /* CustomThings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654461641B02539F00DC5BAD /* CustomThings.swift */; };
@@ -58,12 +66,19 @@
 		654E16BE1AFF531100CB0C04 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654E16BC1AFF531100CB0C04 /* Deck.swift */; };
 		6557CC071AEA98CC002B9D09 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6557CC061AEA98CC002B9D09 /* CoreData.framework */; };
 		6567559B1B2EF53800F9C816 /* DeckCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6567559A1B2EF53800F9C816 /* DeckCardCell.swift */; };
+		658C810D1B54F698003B256C /* Common.png in Resources */ = {isa = PBXBuildFile; fileRef = 658C81081B54F698003B256C /* Common.png */; };
+		658C810E1B54F698003B256C /* Epic.png in Resources */ = {isa = PBXBuildFile; fileRef = 658C81091B54F698003B256C /* Epic.png */; };
+		658C810F1B54F698003B256C /* Free.png in Resources */ = {isa = PBXBuildFile; fileRef = 658C810A1B54F698003B256C /* Free.png */; };
+		658C81101B54F698003B256C /* Legendary.png in Resources */ = {isa = PBXBuildFile; fileRef = 658C810B1B54F698003B256C /* Legendary.png */; };
+		658C81111B54F698003B256C /* Rare.png in Resources */ = {isa = PBXBuildFile; fileRef = 658C810C1B54F698003B256C /* Rare.png */; };
 		658FA86F1B10E684006BB184 /* taunt.png in Resources */ = {isa = PBXBuildFile; fileRef = 658FA86E1B10E684006BB184 /* taunt.png */; };
+		65929EDD1B99A6DE00CFAA32 /* cardListLocalized.json in Resources */ = {isa = PBXBuildFile; fileRef = 65929EDC1B99A6DE00CFAA32 /* cardListLocalized.json */; };
 		659458BF1B18CCE100D8675F /* DeckDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659458BE1B18CCE100D8675F /* DeckDetailTableViewController.swift */; };
 		659458C11B18CCF500D8675F /* DeckDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659458C01B18CCF500D8675F /* DeckDetailViewController.swift */; };
 		65A23B091B0FA065000D5980 /* HS_database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 65A23B071B0FA065000D5980 /* HS_database.xcdatamodeld */; };
 		65A23B0B1B0FB37D000D5980 /* DecksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A23B0A1B0FB37D000D5980 /* DecksTableViewController.swift */; };
 		65A454CA1B024043003CDEFC /* missing.png in Resources */ = {isa = PBXBuildFile; fileRef = 65A454C91B024043003CDEFC /* missing.png */; };
+		65D9C51A1B4EE9E8008055C6 /* Ok Filled-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D9C5191B4EE9E8008055C6 /* Ok Filled-50.png */; };
 		65E5C3231B1B183500F868ED /* Character Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65E5C31F1B1B183500F868ED /* Character Icon@2x.png */; };
 		65E5C3241B1B183500F868ED /* Character Icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65E5C3201B1B183500F868ED /* Character Icon@3x.png */; };
 		65E5C3251B1B183500F868ED /* Icon Card@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65E5C3211B1B183500F868ED /* Icon Card@2x.png */; };
@@ -86,12 +101,21 @@
 		65043B341B4303AC001DFD92 /* btn_primary_over.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_primary_over.png; sourceTree = "<group>"; };
 		65043B351B4303AC001DFD92 /* btn_primary_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_primary_normal.png; sourceTree = "<group>"; };
 		65043B3A1B431E72001DFD92 /* PlayDeckCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayDeckCell.swift; sourceTree = "<group>"; };
+		6512A9A81BAEBE1600C35020 /* DeckCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckCell.swift; sourceTree = "<group>"; };
+		6512A9BD1BAEDBE500C35020 /* Druid_thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Druid_thumb.png; sourceTree = "<group>"; };
+		6512A9BE1BAEDBE500C35020 /* Hunter_thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hunter_thumb.png; sourceTree = "<group>"; };
+		6512A9BF1BAEDBE500C35020 /* Mage_thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mage_thumb.png; sourceTree = "<group>"; };
+		6512A9C01BAEDBE500C35020 /* Paladin_thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Paladin_thumb.png; sourceTree = "<group>"; };
+		6512A9C11BAEDBE500C35020 /* Priest_thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Priest_thumb.png; sourceTree = "<group>"; };
+		6512A9C21BAEDBE500C35020 /* Rogue_thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Rogue_thumb.png; sourceTree = "<group>"; };
+		6512A9C31BAEDBE500C35020 /* Shaman_thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Shaman_thumb.png; sourceTree = "<group>"; };
+		6512A9C41BAEDBE500C35020 /* Warlock_thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Warlock_thumb.png; sourceTree = "<group>"; };
+		6512A9C51BAEDBE500C35020 /* Warrior_thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Warrior_thumb.png; sourceTree = "<group>"; };
 		6520CD141B1C71DB0074EE57 /* Panton-BlackCaps.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Panton-BlackCaps.otf"; sourceTree = "<group>"; };
 		6520CD151B1C71DB0074EE57 /* Panton-BlackitalicCaps.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Panton-BlackitalicCaps.otf"; sourceTree = "<group>"; };
 		6520CD161B1C71DB0074EE57 /* Panton-LightCaps.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Panton-LightCaps.otf"; sourceTree = "<group>"; };
 		6520CD171B1C71DB0074EE57 /* Panton-LightitalicCaps.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Panton-LightitalicCaps.otf"; sourceTree = "<group>"; };
 		6533322C1AF8068B00C6D4C2 /* CardDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDetailViewController.swift; sourceTree = "<group>"; };
-		653596621B47EC4800FDC10B /* cardListLocalized.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cardListLocalized.json; sourceTree = "<group>"; };
 		6535A36C1AE6B9A6001F90B6 /* Hearthdeck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hearthdeck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6535A3701AE6B9A6001F90B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6535A3711AE6B9A6001F90B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -102,7 +126,6 @@
 		6535A3861AE6B9A6001F90B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6535A3871AE6B9A6001F90B6 /* HearthdeckTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HearthdeckTests.swift; sourceTree = "<group>"; };
 		6535A3951AE6BFDB001F90B6 /* CardListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardListTableViewController.swift; sourceTree = "<group>"; };
-		6535A3981AE6C02D001F90B6 /* cardList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = cardList.json; path = ../../../../Desktop/cardList.json; sourceTree = "<group>"; };
 		6542E4801B2472FF002588B6 /* Delete Sign-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Delete Sign-50.png"; sourceTree = "<group>"; };
 		654461621B024F3B00DC5BAD /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		654461641B02539F00DC5BAD /* CustomThings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomThings.swift; sourceTree = "<group>"; };
@@ -132,12 +155,19 @@
 		654E16BC1AFF531100CB0C04 /* Deck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		6557CC061AEA98CC002B9D09 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		6567559A1B2EF53800F9C816 /* DeckCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckCardCell.swift; sourceTree = "<group>"; };
+		658C81081B54F698003B256C /* Common.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Common.png; sourceTree = "<group>"; };
+		658C81091B54F698003B256C /* Epic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Epic.png; sourceTree = "<group>"; };
+		658C810A1B54F698003B256C /* Free.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Free.png; sourceTree = "<group>"; };
+		658C810B1B54F698003B256C /* Legendary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Legendary.png; sourceTree = "<group>"; };
+		658C810C1B54F698003B256C /* Rare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Rare.png; sourceTree = "<group>"; };
 		658FA86E1B10E684006BB184 /* taunt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taunt.png; sourceTree = "<group>"; };
+		65929EDC1B99A6DE00CFAA32 /* cardListLocalized.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cardListLocalized.json; sourceTree = "<group>"; };
 		659458BE1B18CCE100D8675F /* DeckDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckDetailTableViewController.swift; sourceTree = "<group>"; };
 		659458C01B18CCF500D8675F /* DeckDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckDetailViewController.swift; sourceTree = "<group>"; };
 		65A23B081B0FA065000D5980 /* HS_database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HS_database.xcdatamodel; sourceTree = "<group>"; };
 		65A23B0A1B0FB37D000D5980 /* DecksTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecksTableViewController.swift; sourceTree = "<group>"; };
 		65A454C91B024043003CDEFC /* missing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = missing.png; sourceTree = "<group>"; };
+		65D9C5191B4EE9E8008055C6 /* Ok Filled-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ok Filled-50.png"; sourceTree = "<group>"; };
 		65E5C31F1B1B183500F868ED /* Character Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Character Icon@2x.png"; sourceTree = "<group>"; };
 		65E5C3201B1B183500F868ED /* Character Icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Character Icon@3x.png"; sourceTree = "<group>"; };
 		65E5C3211B1B183500F868ED /* Icon Card@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon Card@2x.png"; sourceTree = "<group>"; };
@@ -162,14 +192,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		65043B391B4303B0001DFD92 /* New Group */ = {
+		65043B391B4303B0001DFD92 /* Btn-blizzard-style */ = {
 			isa = PBXGroup;
 			children = (
 				65043B331B4303AC001DFD92 /* btn_primary_down.png */,
 				65043B341B4303AC001DFD92 /* btn_primary_over.png */,
 				65043B351B4303AC001DFD92 /* btn_primary_normal.png */,
 			);
-			name = "New Group";
+			name = "Btn-blizzard-style";
+			sourceTree = "<group>";
+		};
+		6512A9AA1BAED41000C35020 /* Heroes_thumb */ = {
+			isa = PBXGroup;
+			children = (
+				6512A9BD1BAEDBE500C35020 /* Druid_thumb.png */,
+				6512A9BE1BAEDBE500C35020 /* Hunter_thumb.png */,
+				6512A9BF1BAEDBE500C35020 /* Mage_thumb.png */,
+				6512A9C01BAEDBE500C35020 /* Paladin_thumb.png */,
+				6512A9C11BAEDBE500C35020 /* Priest_thumb.png */,
+				6512A9C21BAEDBE500C35020 /* Rogue_thumb.png */,
+				6512A9C31BAEDBE500C35020 /* Shaman_thumb.png */,
+				6512A9C41BAEDBE500C35020 /* Warlock_thumb.png */,
+				6512A9C51BAEDBE500C35020 /* Warrior_thumb.png */,
+			);
+			name = Heroes_thumb;
 			sourceTree = "<group>";
 		};
 		6515DACB1B03EB4E0089D1F1 /* Libraries */ = {
@@ -189,6 +235,7 @@
 				65F7D3751B32FF2B003F5301 /* CardCell.swift */,
 				6567559A1B2EF53800F9C816 /* DeckCardCell.swift */,
 				65043B3A1B431E72001DFD92 /* PlayDeckCell.swift */,
+				6512A9A81BAEBE1600C35020 /* DeckCell.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -233,8 +280,6 @@
 				6535A3781AE6B9A6001F90B6 /* Images.xcassets */,
 				65A454C81B02402B003CDEFC /* Stuff */,
 				6535A37A1AE6B9A6001F90B6 /* LaunchScreen.xib */,
-				6535A3981AE6C02D001F90B6 /* cardList.json */,
-				653596621B47EC4800FDC10B /* cardListLocalized.json */,
 				6535A36F1AE6B9A6001F90B6 /* Supporting Files */,
 			);
 			path = Hearthdeck;
@@ -312,25 +357,39 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
+		658C81121B54F6A9003B256C /* Rarity */ = {
+			isa = PBXGroup;
+			children = (
+				658C81081B54F698003B256C /* Common.png */,
+				658C81091B54F698003B256C /* Epic.png */,
+				658C810A1B54F698003B256C /* Free.png */,
+				658C810B1B54F698003B256C /* Legendary.png */,
+				658C810C1B54F698003B256C /* Rare.png */,
+			);
+			name = Rarity;
+			sourceTree = "<group>";
+		};
 		65A454C81B02402B003CDEFC /* Stuff */ = {
 			isa = PBXGroup;
 			children = (
 				6520CD131B1C71C00074EE57 /* Fonts */,
-				65E5C3181B1B139500F868ED /* Icons */,
+				65E5C3181B1B139500F868ED /* Resources */,
 				65A454C91B024043003CDEFC /* missing.png */,
 			);
 			name = Stuff;
 			sourceTree = "<group>";
 		};
-		65E5C3181B1B139500F868ED /* Icons */ = {
+		65E5C3181B1B139500F868ED /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				654CA4931B24BDE40079B4F2 /* Classes */,
 				654CA4801B24AD2E0079B4F2 /* Heroes */,
+				6512A9AA1BAED41000C35020 /* Heroes_thumb */,
 				65E5C31A1B1B13B300F868ED /* UI */,
 				65E5C3191B1B13A600F868ED /* Card Types */,
+				65929EDC1B99A6DE00CFAA32 /* cardListLocalized.json */,
 			);
-			name = Icons;
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		65E5C3191B1B13A600F868ED /* Card Types */ = {
@@ -344,7 +403,8 @@
 		65E5C31A1B1B13B300F868ED /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				65043B391B4303B0001DFD92 /* New Group */,
+				658C81121B54F6A9003B256C /* Rarity */,
+				65043B391B4303B0001DFD92 /* Btn-blizzard-style */,
 				65E5C31F1B1B183500F868ED /* Character Icon@2x.png */,
 				65E5C3201B1B183500F868ED /* Character Icon@3x.png */,
 				6502FEC01B45A0BC00E93919 /* Attack-50.png */,
@@ -353,6 +413,7 @@
 				6502FEC11B45A0BC00E93919 /* Durability-50.png */,
 				654DBFEE1B46DF600084E0C5 /* Mana-50.png */,
 				654DBFEC1B46CA1A0084E0C5 /* Health-50.png */,
+				65D9C5191B4EE9E8008055C6 /* Ok Filled-50.png */,
 				65E5C3211B1B183500F868ED /* Icon Card@2x.png */,
 				65E5C3221B1B183500F868ED /* Icon Card@3x.png */,
 				65E5C3271B1B32F300F868ED /* Attention Filled-50.png */,
@@ -432,9 +493,10 @@
 				654CA48A1B24BDDF0079B4F2 /* Druid.png in Resources */,
 				6520CD181B1C72520074EE57 /* Panton-BlackCaps.otf in Resources */,
 				654DBFF31B46E47E0084E0C5 /* Card-50.png in Resources */,
-				653596631B47EC4800FDC10B /* cardListLocalized.json in Resources */,
 				65043B301B42FF67001DFD92 /* Play Icon@3x.png in Resources */,
+				6512A9CB1BAEDBE500C35020 /* Rogue_thumb.png in Resources */,
 				6520CD191B1C72520074EE57 /* Panton-BlackitalicCaps.otf in Resources */,
+				65929EDD1B99A6DE00CFAA32 /* cardListLocalized.json in Resources */,
 				6520CD1A1B1C72520074EE57 /* Panton-LightCaps.otf in Resources */,
 				654CA4901B24BDDF0079B4F2 /* Shaman.png in Resources */,
 				65043B2F1B42FF67001DFD92 /* Play Icon@2x.png in Resources */,
@@ -442,30 +504,43 @@
 				654CA4911B24BDDF0079B4F2 /* Warlock.png in Resources */,
 				6520CD1B1B1C72520074EE57 /* Panton-LightitalicCaps.otf in Resources */,
 				654CA47E1B24AD290079B4F2 /* Uther.png in Resources */,
+				6512A9C71BAEDBE500C35020 /* Hunter_thumb.png in Resources */,
 				654CA4791B24AD290079B4F2 /* Gul'dan.png in Resources */,
 				654CA47D1B24AD290079B4F2 /* Thrall.png in Resources */,
 				6502FEC31B45A0BC00E93919 /* Attack-50.png in Resources */,
 				65E5C3261B1B183500F868ED /* Icon Card@3x.png in Resources */,
+				6512A9C91BAEDBE500C35020 /* Paladin_thumb.png in Resources */,
 				654CA47C1B24AD290079B4F2 /* Rexxar.png in Resources */,
 				65043B371B4303AC001DFD92 /* btn_primary_over.png in Resources */,
+				658C810D1B54F698003B256C /* Common.png in Resources */,
 				65E5C32F1B1B32F300F868ED /* Help-50.png in Resources */,
+				658C81101B54F698003B256C /* Legendary.png in Resources */,
+				6512A9C61BAEDBE500C35020 /* Druid_thumb.png in Resources */,
 				65043B361B4303AC001DFD92 /* btn_primary_down.png in Resources */,
+				6512A9CC1BAEDBE500C35020 /* Shaman_thumb.png in Resources */,
 				65E5C32E1B1B32F300F868ED /* Attention-50.png in Resources */,
 				65E5C3241B1B183500F868ED /* Character Icon@3x.png in Resources */,
+				658C810F1B54F698003B256C /* Free.png in Resources */,
 				65E5C3231B1B183500F868ED /* Character Icon@2x.png in Resources */,
 				65A454CA1B024043003CDEFC /* missing.png in Resources */,
+				658C810E1B54F698003B256C /* Epic.png in Resources */,
 				654DBFED1B46CA1A0084E0C5 /* Health-50.png in Resources */,
-				6535A3991AE6C02D001F90B6 /* cardList.json in Resources */,
 				6502FEC41B45A0BC00E93919 /* Durability-50.png in Resources */,
+				6512A9CA1BAEDBE500C35020 /* Priest_thumb.png in Resources */,
 				658FA86F1B10E684006BB184 /* taunt.png in Resources */,
+				6512A9CE1BAEDBE500C35020 /* Warrior_thumb.png in Resources */,
 				654DBFF51B470B340084E0C5 /* Card-50@2x.png in Resources */,
 				65E5C3321B1B32F300F868ED /* Settings-50.png in Resources */,
+				6512A9CD1BAEDBE500C35020 /* Warlock_thumb.png in Resources */,
 				65E5C32D1B1B32F300F868ED /* Attention Filled-50.png in Resources */,
 				654CA48D1B24BDDF0079B4F2 /* Paladin.png in Resources */,
+				65D9C51A1B4EE9E8008055C6 /* Ok Filled-50.png in Resources */,
+				6512A9C81BAEDBE500C35020 /* Mage_thumb.png in Resources */,
 				654CA48B1B24BDDF0079B4F2 /* Hunter.png in Resources */,
 				6535A3771AE6B9A6001F90B6 /* Main.storyboard in Resources */,
 				6535A37C1AE6B9A6001F90B6 /* LaunchScreen.xib in Resources */,
 				65E5C3311B1B32F300F868ED /* Settings Filled-50.png in Resources */,
+				658C81111B54F698003B256C /* Rare.png in Resources */,
 				654CA48C1B24BDDF0079B4F2 /* Mage.png in Resources */,
 				6542E4811B2472FF002588B6 /* Delete Sign-50.png in Resources */,
 				654CA47A1B24AD290079B4F2 /* Jaina.png in Resources */,
@@ -492,6 +567,7 @@
 				6535A3721AE6B9A6001F90B6 /* AppDelegate.swift in Sources */,
 				6535A3961AE6BFDB001F90B6 /* CardListTableViewController.swift in Sources */,
 				654461631B024F3B00DC5BAD /* IntroViewController.swift in Sources */,
+				6512A9A91BAEBE1600C35020 /* DeckCell.swift in Sources */,
 				6533322D1AF8068B00C6D4C2 /* CardDetailViewController.swift in Sources */,
 				65F7D3761B32FF2B003F5301 /* CardCell.swift in Sources */,
 				654E16BD1AFF531100CB0C04 /* Card.swift in Sources */,
