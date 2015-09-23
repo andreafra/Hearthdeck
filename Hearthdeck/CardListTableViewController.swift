@@ -459,33 +459,25 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
             
             // var in cardDVC | var in tableView
 
-            cardDetailViewController.titleBar = thisCard.name
-            cardDetailViewController.cost = thisCard.cost.stringValue
-            cardDetailViewController.health = thisCard.health.stringValue
-            cardDetailViewController.attack = thisCard.attack.stringValue
             cardDetailViewController.id = thisCard.id
-            cardDetailViewController.playerClass = thisCard.playerClass
-            cardDetailViewController.rarity = thisCard.rarity
-            cardDetailViewController.type = thisCard.type
-            cardDetailViewController.text = thisCard.text
-            if !thisCard.hasImage {
-                // If current card has no image
-                // Download image
-                
-                let baseUrl = "http://wow.zamimg.com/images/hearthstone/cards/enus/medium/" + thisCard.id + ".png"
-                do {
-                    thisCard.image = try NSData(contentsOfURL: NSURL(string: baseUrl)!, options: NSDataReadingOptions.DataReadingMappedIfSafe)
-                    thisCard.hasImage = true
-                    do {
-                        try moc.save()
-                    } catch {
-                        print("Cannot save: \(error)")
-                    }
-                } catch {
-                    print("Cannot convert image!")
-                }
-            }
-            cardDetailViewController.imageData = thisCard.image
+            
+//            if !thisCard.hasImage {
+//                // If current card has no image
+//                // Download image
+//                
+//                let baseUrl = "http://wow.zamimg.com/images/hearthstone/cards/enus/medium/" + thisCard.id + ".png"
+//                do {
+//                    thisCard.image = try NSData(contentsOfURL: NSURL(string: baseUrl)!, options: NSDataReadingOptions.DataReadingMappedIfSafe)
+//                    thisCard.hasImage = true
+//                    do {
+//                        try moc.save()
+//                    } catch {
+//                        print("Cannot save: \(error)")
+//                    }
+//                } catch {
+//                    print("Cannot convert image!")
+//                }
+//            }
         }
     }
     

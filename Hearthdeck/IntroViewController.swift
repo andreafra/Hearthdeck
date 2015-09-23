@@ -124,10 +124,6 @@ class IntroViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         url = NSURL(fileURLWithPath: path!),
         data = NSData(contentsOfURL: url)
         
-        // Placeholder image
-        
-        let placeholderImage = UIImage(named: "missing.png")
-        
         let jsonOptional: AnyObject!
         do {
             jsonOptional = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions(rawValue: 0))
@@ -236,7 +232,7 @@ class IntroViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
                                                     print("Downloaded \(name)")
                                                 } else {
                                                     // Used placeholder
-                                                    imageData = UIImagePNGRepresentation(placeholderImage!)
+                                                    imageData = NSData()
                                                     print("Placeholdered \(name)")
                                                 }
                                                 

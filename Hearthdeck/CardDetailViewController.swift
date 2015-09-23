@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import CoreData
 
 class CardDetailViewController: UIViewController {
 
+    // MOC
+    let moc = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+    
     @IBOutlet var titleBarLabel: UINavigationItem!
     @IBOutlet var costLabel: UILabel!
     @IBOutlet var healthLabel: UILabel!
@@ -20,20 +25,69 @@ class CardDetailViewController: UIViewController {
     @IBOutlet var typeLabel: UILabel!
     @IBOutlet var textLabel: UILabel!
     @IBOutlet var cardImageView: UIImageView!
+    @IBOutlet var backgroundImage: UIImageView!
+    @IBOutlet var descriptionContainer: UIVisualEffectView!
+    @IBOutlet var loadingImageIndicator: UIActivityIndicatorView!
 
-    var titleBar: String!
-    var cost: String!
-    var health: String!
-    var attack: String!
-    var id: String!
-    var playerClass: String!
-    var rarity: String!
-    var type: String!
-    var text: String!
-    var imageData: NSData!
+    var card: Card!
     
+    var titleBar: String?
+    var cost: String?
+    var health: String?
+    var attack: String?
+    var id: String! // From here it fetch
+    var playerClass: String?
+    var rarity: String?
+    var type: String?
+    var text: String?
+    var imageData: NSData?
+    
+    //Backup tint colors
+    var navbarBackgroundColor: UIColor?
+    var navbarTintColor: UIColor?
+    var viewBackgroundColor: UIColor?
+    var buttonTintColor: UIColor?
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        viewBackgroundColor = self.navigationController!.view.backgroundColor
+        navbarBackgroundColor = self.navigationController?.navigationBar.backgroundColor
+        navbarTintColor = self.navigationController!.navigationBar.barTintColor
+        buttonTintColor = self.navigationController!.navigationBar.tintColor
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.translucent = true
+        self.navigationController!.view.backgroundColor = UIColor.clearColor()
+        self.navigationController?.navigationBar.backgroundColor = UIColor.clearColor()
+        self.navigationController!.navigationBar.barTintColor = UIColor.clearColor()
+
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        titleBarLabel.titleView?.tintColor = UIColor.whiteColor()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        downloadImage()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
+        self.navigationController?.navigationBar.shadowImage = nil
+        self.navigationController?.navigationBar.translucent = false
+        self.navigationController!.view.backgroundColor = viewBackgroundColor
+        self.navigationController?.navigationBar.backgroundColor = navbarBackgroundColor
+        self.navigationController!.navigationBar.barTintColor = navbarTintColor
+        
+        self.navigationController!.navigationBar.tintColor = buttonTintColor
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor()]
+        titleBarLabel.titleView?.tintColor = UIColor.blackColor()
+
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        fetchCard()
         
         titleBarLabel.title = titleBar
         costLabel.text = cost
@@ -43,7 +97,17 @@ class CardDetailViewController: UIViewController {
         playerClassLabel.text = playerClass
         rarityLabel.text = rarity
         typeLabel.text = type
-        cardImageView.image = UIImage(data: imageData)
+        if card.hasImage {
+            cardImageView.image = UIImage(data: imageData!)
+        }
+        
+        descriptionContainer.layer.cornerRadius = 10
+        descriptionContainer.clipsToBounds = true
+        
+        backgroundImage.backgroundColor = UIColor(red:0.304, green:0.28, blue:0.346, alpha:1)
+        if card.hasImage {
+            backgroundImage.image = UIImage(data: imageData!)
+        }
         
 //        // Get data from Url
 //        func getDataFromUrl(url:NSURL, completion: ((data: NSData?) -> Void)) {
@@ -92,7 +156,7 @@ class CardDetailViewController: UIViewController {
             return attrString
         }
         
-        textLabel.attributedText = convertText(text)
+        textLabel.attributedText = convertText(text!)
         
         // Do any additional setup after loading the view.
     }
@@ -101,16 +165,54 @@ class CardDetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func fetchCard() {
+        
+        let fetchRequest: NSFetchRequest = NSFetchRequest(entityName: "Card")
+        let sorter: NSSortDescriptor = NSSortDescriptor(key: "id" , ascending: true)
+        fetchRequest.predicate = NSPredicate(format: "id = %@", id)
+        fetchRequest.sortDescriptors = [sorter]
+        fetchRequest.returnsObjectsAsFaults = true
+        
+        do {
+            let results = try moc.executeFetchRequest(fetchRequest)
+            let cards = results as! [Card]
+            card = cards[0]
+            titleBar = card.name
+            cost = card.cost.stringValue
+            health = card.health.stringValue
+            attack = card.attack.stringValue
+            playerClass = card.playerClass
+            rarity = card.rarity
+            type = card.type
+            text = card.text
+            imageData = card.image
+            
+        } catch {
+            print("Fetch failed: \(error)")
+        }
     }
-    */
-
+    
+    func downloadImage() {
+        if !card.hasImage {
+            loadingImageIndicator.startAnimating()
+            let quality = "medium"
+            let baseUrl = "http://wow.zamimg.com/images/hearthstone/cards/enus/" + quality + "/" + card.id + ".png"
+            do {
+                card.image = try NSData(contentsOfURL: NSURL(string: baseUrl)!, options: NSDataReadingOptions.DataReadingMappedIfSafe)
+                card.hasImage = true
+                do {
+                    try moc.save()
+                } catch {
+                    print("Cannot save: \(error)")
+                }
+            } catch {
+                print("Cannot convert image!")
+            }
+            loadingImageIndicator.stopAnimating()
+            loadingImageIndicator.hidden = true
+            cardImageView.image = UIImage(data: card.image)
+            backgroundImage.image = UIImage(data: card.image)
+        }
+    }
 }
