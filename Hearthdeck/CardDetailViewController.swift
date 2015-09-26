@@ -42,48 +42,28 @@ class CardDetailViewController: UIViewController {
     var text: String?
     var imageData: NSData?
     
-    //Backup tint colors
-    var navbarBackgroundColor: UIColor?
-    var navbarTintColor: UIColor?
-    var viewBackgroundColor: UIColor?
-    var buttonTintColor: UIColor?
-    
     override func viewWillAppear(animated: Bool) {
-        
-        viewBackgroundColor = self.navigationController!.view.backgroundColor
-        navbarBackgroundColor = self.navigationController?.navigationBar.backgroundColor
-        navbarTintColor = self.navigationController!.navigationBar.barTintColor
-        buttonTintColor = self.navigationController!.navigationBar.tintColor
-        
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.translucent = true
-        self.navigationController!.view.backgroundColor = UIColor.clearColor()
         self.navigationController?.navigationBar.backgroundColor = UIColor.clearColor()
         self.navigationController!.navigationBar.barTintColor = UIColor.clearColor()
-
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         titleBarLabel.titleView?.tintColor = UIColor.whiteColor()
     }
     
     override func viewDidAppear(animated: Bool) {
+        if card.hasImage {
+            cardImageView.image = UIImage(data: imageData!)
+            backgroundImage.image = UIImage(data: imageData!)
+        }
+        
         downloadImage()
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
-        self.navigationController?.navigationBar.shadowImage = nil
-        self.navigationController?.navigationBar.translucent = false
-        self.navigationController!.view.backgroundColor = viewBackgroundColor
-        self.navigationController?.navigationBar.backgroundColor = navbarBackgroundColor
-        self.navigationController!.navigationBar.barTintColor = navbarTintColor
-        
-        self.navigationController!.navigationBar.tintColor = buttonTintColor
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor()]
-        titleBarLabel.titleView?.tintColor = UIColor.blackColor()
 
-    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -97,64 +77,13 @@ class CardDetailViewController: UIViewController {
         playerClassLabel.text = playerClass
         rarityLabel.text = rarity
         typeLabel.text = type
-        if card.hasImage {
-            cardImageView.image = UIImage(data: imageData!)
-        }
+    
+        
         
         descriptionContainer.layer.cornerRadius = 10
         descriptionContainer.clipsToBounds = true
         
         backgroundImage.backgroundColor = UIColor(red:0.304, green:0.28, blue:0.346, alpha:1)
-        if card.hasImage {
-            backgroundImage.image = UIImage(data: imageData!)
-        }
-        
-//        // Get data from Url
-//        func getDataFromUrl(url:NSURL, completion: ((data: NSData?) -> Void)) {
-//            NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) in
-//                completion(data: NSData(data: data))
-//                }.resume()
-//        }
-//        
-//        // Download the image - start the task
-//        func downloadImage(url:NSURL){
-//            println("Started downloading \"\(url.lastPathComponent!.stringByDeletingPathExtension)\".")
-//            getDataFromUrl(url) { data in
-//                dispatch_async(dispatch_get_main_queue()) {
-//                    println("Finished downloading \"\(url.lastPathComponent!.stringByDeletingPathExtension)\".")
-//                    self.cardImageView.image = UIImage(data: data!)
-//                }
-//            }
-//        }
-//        
-//        // Set the image
-//        let baseUrl = "http://wow.zamimg.com/images/hearthstone/cards/enus/medium/" + id + ".png"
-//        if let checkedUrl = NSURL(string: baseUrl) {
-//            downloadImage(checkedUrl)
-//        }
-        
-        // Make attributed text
-        func convertText(inputText: String) -> NSAttributedString {
-            
-            let attrString = NSMutableAttributedString(string: inputText)
-            let boldFont = UIFont(name: "Helvetica-Bold", size: 15.0)!
-            
-            var r1 = (attrString.string as NSString).rangeOfString("<b>")
-            while r1.location != NSNotFound {
-                let r2 = (attrString.string as NSString).rangeOfString("</b>")
-                if r2.location != NSNotFound  && r2.location > r1.location {
-                    let r3 = NSMakeRange(r1.location + r1.length, r2.location - r1.location - r1.length)
-                    attrString.addAttribute(NSFontAttributeName, value: boldFont, range: r3)
-                    attrString.replaceCharactersInRange(r2, withString: "")
-                    attrString.replaceCharactersInRange(r1, withString: "")
-                } else {
-                    break
-                }
-                r1 = (attrString.string as NSString).rangeOfString("<b>")
-            }
-            
-            return attrString
-        }
         
         textLabel.attributedText = convertText(text!)
         
@@ -194,7 +123,9 @@ class CardDetailViewController: UIViewController {
     }
     
     func downloadImage() {
+        loadingImageIndicator.hidden = true
         if !card.hasImage {
+            loadingImageIndicator.hidden = false
             loadingImageIndicator.startAnimating()
             let quality = "medium"
             let baseUrl = "http://wow.zamimg.com/images/hearthstone/cards/enus/" + quality + "/" + card.id + ".png"
@@ -211,8 +142,27 @@ class CardDetailViewController: UIViewController {
             }
             loadingImageIndicator.stopAnimating()
             loadingImageIndicator.hidden = true
+
             cardImageView.image = UIImage(data: card.image)
             backgroundImage.image = UIImage(data: card.image)
         }
+    }
+    
+    // Make attributed text
+    func convertText(inputText: String) -> NSAttributedString {
+        
+        var cardDesc = inputText
+        
+        // Embed in a <span> for font attributes:
+        cardDesc = "<span style=\"font-family: Helvetica; font-size:15pt;\">" + cardDesc + "</span>"
+        
+        let data = cardDesc.dataUsingEncoding(NSUnicodeStringEncoding, allowLossyConversion: true)!
+        var attrStr:NSAttributedString?
+        do {
+            attrStr = try NSAttributedString(data: data, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
+        } catch {
+            print(error)
+        }
+        return attrStr!
     }
 }

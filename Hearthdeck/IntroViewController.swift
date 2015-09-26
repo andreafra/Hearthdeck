@@ -188,57 +188,58 @@ class IntroViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
                                     if let cost = card["cost"] as? Int { // all
                                         if let type = card["type"] as? String { // all
                                             if let rarity = card["rarity"] as? String { // all
-                                                var text = card["text"] as? String
-                                                var flavor = card["flavor"] as? String
-                                                var playerClass = card["playerClass"] as? String
-                                                var mechanics = card["mechanics"] as? Array<String>
-                                                var attack = card["attack"] as? Int
-                                                var health = card["health"] as? Int
-                                                var durability = card["durability"] as? Int
-                                                
-                                                if text == nil {
-                                                    text = ""
-                                                }
-                                                if flavor == nil {
-                                                    flavor = ""
-                                                }
-                                                if playerClass == nil {
-                                                    playerClass = "Neutral"
-                                                }
-                                                if mechanics == nil {
-                                                    mechanics = []
-                                                }
-                                                if attack == nil {
-                                                    attack = 0
-                                                }
-                                                if health == nil {
-                                                    health = 0
-                                                }
-                                                if durability == nil {
-                                                    durability = 0
-                                                }
-                                                
-                                                var imageData: NSData?
-                                                
-                                                if downloadImages.on {
-                                                    // Download image
-                                                    let baseUrl = "http://wow.zamimg.com/images/hearthstone/cards/enus/medium/" + id + ".png"
-                                                    do {
-                                                        imageData = try NSData(contentsOfURL: NSURL(string: baseUrl)!, options: NSDataReadingOptions.DataReadingMappedIfSafe)
-                                                    } catch {
-                                                        print(error)
-                                                        imageData = nil
+                                                if let collectible = card["collectible"] as? Bool { // all
+                                                    var text = card["text"] as? String
+                                                    var flavor = card["flavor"] as? String
+                                                    var playerClass = card["playerClass"] as? String
+                                                    var mechanics = card["mechanics"] as? Array<String>
+                                                    var attack = card["attack"] as? Int
+                                                    var health = card["health"] as? Int
+                                                    var durability = card["durability"] as? Int
+                                                    
+                                                    if text == nil {
+                                                        text = ""
                                                     }
-                                                    print("Downloaded \(name)")
-                                                } else {
-                                                    // Used placeholder
-                                                    imageData = NSData()
-                                                    print("Placeholdered \(name)")
+                                                    if flavor == nil {
+                                                        flavor = ""
+                                                    }
+                                                    if playerClass == nil {
+                                                        playerClass = "Neutral"
+                                                    }
+                                                    if mechanics == nil {
+                                                        mechanics = []
+                                                    }
+                                                    if attack == nil {
+                                                        attack = 0
+                                                    }
+                                                    if health == nil {
+                                                        health = 0
+                                                    }
+                                                    if durability == nil {
+                                                        durability = 0
+                                                    }
+                                                    
+                                                    var imageData: NSData?
+                                                    
+                                                    if downloadImages.on {
+                                                        // Download image
+                                                        let baseUrl = "http://wow.zamimg.com/images/hearthstone/cards/enus/medium/" + id + ".png"
+                                                        do {
+                                                            imageData = try NSData(contentsOfURL: NSURL(string: baseUrl)!, options: NSDataReadingOptions.DataReadingMappedIfSafe)
+                                                        } catch {
+                                                            print(error)
+                                                            imageData = nil
+                                                        }
+                                                        print("Downloaded \(name)")
+                                                    } else {
+                                                        // Used placeholder
+                                                        imageData = NSData()
+                                                        print("Placeholdered \(name)")
+                                                    }
+                                                    
+                                                    // Save the card to the Core Data
+                                                    Card.createCardInManagedObjectContext(moc, name: name, id: id, cost: cost, type: type, rarity: rarity, text: text!, flavor: flavor!, attack: attack!, health: health!, playerClass: playerClass!, durability: durability!, image: imageData!, hasImage: downloadImages.on, collectible: collectible)
                                                 }
-                                                
-                                                // Save the card to the Core Data
-                                                Card.createCardInManagedObjectContext(moc, name: name, id: id, cost: cost, type: type, rarity: rarity, text: text!, flavor: flavor!, attack: attack!, health: health!, playerClass: playerClass!, durability: durability!, image: imageData!, hasImage: downloadImages.on)
-                                                
                                             }
                                         }
                                     }

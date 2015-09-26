@@ -44,6 +44,7 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
     
     /*==== FILTER VARIABLES =====*/
     var definitivePredicate = NSPredicate(value: true)
+    var collectibleFilter = NSPredicate(format: "collectible = %@", true)
     var classFilter: NSPredicate = NSPredicate(value: true)
     var activeClass: String = ""
     var typeFilter: NSPredicate = NSPredicate(value: true)
@@ -154,6 +155,16 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
         wrapperView?.addGestureRecognizer(tapOnWrapper)
     }
 
+    override func viewDidAppear(animated: Bool) {
+        self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
+        self.navigationController?.navigationBar.shadowImage = nil
+        self.navigationController?.navigationBar.translucent = true
+        self.navigationController?.navigationBar.backgroundColor = UIColor.whiteColor()
+        self.navigationController!.navigationBar.barTintColor = UIColor.whiteColor()
+        self.navigationController!.navigationBar.tintColor = UIColor.blackColor()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor()]
+    }
+    
     // MARK: - Custom functions
     
     func fetchCard() {
@@ -248,13 +259,60 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
         } else {
             card = self.cards[indexPath.row]
         }
+        // LAYOUT
+        cell.nameLabel.text = card!.name ?? "[No Name]"
+        cell.costLabel.text = card!.cost.stringValue ?? "[?]"
+        cell.healthLabel.text = card!.health.stringValue ?? "0"
+        cell.attackLabel.text = card!.attack.stringValue ?? "0"
+
         
-        cell.nameLabel?.text = card!.name ?? "[No Name]"
-        cell.costLabel?.text = card!.cost.stringValue ?? "[?]"
+        switch card!.rarity {
+            case "Free", "Common":
+                cell.nameLabel.textColor = UIColor(hue:0, saturation:0, brightness:0.313, alpha:1)
+                break
+            case "Common":
+                cell.nameLabel.textColor = UIColor(hue:0, saturation:0, brightness:0.313, alpha:1)
+                break
+            case "Rare":
+                cell.nameLabel.textColor = UIColor(hue:0.594, saturation:1, brightness:0.969, alpha:1)
+                break
+            case "Epic":
+                cell.nameLabel.textColor = UIColor(hue:0.812, saturation:1, brightness:0.883, alpha:1)
+                break
+            case "Legendary":
+                cell.nameLabel.textColor = UIColor(hue:0.099, saturation:1, brightness:0.955, alpha:1)
+                break
+            default:
+                cell.nameLabel.textColor = UIColor(hue:0, saturation:0, brightness:0.313, alpha:1)
+                break
+        }
         
+        cell.attackIcon.image = cell.attackIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        cell.attackIcon.tintColor = UIColor(red:0.826, green:0.696, blue:0.063, alpha:1)
+        
+        switch card!.type {
+            case "Minion":
+                cell.healthIcon.image = cell.healthIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+                cell.healthIcon.tintColor = UIColor.redColor()
+                cell.healthLabel.textColor = UIColor.redColor()
+                break
+            case "Weapon":
+                cell.healthIcon.image = UIImage(named: "Durability-50.png")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+                cell.healthIcon.tintColor = UIColor(red:0.504, green:0.504, blue:0.504, alpha:1)
+                cell.healthLabel.text = card!.durability.stringValue
+                cell.healthLabel.textColor = UIColor(red:0.504, green:0.504, blue:0.504, alpha:1)
+                break
+            default: // = spell
+                cell.healthIcon.hidden = true
+                cell.attackIcon.hidden = true
+                cell.healthLabel.hidden = true
+                cell.attackLabel.hidden = true
+                break
+        }
+        // PICKING CARD
         if isPickingCard {
             
-            cell.costLabel.hidden = true
+            cell.costLabel.hidden = false // temp - to test
             
             if pickedCards.contains(card!.id) {
                 if pickedCardsQuantity[pickedCards.indexOf(card!.id)!] == 2 {
@@ -399,6 +457,7 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
                 //self.searchController.active = false
                 self.hideSearchBar()
             }
+            
             self.performSegueWithIdentifier("CardDetailSegue", sender: tableView)
         }
     }
@@ -890,7 +949,7 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
     }
     // COMBINE PREDICATES
     func combinePredicates() {
-        definitivePredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [classFilter, typeFilter, costFilter, rarityFilter])
+        definitivePredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [classFilter, typeFilter, costFilter, rarityFilter, collectibleFilter])
         print("Combined results!")
     }
     

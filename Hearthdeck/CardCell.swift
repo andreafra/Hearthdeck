@@ -13,6 +13,15 @@ class CardCell: UITableViewCell {
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var costLabel: UILabel!    
     
+    @IBOutlet var thumbnailImage: UIImageView!
+    
+    @IBOutlet var descriptionLabel: UILabel!
+    
+    @IBOutlet var attackLabel: UILabel!
+    @IBOutlet var healthLabel: UILabel!
+    @IBOutlet var attackIcon: UIImageView!
+    @IBOutlet var healthIcon: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
