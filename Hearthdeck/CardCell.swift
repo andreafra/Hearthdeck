@@ -21,6 +21,7 @@ class CardCell: UITableViewCell {
     @IBOutlet var healthLabel: UILabel!
     @IBOutlet var attackIcon: UIImageView!
     @IBOutlet var healthIcon: UIImageView!
+    @IBOutlet var manaIcon: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

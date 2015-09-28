@@ -28,6 +28,8 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
     // Empty filtered cards
     var filteredCards = [Card]()
     
+    
+    var lastSelectedRow: NSIndexPath?
     // If picking - picked cards
     var pickedCards = [String]()
     var pickedCardsQuantity = [Int]()
@@ -154,15 +156,15 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
 
         wrapperView?.addGestureRecognizer(tapOnWrapper)
     }
-
+    
     override func viewDidAppear(animated: Bool) {
         self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
         self.navigationController?.navigationBar.shadowImage = nil
         self.navigationController?.navigationBar.translucent = true
         self.navigationController?.navigationBar.backgroundColor = UIColor.whiteColor()
         self.navigationController!.navigationBar.barTintColor = UIColor.whiteColor()
-        self.navigationController!.navigationBar.tintColor = UIColor.blackColor()
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor()]
+        self.navigationController!.navigationBar.tintColor = UIColor(red:0, green:0.422, blue:0.969, alpha:1)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor()] //aqua color
     }
     
     // MARK: - Custom functions
@@ -250,7 +252,7 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(self.CardCellIdentifier , forIndexPath: indexPath) as! CardCell
         
-        var card: Card?
+        var card: Card!
         
         if self.searchController.active {
             if !self.filteredCards.isEmpty{
@@ -260,18 +262,23 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
             card = self.cards[indexPath.row]
         }
         // LAYOUT
-        cell.nameLabel.text = card!.name ?? "[No Name]"
-        cell.costLabel.text = card!.cost.stringValue ?? "[?]"
-        cell.healthLabel.text = card!.health.stringValue ?? "0"
-        cell.attackLabel.text = card!.attack.stringValue ?? "0"
+        cell.nameLabel.text = card.name ?? "[No Name]"
+        cell.costLabel.text = card.cost.stringValue ?? "[?]"
+        cell.healthLabel.text = card.health.stringValue ?? "0"
+        cell.attackLabel.text = card.attack.stringValue ?? "0"
+        cell.descriptionLabel.attributedText = convertText(card.text, sizeInPt: 10)
+        cell.descriptionLabel.textColor = UIColor(red:0.38, green:0.38, blue:0.38, alpha:1)
 
+        if card.hasImage {
+            cell.thumbnailImage.image = UIImage(data: card.thumbnail)
+        } else {
+            cell.thumbnailImage.image = UIImage()
+        }
+        
         
         switch card!.rarity {
             case "Free", "Common":
-                cell.nameLabel.textColor = UIColor(hue:0, saturation:0, brightness:0.313, alpha:1)
-                break
-            case "Common":
-                cell.nameLabel.textColor = UIColor(hue:0, saturation:0, brightness:0.313, alpha:1)
+                cell.nameLabel.textColor = UIColor.blackColor()
                 break
             case "Rare":
                 cell.nameLabel.textColor = UIColor(hue:0.594, saturation:1, brightness:0.969, alpha:1)
@@ -283,12 +290,14 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
                 cell.nameLabel.textColor = UIColor(hue:0.099, saturation:1, brightness:0.955, alpha:1)
                 break
             default:
-                cell.nameLabel.textColor = UIColor(hue:0, saturation:0, brightness:0.313, alpha:1)
-                break
+                cell.nameLabel.textColor = UIColor.blackColor()
         }
         
         cell.attackIcon.image = cell.attackIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        cell.manaIcon.image = cell.manaIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+
         cell.attackIcon.tintColor = UIColor(red:0.826, green:0.696, blue:0.063, alpha:1)
+        cell.manaIcon.tintColor = UIColor(red:0, green:0.589, blue:1, alpha:1)
         
         switch card!.type {
             case "Minion":
@@ -463,7 +472,10 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.navigationController?.setToolbarHidden(false, animated: true)
+        if lastSelectedRow != nil {
+            self.tableView.deselectRowAtIndexPath(lastSelectedRow!, animated: false)
+            self.tableView.reloadRowsAtIndexPaths([lastSelectedRow!], withRowAnimation: UITableViewRowAnimation.None)
+        }
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -508,6 +520,8 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
                 indexPath = isPickingCardIndexPath
             } else {
                 indexPath = self.tableView.indexPathForSelectedRow
+                lastSelectedRow = indexPath
+                
             }
             var thisCard: Card
             if self.searchController.active {

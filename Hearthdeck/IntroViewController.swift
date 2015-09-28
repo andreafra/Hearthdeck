@@ -21,21 +21,27 @@ class IntroViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     
     @IBOutlet var bottomView: UIView!
     
+    @IBOutlet var loadingBar: UIProgressView!
+    var downloadProgress: Float = 0
+    
+    @IBOutlet var endSetupButton: UIButton!
     
     // Languages and sets for the initialise func later
     let languages = ["zhCN", "zhTW", "enGB", "enUS", "frFR", "deDE", "itIT", "koKR", "plPL", "ptBR", "ptPT", "ruRU", "esMX", "esES"]
     let languagesDescription = ["Chinese", "Chinese (Taiwan)", "English (British)", "English (US)", "French", "Tedesco", "Italian", "Korean", "Polish", "Portuguese (Brazilian)", "Portuguese", "Russian", "Spanish (Mexican)", "Spanish"]
     var selectedLanguage: String = "enUS"
     
-    var howManyCards: Int = 0
-    var howManyCardsAdded: Int = 0
-    let cardSets = ["Basic","Blackrock Mountain","Classic",/*"Credits",*/"Curse of Naxxramas",/*"Debug",*/"Goblins vs Gnomes",/*"Missions",*/ "Promotion","Reward", "System"]
+    var howManyCards: Float = 0
+    var howManyCardsAdded: Float = 0
+    var howManySetDone: Float = 0
+    
+    let cardSets = ["Basic","Blackrock Mountain","Classic",/*"Credits",*/"Curse of Naxxramas",/*"Debug",*/"Goblins vs Gnomes",/*"Missions",*/ "Promotion","Reward", /*"System",*/ "The Grand Tournament"]
     
     // core data
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     var existingCards = [Card]()
-    
+
     var duplicatedCards = [Card]()
     
     // Start the setup
@@ -65,15 +71,18 @@ class IntroViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
                 (value: Bool) in
                 
                 
-                
-                self.initialiseHearthdeckDatabase()
+                self.performSelectorInBackground("initialiseHearthdeckDatabase", withObject: nil)
+                //self.initialiseHearthdeckDatabase()
                 
                 print("Setting up complete!")
                 self.view.userInteractionEnabled = true
                 
-                // Back to main menu
-                self.dismissViewControllerAnimated(true, completion: nil)
         })
+    }
+    
+    @IBAction func endSetup(sender: AnyObject) {
+        // Back to main menu
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -82,6 +91,10 @@ class IntroViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         languagePicker.delegate = self
         languagePicker.dataSource = self
         
+        endSetupButton.enabled = false
+        endSetupButton.hidden = true
+        
+        loadingBar.progress = 0
         loadingView.alpha = 0
         // Do any additional setup after loading the view.
     }
@@ -142,7 +155,7 @@ class IntroViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
                 
                 for set in cardSets {
                     if let theSet = language[set] as? Array<Dictionary<String, AnyObject>> {
-                    howManyCards += theSet.count
+                    howManyCards += Float(theSet.count)
                     }
                 }
             }
@@ -220,6 +233,7 @@ class IntroViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
                                                     }
                                                     
                                                     var imageData: NSData?
+                                                    var thumbnailData: NSData?
                                                     
                                                     if downloadImages.on {
                                                         // Download image
@@ -230,15 +244,31 @@ class IntroViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
                                                             print(error)
                                                             imageData = nil
                                                         }
+                                                        // Create thumbnail
+                                                        var tempImg = UIImage(data: imageData!)
+                                                        var h: CGFloat!
+                                                        if type == "Spell" {
+                                                            h = 70
+                                                        } else {
+                                                            h = 50
+                                                        }
+                                                        tempImg = Toucan.Util.croppedImageWithRect(tempImg!, rect: CGRectMake(tempImg!.size.width/2-35, h, 70, 70))
+                                                        tempImg = Toucan(image: tempImg!).maskWithEllipse().image
+                                                        
+                                                        thumbnailData =  UIImagePNGRepresentation(tempImg!)
+                                                        
                                                         print("Downloaded \(name)")
                                                     } else {
                                                         // Used placeholder
                                                         imageData = NSData()
+                                                        thumbnailData = NSData()
                                                         print("Placeholdered \(name)")
                                                     }
                                                     
+                                                    
+                                                    
                                                     // Save the card to the Core Data
-                                                    Card.createCardInManagedObjectContext(moc, name: name, id: id, cost: cost, type: type, rarity: rarity, text: text!, flavor: flavor!, attack: attack!, health: health!, playerClass: playerClass!, durability: durability!, image: imageData!, hasImage: downloadImages.on, collectible: collectible)
+                                                    Card.createCardInManagedObjectContext(moc, name: name, id: id, cost: cost, type: type, rarity: rarity, text: text!, flavor: flavor!, attack: attack!, health: health!, playerClass: playerClass!, durability: durability!, image: imageData!, hasImage: downloadImages.on, collectible: collectible, thumbnail: thumbnailData!)
                                                 }
                                             }
                                         }
@@ -247,9 +277,20 @@ class IntroViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
                             }
                         }
                     }
+                    howManySetDone += 1
+                    performSelectorOnMainThread("setDownloadProgressBar:", withObject: howManySetDone, waitUntilDone: false)
                 }
             }
         }
+        
+        endSetupButton.enabled = true
+        endSetupButton.hidden = false
+    }
+    
+    func setDownloadProgressBar(value: Float) {
+        
+        let _value = howManySetDone / Float(cardSets.count)
+        loadingBar.setProgress(_value, animated: true)
     }
     /*
     // MARK: - Navigation

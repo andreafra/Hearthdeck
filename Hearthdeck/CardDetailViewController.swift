@@ -85,7 +85,7 @@ class CardDetailViewController: UIViewController {
         
         backgroundImage.backgroundColor = UIColor(red:0.304, green:0.28, blue:0.346, alpha:1)
         
-        textLabel.attributedText = convertText(text!)
+        textLabel.attributedText = convertText(text!, sizeInPt: 15)
         
         // Do any additional setup after loading the view.
     }
@@ -131,6 +131,17 @@ class CardDetailViewController: UIViewController {
             let baseUrl = "http://wow.zamimg.com/images/hearthstone/cards/enus/" + quality + "/" + card.id + ".png"
             do {
                 card.image = try NSData(contentsOfURL: NSURL(string: baseUrl)!, options: NSDataReadingOptions.DataReadingMappedIfSafe)
+                var tempImg = UIImage(data: card.image)
+                var h: CGFloat!
+                if card.type == "Spell" {
+                    h = 70
+                } else {
+                    h = 50
+                }
+                tempImg = Toucan.Util.croppedImageWithRect(tempImg!, rect: CGRectMake(tempImg!.size.width/2-35, h, 70, 70))
+                tempImg = Toucan(image: tempImg!).maskWithEllipse().image
+                
+                card.thumbnail =  UIImagePNGRepresentation(tempImg!)!
                 card.hasImage = true
                 do {
                     try moc.save()
@@ -146,23 +157,5 @@ class CardDetailViewController: UIViewController {
             cardImageView.image = UIImage(data: card.image)
             backgroundImage.image = UIImage(data: card.image)
         }
-    }
-    
-    // Make attributed text
-    func convertText(inputText: String) -> NSAttributedString {
-        
-        var cardDesc = inputText
-        
-        // Embed in a <span> for font attributes:
-        cardDesc = "<span style=\"font-family: Helvetica; font-size:15pt;\">" + cardDesc + "</span>"
-        
-        let data = cardDesc.dataUsingEncoding(NSUnicodeStringEncoding, allowLossyConversion: true)!
-        var attrStr:NSAttributedString?
-        do {
-            attrStr = try NSAttributedString(data: data, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
-        } catch {
-            print(error)
-        }
-        return attrStr!
     }
 }
