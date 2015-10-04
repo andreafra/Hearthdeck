@@ -61,14 +61,15 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(isPickingCardClass)
+        print("Is picking card: \(isPickingCardClass)")
+        
+        self.navigationController?.setToolbarHidden(false, animated: true)
         
         //first fetch deck and setup filters
         if isPickingCard {
             
             classFilter = NSPredicate(format: "playerClass = %@ OR playerClass = \"Neutral\"", isPickingCardClass)
             classPickerButton.enabled = false
-            
             
             let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "handleLongPress:")
             longPressGestureRecognizer.minimumPressDuration = 1.0
@@ -114,47 +115,14 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
         self.tableView.tableHeaderView = self.searchController.searchBar
         self.definesPresentationContext = true
         
-        if isPickingCard {
-            
-            classPickerButton.enabled = false
-            
-            
-            let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "handleLongPress:")
-            longPressGestureRecognizer.minimumPressDuration = 1.0
-            self.tableView.addGestureRecognizer(longPressGestureRecognizer)
-            
-            let fetchRequest = NSFetchRequest(entityName: "Deck")
-            fetchRequest.predicate = NSPredicate(format: "name = %@", deckName!)
-            
-            do {
-                let fetchResults = try self.appDel.managedObjectContext.executeFetchRequest(fetchRequest)
-                if fetchResults.count != 0 {
-
-                    let managedObject = fetchResults[0] as! Deck
-                    let cardsOfDeck: String = managedObject.cards
-                    
-                    // Parse string into array
-                    if cardsOfDeck != "" {
-                        var cardsArrayRaw = cardsOfDeck.componentsSeparatedByString(" ")
-                        cardsArrayRaw.removeLast()
-                        for card in cardsArrayRaw {
-                            let cardRaw = card.componentsSeparatedByString("@")
-                            pickedCards.append(cardRaw[0])
-                            pickedCardsQuantity.append(Int(cardRaw[1])!)
-                        }
-                    }
-                }
-            } catch {
-                print("Error")
-            }
-        }
+        
         for i in pickedCardsQuantity {
             numOfPickedCards += i
         }
         
-        let tapOnWrapper = UIGestureRecognizer(target: self, action: "handleTap:")
+        //let tapOnWrapper = UIGestureRecognizer(target: self, action: "handleTap:")
 
-        wrapperView?.addGestureRecognizer(tapOnWrapper)
+        //wrapperView?.addGestureRecognizer(tapOnWrapper)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -165,6 +133,10 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
         self.navigationController!.navigationBar.barTintColor = UIColor.whiteColor()
         self.navigationController!.navigationBar.tintColor = UIColor(red:0, green:0.422, blue:0.969, alpha:1)
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor()] //aqua color
+        
+        if isPickingCard {
+            self.title = "\(numOfPickedCards)/30"
+        }
     }
     
     // MARK: - Custom functions
@@ -304,12 +276,20 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
                 cell.healthIcon.image = cell.healthIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
                 cell.healthIcon.tintColor = UIColor.redColor()
                 cell.healthLabel.textColor = UIColor.redColor()
+                cell.healthIcon.hidden = false
+                cell.attackIcon.hidden = false
+                cell.healthLabel.hidden = false
+                cell.attackLabel.hidden = false
                 break
             case "Weapon":
                 cell.healthIcon.image = UIImage(named: "Durability-50.png")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
                 cell.healthIcon.tintColor = UIColor(red:0.504, green:0.504, blue:0.504, alpha:1)
                 cell.healthLabel.text = card!.durability.stringValue
                 cell.healthLabel.textColor = UIColor(red:0.504, green:0.504, blue:0.504, alpha:1)
+                cell.healthIcon.hidden = false
+                cell.attackIcon.hidden = false
+                cell.healthLabel.hidden = false
+                cell.attackLabel.hidden = false
                 break
             default: // = spell
                 cell.healthIcon.hidden = true
@@ -325,8 +305,9 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
             
             if pickedCards.contains(card!.id) {
                 if pickedCardsQuantity[pickedCards.indexOf(card!.id)!] == 2 {
-                    cell.costLabel.hidden = false
-                    cell.costLabel.text = "2x"
+                    cell.nameLabel.text = "\(card.name) ×2"
+                } else if pickedCardsQuantity[pickedCards.indexOf(card!.id)!] == 1 {
+                    cell.nameLabel.text = "\(card.name) ×1"
                 }
                 cell.accessoryType = UITableViewCellAccessoryType.Checkmark
             } else {
@@ -355,30 +336,40 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
             self.presentViewController(alertController, animated: true) {}
         }
         
+        
+        // Code to pick cards
         if isPickingCard {
 
             if numOfPickedCards < 30 {
             
-                if self.searchController.active {
+                if self.searchController.active { // IS SEARCHING
                     let card = filteredCards[indexPath.row].id
+                    let card_rarity = filteredCards[indexPath.row].rarity
+
                     
                     // Cycle in this way: NO CARD -> 1 CARD -> 2 CARD -> NO CARD ...
                     
-                    if pickedCards.contains(card) {
+                    if pickedCards.contains(card) { // CARD IS PRESENT
                         
                         let cardIndex = pickedCards.indexOf(card)!
                         
-                        if pickedCardsQuantity[cardIndex] >= 2 {
+                        if pickedCardsQuantity[cardIndex] >= 2{
                             // Delete card
                             pickedCards.removeAtIndex(cardIndex)
                             pickedCardsQuantity.removeAtIndex(cardIndex)
                             numOfPickedCards -= 2
+                        } else if card_rarity == "Legendary" && pickedCardsQuantity[cardIndex] >= 1 {
+                            // Only one legendary
+                            pickedCards.removeAtIndex(cardIndex)
+                            pickedCardsQuantity.removeAtIndex(cardIndex)
+                            numOfPickedCards -= 1
+
                         } else {
                             // Add second copy
                             pickedCardsQuantity[cardIndex] += 1
                             numOfPickedCards += 1
                         }
-                    } else {
+                    } else { // CARD NOT PRESENT
                         // Add card
                         pickedCards.append(card)
                         pickedCardsQuantity.append(1)
@@ -388,6 +379,7 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
                     
                 } else {
                     let card = cards[indexPath.row].id
+                    let card_rarity = cards[indexPath.row].rarity
                     
                     if pickedCards.contains(card) {
                         
@@ -398,6 +390,11 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
                             pickedCards.removeAtIndex(cardIndex)
                             pickedCardsQuantity.removeAtIndex(cardIndex)
                             numOfPickedCards -= 2
+                        } else if card_rarity == "Legendary" && pickedCardsQuantity[cardIndex] >= 1 {
+                            // Only one legendary
+                            pickedCards.removeAtIndex(cardIndex)
+                            pickedCardsQuantity.removeAtIndex(cardIndex)
+                            numOfPickedCards -= 1
                         } else {
                             // Add second copy
                             pickedCardsQuantity[cardIndex] += 1
@@ -413,7 +410,7 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
                 }
             } else {
                 // You can only delete:
-                if self.searchController.active {
+                if self.searchController.active { // IS SEARCHING
                     let card = filteredCards[indexPath.row].id
 
                     if pickedCards.contains(card) {
@@ -472,6 +469,9 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
     }
     
     override func viewWillAppear(animated: Bool) {
+        
+        self.navigationController?.setToolbarHidden(false, animated: true)
+        
         if lastSelectedRow != nil {
             self.tableView.deselectRowAtIndexPath(lastSelectedRow!, animated: false)
             self.tableView.reloadRowsAtIndexPaths([lastSelectedRow!], withRowAnimation: UITableViewRowAnimation.None)
@@ -990,9 +990,9 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
         tableView.allowsSelection = true
     }
     
-    func handleTap(gesture: UIGestureRecognizer) {
-        
-    }
+//    func handleTap(gesture: UIGestureRecognizer) {
+//        
+//    }
     
     func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
         let p: CGPoint = gestureRecognizer.locationInView(self.tableView)

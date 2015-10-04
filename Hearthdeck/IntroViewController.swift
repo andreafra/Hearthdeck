@@ -62,6 +62,7 @@ class IntroViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
                 //fade & move up
                 self.loadingView.center = self.view.center
                 self.loadingView.alpha = 1
+                self.loadingView.layer.cornerRadius = 5
                 self.view.backgroundColor = UIColor.lightGrayColor()
                 self.bottomView.center.y += self.bottomView.frame.height
             })
