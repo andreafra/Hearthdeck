@@ -42,6 +42,11 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
     
     @IBOutlet var classPickerButton: UIBarButtonItem!
     
+    // Alphabetic or mana cost order
+    @IBOutlet var selectedImageView: UIImageView!
+    @IBOutlet var sorterSelector: UISegmentedControl!
+    var sorterParameter: String = "name"
+    
     var isPickingCardIndexPath: NSIndexPath?
     
     /*==== FILTER VARIABLES =====*/
@@ -60,8 +65,6 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("Is picking card: \(isPickingCardClass)")
         
         self.navigationController?.setToolbarHidden(false, animated: true)
         
@@ -134,8 +137,11 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
         self.navigationController!.navigationBar.tintColor = UIColor(red:0, green:0.422, blue:0.969, alpha:1)
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor()] //aqua color
         
+        
         if isPickingCard {
             self.title = "\(numOfPickedCards)/30"
+            
+            print("\(isPickingCardClass) + \(isPickingCard)")
         }
     }
     
@@ -145,8 +151,9 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
         
         cards = []
         
+        
         let fetchRequest: NSFetchRequest = NSFetchRequest(entityName: "Card")
-        let sorter: NSSortDescriptor = NSSortDescriptor(key: "name" , ascending: true)
+        let sorter: NSSortDescriptor = NSSortDescriptor(key: sorterParameter , ascending: true)
         fetchRequest.predicate = definitivePredicate
         fetchRequest.sortDescriptors = [sorter]
         fetchRequest.returnsObjectsAsFaults = true
@@ -154,13 +161,6 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
         do {
             let results = try moc.executeFetchRequest(fetchRequest)
             cards = results as! [Card]
-                /*if (cards.count > 0) { // Debug purpose
-                    for card in cards as [Card] {
-                        println(card.name)
-                    }
-                } else {
-                    println("No Cards")
-                }*/
         } catch {
             print("Fetch failed: \(error)")
         }
@@ -241,12 +241,16 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
         cell.descriptionLabel.attributedText = convertText(card.text, sizeInPt: 10)
         cell.descriptionLabel.textColor = UIColor(red:0.38, green:0.38, blue:0.38, alpha:1)
 
-        if card.hasImage {
-            cell.thumbnailImage.image = UIImage(data: card.thumbnail)
-        } else {
-            cell.thumbnailImage.image = UIImage()
-        }
-        
+        let queue: dispatch_queue_t = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)
+        dispatch_async(queue, { () -> Void in
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                if card.hasImage {
+                    cell.thumbnailImage.image = UIImage(data: card.thumbnail)
+                } else {
+                    cell.thumbnailImage.image = UIImage()
+                }
+            })
+        })
         
         switch card!.rarity {
             case "Free", "Common":
@@ -265,17 +269,21 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
                 cell.nameLabel.textColor = UIColor.blackColor()
         }
         
+        cell.isPickedImageView.image = cell.isPickedImageView.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        cell.isPickedImageView.tintColor = UIColor.whiteColor()
+        cell.isPickedImageView.alpha = 0
+        
         cell.attackIcon.image = cell.attackIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         cell.manaIcon.image = cell.manaIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
 
-        cell.attackIcon.tintColor = UIColor(red:0.826, green:0.696, blue:0.063, alpha:1)
+        cell.attackIcon.tintColor = UIColor(red:1, green:0.756, blue:0.027, alpha:1)
         cell.manaIcon.tintColor = UIColor(red:0, green:0.589, blue:1, alpha:1)
         
         switch card!.type {
             case "Minion":
                 cell.healthIcon.image = cell.healthIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-                cell.healthIcon.tintColor = UIColor.redColor()
-                cell.healthLabel.textColor = UIColor.redColor()
+                cell.healthIcon.tintColor = UIColor(red:1, green:0.239, blue:0, alpha:1)
+                cell.healthLabel.textColor = UIColor(red:1, green:0.239, blue:0, alpha:1)
                 cell.healthIcon.hidden = false
                 cell.attackIcon.hidden = false
                 cell.healthLabel.hidden = false
@@ -302,17 +310,38 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
         if isPickingCard {
             
             cell.costLabel.hidden = false // temp - to test
+            let paddingWidth = cell.isPickedImageView.frame.width
             
             if pickedCards.contains(card!.id) {
                 if pickedCardsQuantity[pickedCards.indexOf(card!.id)!] == 2 {
                     cell.nameLabel.text = "\(card.name) ×2"
+                    // Doesn't animate
+                    cell.isPickedImageView.alpha = 1
+                    cell.nameLabel.transform = CGAffineTransformMakeTranslation(paddingWidth, 0)
+                    cell.thumbnailImage.transform = CGAffineTransformMakeTranslation(paddingWidth, 0)
+                    cell.descriptionLabel.transform = CGAffineTransformMakeTranslation(paddingWidth, 0)
+                    
                 } else if pickedCardsQuantity[pickedCards.indexOf(card!.id)!] == 1 {
                     cell.nameLabel.text = "\(card.name) ×1"
+                    UIView.animateWithDuration(0.3, animations: { _ in
+                        // Animates
+                        cell.isPickedImageView.alpha = 1
+                        cell.nameLabel.transform = CGAffineTransformMakeTranslation(paddingWidth, 0)
+                        cell.thumbnailImage.transform = CGAffineTransformMakeTranslation(paddingWidth, 0)
+                        cell.descriptionLabel.transform = CGAffineTransformMakeTranslation(paddingWidth, 0)
+                    })
                 }
-                cell.accessoryType = UITableViewCellAccessoryType.Checkmark
-            } else {
                 
-                cell.accessoryType = UITableViewCellAccessoryType.None
+                
+                
+            } else {
+                UIView.animateWithDuration(0.3, animations: { _ in
+                    cell.isPickedImageView.alpha = 0
+                    cell.nameLabel.transform = CGAffineTransformMakeTranslation(0, 0)
+                    cell.thumbnailImage.transform = CGAffineTransformMakeTranslation(0, 0)
+                    cell.descriptionLabel.transform = CGAffineTransformMakeTranslation(0, 0) 
+                })
+                
             }
         }
         
@@ -375,7 +404,7 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
                         pickedCardsQuantity.append(1)
                         numOfPickedCards += 1
                     }
-                    tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+                    tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
                     
                 } else {
                     let card = cards[indexPath.row].id
@@ -406,7 +435,7 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
                         pickedCardsQuantity.append(1)
                         numOfPickedCards += 1
                     }
-                    tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+                    tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
                 }
             } else {
                 // You can only delete:
@@ -425,7 +454,7 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
                     } else {
                         alertDeckIsFull()
                     }
-                    tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+                    tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
                 } else {
                     let card = cards[indexPath.row].id
                     
@@ -445,7 +474,7 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
                     } else {
                         alertDeckIsFull()
                     }
-                    tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+                    tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
                 }
             }
             print(pickedCards)
@@ -512,6 +541,15 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
         }
     }
     
+    @IBAction func didSortSelectorChanged(sender: AnyObject) {
+        if sorterParameter == "name" {
+            sorterParameter = "cost"
+        } else {
+            sorterParameter = "name"
+        }
+        fetchCard()
+        self.tableView.reloadData()
+    }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == "CardDetailSegue" {
             let cardDetailViewController = segue.destinationViewController as! CardDetailViewController

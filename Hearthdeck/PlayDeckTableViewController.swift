@@ -76,7 +76,7 @@ class PlayDeckTableViewController: UITableViewController {
             let cardType = card.type
             
             cell.attackIcon.image = cell.attackIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-            cell.attackIcon.tintColor = UIColor(red:0.826, green:0.696, blue:0.063, alpha:1)
+            cell.attackIcon.tintColor = UIColor(red:1, green:0.756, blue:0.027, alpha:1)
             
             // Card counter rotation and antialiasing
             let degrees: Double = 15
@@ -130,8 +130,8 @@ class PlayDeckTableViewController: UITableViewController {
             
             if cardType == "Minion" {
                 cell.healthIcon.image = cell.healthIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-                cell.healthIcon.tintColor = UIColor.redColor()
-                cell.healthValue.textColor = UIColor.redColor()
+                cell.healthIcon.tintColor = UIColor(red:1, green:0.239, blue:0, alpha:1)
+                cell.healthValue.textColor = UIColor(red:1, green:0.239, blue:0, alpha:1)
             } else if cardType == "Weapon" {
                 cell.healthIcon.image = UIImage(named: "Durability-50.png")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
                 cell.healthIcon.tintColor = UIColor(red:0.504, green:0.504, blue:0.504, alpha:1)

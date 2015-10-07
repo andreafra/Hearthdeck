@@ -110,10 +110,15 @@ class DeckDetailViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "goToDeckCards" {
-            let tvc = segue.destinationViewController as! DeckDetailTableViewController
+//            let tvc = segue.destinationViewController as! DeckDetailTableViewController
+//            
+//            tvc.deckTitle = deckTitle.title!
+//            tvc.playerClass = playerClass
+            let vc = segue.destinationViewController as! CardListTableViewController
             
-            tvc.deckTitle = deckTitle.title!
-            tvc.playerClass = playerClass
+            vc.isPickingCard = true
+            vc.deckName = deckTitle.title
+            vc.isPickingCardClass = playerClass!
         } else if segue.identifier == "playDeck" {
             let tvc = segue.destinationViewController as! PlayDeckTableViewController
             
@@ -254,6 +259,8 @@ class DeckDetailViewController: UIViewController {
                     self.characterType.text = type
                     self.characterName.text = name
                     self.characterImage.image = UIImage(named: name+".png")
+                    
+                    playerClass = type // set this to load class card when opening the DB
                     do {
                         try moc.save()
                     } catch _ {

@@ -75,8 +75,10 @@
 		658C81111B54F698003B256C /* Rare.png in Resources */ = {isa = PBXBuildFile; fileRef = 658C810C1B54F698003B256C /* Rare.png */; };
 		658FA86F1B10E684006BB184 /* taunt.png in Resources */ = {isa = PBXBuildFile; fileRef = 658FA86E1B10E684006BB184 /* taunt.png */; };
 		65929EDD1B99A6DE00CFAA32 /* cardListLocalized.json in Resources */ = {isa = PBXBuildFile; fileRef = 65929EDC1B99A6DE00CFAA32 /* cardListLocalized.json */; };
-		659458BF1B18CCE100D8675F /* DeckDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659458BE1B18CCE100D8675F /* DeckDetailTableViewController.swift */; };
 		659458C11B18CCF500D8675F /* DeckDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659458C01B18CCF500D8675F /* DeckDetailViewController.swift */; };
+		6599B1961BC58D8F00635B0B /* Card-Picked-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6599B1931BC58D8F00635B0B /* Card-Picked-Icon.png */; settings = {ASSET_TAGS = (); }; };
+		6599B1971BC58D8F00635B0B /* Card-Picked-Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6599B1941BC58D8F00635B0B /* Card-Picked-Icon@2x.png */; settings = {ASSET_TAGS = (); }; };
+		6599B1981BC58D8F00635B0B /* Card-Picked-Icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6599B1951BC58D8F00635B0B /* Card-Picked-Icon@3x.png */; settings = {ASSET_TAGS = (); }; };
 		65A23B091B0FA065000D5980 /* HS_database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 65A23B071B0FA065000D5980 /* HS_database.xcdatamodeld */; };
 		65A23B0B1B0FB37D000D5980 /* DecksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A23B0A1B0FB37D000D5980 /* DecksTableViewController.swift */; };
 		65D9C51A1B4EE9E8008055C6 /* Ok Filled-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D9C5191B4EE9E8008055C6 /* Ok Filled-50.png */; };
@@ -165,8 +167,10 @@
 		658C810C1B54F698003B256C /* Rare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Rare.png; sourceTree = "<group>"; };
 		658FA86E1B10E684006BB184 /* taunt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taunt.png; sourceTree = "<group>"; };
 		65929EDC1B99A6DE00CFAA32 /* cardListLocalized.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cardListLocalized.json; sourceTree = "<group>"; };
-		659458BE1B18CCE100D8675F /* DeckDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckDetailTableViewController.swift; sourceTree = "<group>"; };
 		659458C01B18CCF500D8675F /* DeckDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckDetailViewController.swift; sourceTree = "<group>"; };
+		6599B1931BC58D8F00635B0B /* Card-Picked-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Card-Picked-Icon.png"; sourceTree = "<group>"; };
+		6599B1941BC58D8F00635B0B /* Card-Picked-Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Card-Picked-Icon@2x.png"; sourceTree = "<group>"; };
+		6599B1951BC58D8F00635B0B /* Card-Picked-Icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Card-Picked-Icon@3x.png"; sourceTree = "<group>"; };
 		65A23B081B0FA065000D5980 /* HS_database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HS_database.xcdatamodel; sourceTree = "<group>"; };
 		65A23B0A1B0FB37D000D5980 /* DecksTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecksTableViewController.swift; sourceTree = "<group>"; };
 		65D9C5191B4EE9E8008055C6 /* Ok Filled-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ok Filled-50.png"; sourceTree = "<group>"; };
@@ -322,7 +326,6 @@
 				6535A3951AE6BFDB001F90B6 /* CardListTableViewController.swift */,
 				6533322C1AF8068B00C6D4C2 /* CardDetailViewController.swift */,
 				65A23B0A1B0FB37D000D5980 /* DecksTableViewController.swift */,
-				659458BE1B18CCE100D8675F /* DeckDetailTableViewController.swift */,
 				659458C01B18CCF500D8675F /* DeckDetailViewController.swift */,
 				65043B311B4302A6001DFD92 /* PlayDeckTableViewController.swift */,
 			);
@@ -417,6 +420,9 @@
 				654DBFEE1B46DF600084E0C5 /* Mana-50.png */,
 				654DBFEC1B46CA1A0084E0C5 /* Health-50.png */,
 				65D9C5191B4EE9E8008055C6 /* Ok Filled-50.png */,
+				6599B1931BC58D8F00635B0B /* Card-Picked-Icon.png */,
+				6599B1941BC58D8F00635B0B /* Card-Picked-Icon@2x.png */,
+				6599B1951BC58D8F00635B0B /* Card-Picked-Icon@3x.png */,
 				65E5C3211B1B183500F868ED /* Icon Card@2x.png */,
 				65E5C3221B1B183500F868ED /* Icon Card@3x.png */,
 				65E5C3271B1B32F300F868ED /* Attention Filled-50.png */,
@@ -527,6 +533,7 @@
 				65E5C3231B1B183500F868ED /* Character Icon@2x.png in Resources */,
 				658C810E1B54F698003B256C /* Epic.png in Resources */,
 				654DBFED1B46CA1A0084E0C5 /* Health-50.png in Resources */,
+				6599B1971BC58D8F00635B0B /* Card-Picked-Icon@2x.png in Resources */,
 				6502FEC41B45A0BC00E93919 /* Durability-50.png in Resources */,
 				6512A9CA1BAEDBE500C35020 /* Priest_thumb.png in Resources */,
 				658FA86F1B10E684006BB184 /* taunt.png in Resources */,
@@ -542,6 +549,7 @@
 				6535A3771AE6B9A6001F90B6 /* Main.storyboard in Resources */,
 				6535A37C1AE6B9A6001F90B6 /* LaunchScreen.xib in Resources */,
 				65E5C3311B1B32F300F868ED /* Settings Filled-50.png in Resources */,
+				6599B1961BC58D8F00635B0B /* Card-Picked-Icon.png in Resources */,
 				658C81111B54F698003B256C /* Rare.png in Resources */,
 				654CA48C1B24BDDF0079B4F2 /* Mage.png in Resources */,
 				6542E4811B2472FF002588B6 /* Delete Sign-50.png in Resources */,
@@ -550,6 +558,7 @@
 				65E5C3251B1B183500F868ED /* Icon Card@2x.png in Resources */,
 				65043B381B4303AC001DFD92 /* btn_primary_normal.png in Resources */,
 				654CA47F1B24AD290079B4F2 /* Valeera.png in Resources */,
+				6599B1981BC58D8F00635B0B /* Card-Picked-Icon@3x.png in Resources */,
 				654DBFEF1B46DF600084E0C5 /* Mana-50.png in Resources */,
 				654CA48F1B24BDDF0079B4F2 /* Rogue.png in Resources */,
 				6535A3791AE6B9A6001F90B6 /* Images.xcassets in Resources */,
@@ -577,7 +586,6 @@
 				659458C11B18CCF500D8675F /* DeckDetailViewController.swift in Sources */,
 				6522FA471BB73C4400D5841B /* Functions.swift in Sources */,
 				65043B3B1B431E72001DFD92 /* PlayDeckCell.swift in Sources */,
-				659458BF1B18CCE100D8675F /* DeckDetailTableViewController.swift in Sources */,
 				65A23B0B1B0FB37D000D5980 /* DecksTableViewController.swift in Sources */,
 				6567559B1B2EF53800F9C816 /* DeckCardCell.swift in Sources */,
 				65A23B091B0FA065000D5980 /* HS_database.xcdatamodeld in Sources */,

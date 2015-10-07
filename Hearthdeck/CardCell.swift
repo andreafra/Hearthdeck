@@ -13,6 +13,7 @@ class CardCell: UITableViewCell {
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var costLabel: UILabel!    
     
+    @IBOutlet var isPickedImageView: UIImageView!
     @IBOutlet var thumbnailImage: UIImageView!
     
     @IBOutlet var descriptionLabel: UILabel!
