@@ -466,13 +466,14 @@
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="DUa-uz-tzC"/>
                     <nil key="simulatedBottomBarMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="attackDescLabel" destination="9nK-np-C73" id="Ifq-Ya-A6F"/>
                         <outlet property="attackLabel" destination="xLl-gZ-SA1" id="cXS-lN-goe"/>
                         <outlet property="backgroundImage" destination="dKS-HJ-EuM" id="G2l-CM-fX8"/>
                         <outlet property="cardImageView" destination="cFW-oL-agu" id="DNp-U5-g4g"/>
                         <outlet property="costLabel" destination="vlD-dS-2p2" id="jH1-68-KoY"/>
                         <outlet property="descriptionContainer" destination="p2A-sa-NLf" id="Ncq-re-0iL"/>
+                        <outlet property="healthDescLabel" destination="XUn-iA-iPd" id="3ZN-Rw-Xkd"/>
                         <outlet property="healthLabel" destination="SLG-VE-8HM" id="oAE-Zb-cbu"/>
                         <outlet property="idLabel" destination="Zqg-0y-l9F" id="meh-1i-NQG"/>
                         <outlet property="loadingImageIndicator" destination="8iD-3l-0CQ" id="Sfm-cC-yF0"/>
@@ -803,6 +804,11 @@
                                 </constraints>
                                 <blurEffect style="light"/>
                             </visualEffectView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bMj-TW-JEC">
+                                <rect key="frame" x="4" y="341" width="367" height="272"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -811,6 +817,7 @@
                             <constraint firstItem="Zwp-4G-4aO" firstAttribute="top" secondItem="5xs-Bl-Zec" secondAttribute="top" id="DI7-2e-0V8"/>
                             <constraint firstItem="5xs-Bl-Zec" firstAttribute="centerX" secondItem="UrT-ne-krI" secondAttribute="centerX" id="FLg-qP-vbQ"/>
                             <constraint firstItem="ciC-1X-Cht" firstAttribute="top" secondItem="8iz-Yf-L1w" secondAttribute="bottom" constant="8" id="NZV-XM-iNP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bMj-TW-JEC" secondAttribute="trailing" constant="-12" id="Nbq-Kb-XfD"/>
                             <constraint firstItem="jzc-eh-iIM" firstAttribute="leading" secondItem="UrT-ne-krI" secondAttribute="leadingMargin" constant="-8" id="Opg-xh-GhK"/>
                             <constraint firstItem="u7R-gh-N0R" firstAttribute="leading" secondItem="UrT-ne-krI" secondAttribute="leadingMargin" constant="-4" id="P0C-PJ-NGv"/>
                             <constraint firstAttribute="trailingMargin" secondItem="FXd-cd-DvF" secondAttribute="trailing" constant="-16" id="PiD-Hz-bHV"/>
@@ -821,11 +828,14 @@
                             <constraint firstItem="ciC-1X-Cht" firstAttribute="centerX" secondItem="UrT-ne-krI" secondAttribute="centerX" id="eOR-93-b2J"/>
                             <constraint firstItem="FXd-cd-DvF" firstAttribute="leading" secondItem="UrT-ne-krI" secondAttribute="leadingMargin" constant="-16" id="eWD-b5-qao"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jzc-eh-iIM" secondAttribute="trailing" constant="-8" id="ebc-Et-pAh"/>
+                            <constraint firstItem="bMj-TW-JEC" firstAttribute="top" secondItem="jzc-eh-iIM" secondAttribute="bottom" constant="8" id="gWw-T2-cq8"/>
                             <constraint firstItem="Zwp-4G-4aO" firstAttribute="trailing" secondItem="jzc-eh-iIM" secondAttribute="trailing" id="ghr-Ze-t8g"/>
+                            <constraint firstItem="bMj-TW-JEC" firstAttribute="leading" secondItem="UrT-ne-krI" secondAttribute="leadingMargin" constant="-12" id="hMk-8e-hQU"/>
                             <constraint firstItem="u7R-gh-N0R" firstAttribute="top" secondItem="ciC-1X-Cht" secondAttribute="bottom" constant="8" symbolic="YES" id="hqT-jJ-4od"/>
                             <constraint firstItem="P9v-Sr-oBC" firstAttribute="trailing" secondItem="UrT-ne-krI" secondAttribute="trailingMargin" id="sjQ-Rp-TNx"/>
                             <constraint firstItem="jzc-eh-iIM" firstAttribute="top" secondItem="ciC-1X-Cht" secondAttribute="bottom" constant="35" id="wz2-xw-P42"/>
                             <constraint firstItem="P9v-Sr-oBC" firstAttribute="top" secondItem="8iz-Yf-L1w" secondAttribute="bottom" constant="8" id="zMj-W5-vKM"/>
+                            <constraint firstItem="Zwp-4G-4aO" firstAttribute="top" secondItem="bMj-TW-JEC" secondAttribute="bottom" constant="8" id="zVd-rx-zbd"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Cards" image="Icon Card.png" id="Zaa-lG-VrM"/>
@@ -840,6 +850,7 @@
                         <outlet property="characterType" destination="jzc-eh-iIM" id="dcc-lO-FqJ"/>
                         <outlet property="classScrollView" destination="rnU-Di-CrO" id="O3y-zi-tya"/>
                         <outlet property="deckTitle" destination="40g-8T-zoA" id="ffE-NU-r2h"/>
+                        <outlet property="manaChartContainer" destination="bMj-TW-JEC" id="d5g-UY-t79"/>
                         <outlet property="playDeckButton" destination="5xs-Bl-Zec" id="Myc-dp-atz"/>
                         <outlet property="promptClassPicker" destination="FXd-cd-DvF" id="Xrl-w3-YES"/>
                         <segue destination="Lnr-wa-IYb" kind="show" identifier="playDeck" id="1Mq-By-8Ih"/>
@@ -1042,8 +1053,8 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Cards" id="Cm2-RE-osl">
                         <barButtonItem key="backBarButtonItem" title="Back" id="wRa-Aj-w04"/>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="ZJH-oG-URI">
-                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="OVd-Q2-WdX">
+                        <barButtonItem key="rightBarButtonItem" id="ZJH-oG-URI">
+                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="1" id="OVd-Q2-WdX">
                                 <rect key="frame" x="276" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
@@ -1331,6 +1342,6 @@
         <image name="btn_primary_over.png" width="134" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Cc9-xn-RsB"/>
+        <segue reference="ykL-Re-SkX"/>
     </inferredMetricsTieBreakers>
 </document>

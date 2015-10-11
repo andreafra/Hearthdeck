@@ -269,7 +269,7 @@ class IntroViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
                                                     
                                                     
                                                     // Save the card to the Core Data
-                                                    Card.createCardInManagedObjectContext(moc, name: name, id: id, cost: cost, type: type, rarity: rarity, text: text!, flavor: flavor!, attack: attack!, health: health!, playerClass: playerClass!, durability: durability!, image: imageData!, hasImage: downloadImages.on, collectible: collectible, thumbnail: thumbnailData!)
+                                                    Card.createCardInManagedObjectContext(moc, name: name, id: id, cost: cost, type: type, rarity: rarity, text: text!, flavor: flavor!, attack: attack!, health: health!, playerClass: playerClass!, durability: durability!, image: imageData!, hasImage: downloadImages.on, collectible: collectible, thumbnail: thumbnailData!, owned: false)
                                                 }
                                             }
                                         }

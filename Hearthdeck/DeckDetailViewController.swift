@@ -33,19 +33,14 @@ class DeckDetailViewController: UIViewController {
     
     var playerClass: String?
     
+    @IBOutlet var manaChartContainer: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
                 
         characterName.userInteractionEnabled = true
         characterType.userInteractionEnabled = true
-        //characterImage.userInteractionEnabled = true
-        
-//        // Tap to change -- naaah
-//        //let tapGestureTitle = UITapGestureRecognizer(target: self, action: "changeDeckTitle:")
-//        let tapGestureType = UITapGestureRecognizer(target: self, action: "classPickerAction:")
-//        characterName.addGestureRecognizer(tapGestureType)
-//        //characterType.addGestureRecognizer(tapGestureType)
-//        //characterImage.addGestureRecognizer(tapGestureType)
+
         
         // Hide promptClassPicker
         self.promptClassPicker.hidden = true
@@ -90,6 +85,12 @@ class DeckDetailViewController: UIViewController {
             self.classScrollView.contentSize.width += CGFloat(115)
             self.classScrollView.addSubview(button)
         }
+        
+        // Draw mana curve chart
+        
+       drawChart(manaChartContainer)
+        
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -110,10 +111,7 @@ class DeckDetailViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "goToDeckCards" {
-//            let tvc = segue.destinationViewController as! DeckDetailTableViewController
-//            
-//            tvc.deckTitle = deckTitle.title!
-//            tvc.playerClass = playerClass
+
             let vc = segue.destinationViewController as! CardListTableViewController
             
             vc.isPickingCard = true

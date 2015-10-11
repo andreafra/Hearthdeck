@@ -25,3 +25,22 @@ func convertText(inputText: String, sizeInPt: Int) -> NSAttributedString {
     }
     return attrStr!
 }
+
+// Draw column chart
+
+func drawChart(containerView: UIView) {
+    
+    //VARIABLES - GET
+    //get bottom-left coordinates
+    
+    let originX = containerView.frame.origin.x - containerView.frame.width/2
+    let originY = containerView.frame.origin.y - containerView.frame.height/2
+    
+    let testRect = UIView(frame: CGRectMake(containerView.frame.origin.x, containerView.frame.origin.y, 5, 5))
+    testRect.backgroundColor = UIColor.redColor()
+    
+    containerView.addSubview(testRect)
+    
+    print(originX)
+    print(originY)
+}

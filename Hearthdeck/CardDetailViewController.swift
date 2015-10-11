@@ -29,6 +29,9 @@ class CardDetailViewController: UIViewController {
     @IBOutlet var descriptionContainer: UIVisualEffectView!
     @IBOutlet var loadingImageIndicator: UIActivityIndicatorView!
 
+    @IBOutlet var attackDescLabel: UILabel!
+    @IBOutlet var healthDescLabel: UILabel!
+    
     var card: Card!
     
     var titleBar: String?
@@ -41,6 +44,8 @@ class CardDetailViewController: UIViewController {
     var type: String?
     var text: String?
     var imageData: NSData?
+    var durability: String?
+    var flavor: String?
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
@@ -78,7 +83,17 @@ class CardDetailViewController: UIViewController {
         rarityLabel.text = rarity
         typeLabel.text = type
     
-        
+        if type == "Spell" {
+            attackLabel.hidden = true
+            attackDescLabel.hidden = true
+            healthLabel.hidden = true
+            healthDescLabel.hidden = true
+        } else if type == "Weapon" {
+            healthLabel.text = durability
+            healthLabel.textColor = UIColor(red:0.504, green:0.504, blue:0.504, alpha:1)
+            healthDescLabel.text = "Durability:"
+            healthDescLabel.textColor = UIColor(red:0.504, green:0.504, blue:0.504, alpha:1)
+        }
         
         descriptionContainer.layer.cornerRadius = 10
         descriptionContainer.clipsToBounds = true
@@ -116,6 +131,8 @@ class CardDetailViewController: UIViewController {
             type = card.type
             text = card.text
             imageData = card.image
+            durability = card.durability.stringValue
+            flavor = card.flavor
             
         } catch {
             print("Fetch failed: \(error)")

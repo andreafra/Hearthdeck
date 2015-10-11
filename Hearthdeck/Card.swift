@@ -26,9 +26,10 @@ class Card: NSManagedObject {
     @NSManaged var hasImage: Bool
     @NSManaged var collectible: Bool
     @NSManaged var thumbnail: NSData
-
+    @NSManaged var owned: Bool
+    
     // Save card function
-    class func createCardInManagedObjectContext(moc: NSManagedObjectContext, name: String, id: String, cost: Int, type: String, rarity: String, text: String, flavor: String, attack: Int, health: Int, playerClass: String, durability: Int, image: NSData, hasImage: Bool, collectible: Bool, thumbnail: NSData) -> Card {
+    class func createCardInManagedObjectContext(moc: NSManagedObjectContext, name: String, id: String, cost: Int, type: String, rarity: String, text: String, flavor: String, attack: Int, health: Int, playerClass: String, durability: Int, image: NSData, hasImage: Bool, collectible: Bool, thumbnail: NSData, owned: Bool) -> Card {
         
         let newCard = NSEntityDescription.insertNewObjectForEntityForName("Card", inManagedObjectContext: moc) as! Card
         
@@ -47,6 +48,7 @@ class Card: NSManagedObject {
         newCard.hasImage = hasImage
         newCard.collectible = collectible
         newCard.thumbnail = thumbnail
+        newCard.owned = owned
         
         do {
             try moc.save()

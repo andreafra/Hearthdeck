@@ -22,6 +22,10 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
 
     // CardCellIdentifier
     let CardCellIdentifier = "CardCell"
+    let PlaceholderCellIdentifier = "PlaceholderCardCell"
+    
+    // Async load?
+    var isLoadingView: Bool = false
     
     // Empty array of card
     var cards = [Card]()
@@ -45,7 +49,7 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
     // Alphabetic or mana cost order
     @IBOutlet var selectedImageView: UIImageView!
     @IBOutlet var sorterSelector: UISegmentedControl!
-    var sorterParameter: String = "name"
+    var sorterParameter: String = "cost"
     
     var isPickingCardIndexPath: NSIndexPath?
     
@@ -66,8 +70,103 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        isLoadingView = true
+        
+        print(cards.count)
+        
         self.navigationController?.setToolbarHidden(false, animated: true)
         
+//        //first fetch deck and setup filters
+//        if isPickingCard {
+//            
+//            classFilter = NSPredicate(format: "playerClass = %@ OR playerClass = \"Neutral\"", isPickingCardClass)
+//            classPickerButton.enabled = false
+//            
+//            let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "handleLongPress:")
+//            longPressGestureRecognizer.minimumPressDuration = 1.0
+//            self.tableView.addGestureRecognizer(longPressGestureRecognizer)
+//            
+//            let fetchRequest = NSFetchRequest(entityName: "Deck")
+//            fetchRequest.predicate = NSPredicate(format: "name = %@", deckName!)
+//            
+//            do {
+//                let fetchResults = try self.appDel.managedObjectContext.executeFetchRequest(fetchRequest)
+//                if fetchResults.count != 0 {
+//                    
+//                    let managedObject = fetchResults[0] as! Deck
+//                    let cardsOfDeck: String = managedObject.cards
+//                    
+//                    // Parse string into array
+//                    if cardsOfDeck != "" {
+//                        var cardsArrayRaw = cardsOfDeck.componentsSeparatedByString(" ")
+//                        cardsArrayRaw.removeLast()
+//                        for card in cardsArrayRaw {
+//                            let cardRaw = card.componentsSeparatedByString("@")
+//                            pickedCards.append(cardRaw[0])
+//                            pickedCardsQuantity.append(Int(cardRaw[1])!)
+//                        }
+//                    }
+//                }
+//            } catch {
+//                print("Error")
+//            }
+//        }
+        
+        //get ready to filter cards
+        combinePredicates()
+        
+//        //get the cards from core data
+//        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+//        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+//            // do some task
+//            self.fetchCard()
+//            dispatch_async(dispatch_get_main_queue()) {
+//                // update some UI
+//                self.isLoadingView = false
+//                self.tableView.reloadData()
+//            }
+//        }
+        
+//        self.searchController = UISearchController(searchResultsController: nil)
+//        self.searchController.searchResultsUpdater = self
+//        self.searchController.delegate = self
+//        self.searchController.dimsBackgroundDuringPresentation = false
+//        self.searchController.searchBar.sizeToFit()
+//        self.tableView.tableHeaderView = self.searchController.searchBar
+//        self.definesPresentationContext = true
+        
+        
+        for i in pickedCardsQuantity {
+            numOfPickedCards += i
+        }
+        
+        //let tapOnWrapper = UIGestureRecognizer(target: self, action: "handleTap:")
+
+        //wrapperView?.addGestureRecognizer(tapOnWrapper)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        
+        //setup UI
+        self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
+        self.navigationController?.navigationBar.shadowImage = nil
+        self.navigationController?.navigationBar.translucent = true
+        self.navigationController?.navigationBar.backgroundColor = UIColor.whiteColor()
+        self.navigationController!.navigationBar.barTintColor = UIColor.whiteColor()
+        self.navigationController!.navigationBar.tintColor = UIColor(red:0, green:0.422, blue:0.969, alpha:1)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor()] //aqua color
+        
+        
+        if isPickingCard {
+            self.title = "\(numOfPickedCards)/30"
+            
+            print("\(isPickingCardClass) + \(isPickingCard)")
+        }
+    }
+    
+    // MARK: - Custom functions
+    
+    func fetchDeck() {
         //first fetch deck and setup filters
         if isPickingCard {
             
@@ -103,49 +202,7 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
                 print("Error")
             }
         }
-        
-        //get ready to filter cards
-        combinePredicates()
-        
-        //get the cards from core data
-        fetchCard()
-        
-        self.searchController = UISearchController(searchResultsController: nil)
-        self.searchController.searchResultsUpdater = self
-        self.searchController.delegate = self
-        self.searchController.dimsBackgroundDuringPresentation = false
-        self.searchController.searchBar.sizeToFit()
-        self.tableView.tableHeaderView = self.searchController.searchBar
-        self.definesPresentationContext = true
-        
-        
-        for i in pickedCardsQuantity {
-            numOfPickedCards += i
-        }
-        
-        //let tapOnWrapper = UIGestureRecognizer(target: self, action: "handleTap:")
-
-        //wrapperView?.addGestureRecognizer(tapOnWrapper)
     }
-    
-    override func viewDidAppear(animated: Bool) {
-        self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
-        self.navigationController?.navigationBar.shadowImage = nil
-        self.navigationController?.navigationBar.translucent = true
-        self.navigationController?.navigationBar.backgroundColor = UIColor.whiteColor()
-        self.navigationController!.navigationBar.barTintColor = UIColor.whiteColor()
-        self.navigationController!.navigationBar.tintColor = UIColor(red:0, green:0.422, blue:0.969, alpha:1)
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor()] //aqua color
-        
-        
-        if isPickingCard {
-            self.title = "\(numOfPickedCards)/30"
-            
-            print("\(isPickingCardClass) + \(isPickingCard)")
-        }
-    }
-    
-    // MARK: - Custom functions
     
     func fetchCard() {
         
@@ -222,130 +279,128 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(self.CardCellIdentifier , forIndexPath: indexPath) as! CardCell
-        
-        var card: Card!
-        
-        if self.searchController.active {
-            if !self.filteredCards.isEmpty{
-                card = self.filteredCards[indexPath.row] as Card
-            }
-        } else {
-            card = self.cards[indexPath.row]
-        }
-        // LAYOUT
-        cell.nameLabel.text = card.name ?? "[No Name]"
-        cell.costLabel.text = card.cost.stringValue ?? "[?]"
-        cell.healthLabel.text = card.health.stringValue ?? "0"
-        cell.attackLabel.text = card.attack.stringValue ?? "0"
-        cell.descriptionLabel.attributedText = convertText(card.text, sizeInPt: 10)
-        cell.descriptionLabel.textColor = UIColor(red:0.38, green:0.38, blue:0.38, alpha:1)
 
-        let queue: dispatch_queue_t = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)
-        dispatch_async(queue, { () -> Void in
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                if card.hasImage {
-                    cell.thumbnailImage.image = UIImage(data: card.thumbnail)
-                } else {
-                    cell.thumbnailImage.image = UIImage()
+            let cell = tableView.dequeueReusableCellWithIdentifier(self.CardCellIdentifier , forIndexPath: indexPath) as! CardCell
+        
+            var card: Card!
+            
+            if self.searchController.active {
+                if !self.filteredCards.isEmpty{
+                    card = self.filteredCards[indexPath.row] as Card
                 }
-            })
-        })
-        
-        switch card!.rarity {
-            case "Free", "Common":
-                cell.nameLabel.textColor = UIColor.blackColor()
-                break
-            case "Rare":
-                cell.nameLabel.textColor = UIColor(hue:0.594, saturation:1, brightness:0.969, alpha:1)
-                break
-            case "Epic":
-                cell.nameLabel.textColor = UIColor(hue:0.812, saturation:1, brightness:0.883, alpha:1)
-                break
-            case "Legendary":
-                cell.nameLabel.textColor = UIColor(hue:0.099, saturation:1, brightness:0.955, alpha:1)
-                break
-            default:
-                cell.nameLabel.textColor = UIColor.blackColor()
-        }
-        
-        cell.isPickedImageView.image = cell.isPickedImageView.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        cell.isPickedImageView.tintColor = UIColor.whiteColor()
-        cell.isPickedImageView.alpha = 0
-        
-        cell.attackIcon.image = cell.attackIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        cell.manaIcon.image = cell.manaIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+            } else {
+                card = self.cards[indexPath.row]
+            }
+            // LAYOUT
+            cell.nameLabel.text = card.name ?? "[No Name]"
+            cell.costLabel.text = card.cost.stringValue ?? "[?]"
+            cell.healthLabel.text = card.health.stringValue ?? "0"
+            cell.attackLabel.text = card.attack.stringValue ?? "0"
+            cell.descriptionLabel.attributedText = convertText(card.text, sizeInPt: 10)
+            cell.descriptionLabel.textColor = UIColor(red:0.38, green:0.38, blue:0.38, alpha:1)
 
-        cell.attackIcon.tintColor = UIColor(red:1, green:0.756, blue:0.027, alpha:1)
-        cell.manaIcon.tintColor = UIColor(red:0, green:0.589, blue:1, alpha:1)
-        
-        switch card!.type {
-            case "Minion":
-                cell.healthIcon.image = cell.healthIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-                cell.healthIcon.tintColor = UIColor(red:1, green:0.239, blue:0, alpha:1)
-                cell.healthLabel.textColor = UIColor(red:1, green:0.239, blue:0, alpha:1)
-                cell.healthIcon.hidden = false
-                cell.attackIcon.hidden = false
-                cell.healthLabel.hidden = false
-                cell.attackLabel.hidden = false
-                break
-            case "Weapon":
-                cell.healthIcon.image = UIImage(named: "Durability-50.png")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-                cell.healthIcon.tintColor = UIColor(red:0.504, green:0.504, blue:0.504, alpha:1)
-                cell.healthLabel.text = card!.durability.stringValue
-                cell.healthLabel.textColor = UIColor(red:0.504, green:0.504, blue:0.504, alpha:1)
-                cell.healthIcon.hidden = false
-                cell.attackIcon.hidden = false
-                cell.healthLabel.hidden = false
-                cell.attackLabel.hidden = false
-                break
-            default: // = spell
-                cell.healthIcon.hidden = true
-                cell.attackIcon.hidden = true
-                cell.healthLabel.hidden = true
-                cell.attackLabel.hidden = true
-                break
-        }
-        // PICKING CARD
-        if isPickingCard {
+            if card.hasImage {
+                cell.thumbnailImage.image = UIImage(data: card.thumbnail)
+            } else {
+                cell.thumbnailImage.image = UIImage()
+            }
             
-            cell.costLabel.hidden = false // temp - to test
-            let paddingWidth = cell.isPickedImageView.frame.width
+            switch card!.rarity {
+                case "Free", "Common":
+                    cell.nameLabel.textColor = UIColor.blackColor()
+                    break
+                case "Rare":
+                    cell.nameLabel.textColor = UIColor(hue:0.594, saturation:1, brightness:0.969, alpha:1)
+                    break
+                case "Epic":
+                    cell.nameLabel.textColor = UIColor(hue:0.812, saturation:1, brightness:0.883, alpha:1)
+                    break
+                case "Legendary":
+                    cell.nameLabel.textColor = UIColor(hue:0.099, saturation:1, brightness:0.955, alpha:1)
+                    break
+                default:
+                    cell.nameLabel.textColor = UIColor.blackColor()
+            }
             
-            if pickedCards.contains(card!.id) {
-                if pickedCardsQuantity[pickedCards.indexOf(card!.id)!] == 2 {
-                    cell.nameLabel.text = "\(card.name) ×2"
-                    // Doesn't animate
-                    cell.isPickedImageView.alpha = 1
-                    cell.nameLabel.transform = CGAffineTransformMakeTranslation(paddingWidth, 0)
-                    cell.thumbnailImage.transform = CGAffineTransformMakeTranslation(paddingWidth, 0)
-                    cell.descriptionLabel.transform = CGAffineTransformMakeTranslation(paddingWidth, 0)
-                    
-                } else if pickedCardsQuantity[pickedCards.indexOf(card!.id)!] == 1 {
-                    cell.nameLabel.text = "\(card.name) ×1"
-                    UIView.animateWithDuration(0.3, animations: { _ in
-                        // Animates
+            cell.isPickedImageView.image = cell.isPickedImageView.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+            cell.isPickedImageView.tintColor = UIColor.whiteColor()
+            cell.isPickedImageView.alpha = 0
+            
+            cell.attackIcon.image = cell.attackIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+            cell.manaIcon.image = cell.manaIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+
+            cell.attackIcon.tintColor = UIColor(red:1, green:0.756, blue:0.027, alpha:1)
+            cell.manaIcon.tintColor = UIColor(red:0, green:0.589, blue:1, alpha:1)
+            
+            switch card!.type {
+                case "Minion":
+                    cell.healthIcon.image = cell.healthIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+                    cell.healthIcon.tintColor = UIColor(red:1, green:0.239, blue:0, alpha:1)
+                    cell.healthLabel.textColor = UIColor(red:1, green:0.239, blue:0, alpha:1)
+                    cell.healthIcon.hidden = false
+                    cell.attackIcon.hidden = false
+                    cell.healthLabel.hidden = false
+                    cell.attackLabel.hidden = false
+                    break
+                case "Weapon":
+                    cell.healthIcon.image = UIImage(named: "Durability-50.png")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+                    cell.healthIcon.tintColor = UIColor(red:0.504, green:0.504, blue:0.504, alpha:1)
+                    cell.healthLabel.text = card!.durability.stringValue
+                    cell.healthLabel.textColor = UIColor(red:0.504, green:0.504, blue:0.504, alpha:1)
+                    cell.healthIcon.hidden = false
+                    cell.attackIcon.hidden = false
+                    cell.healthLabel.hidden = false
+                    cell.attackLabel.hidden = false
+                    break
+                default: // = spell
+                    cell.healthIcon.hidden = true
+                    cell.attackIcon.hidden = true
+                    cell.healthLabel.hidden = true
+                    cell.attackLabel.hidden = true
+                    break
+            }
+            // PICKING CARD
+            if isPickingCard {
+                cell.selectionStyle = UITableViewCellSelectionStyle.Blue;
+
+                cell.costLabel.hidden = false // temp - to test
+                let paddingWidth = cell.isPickedImageView.frame.width
+                
+                if pickedCards.contains(card!.id) {
+                    if pickedCardsQuantity[pickedCards.indexOf(card!.id)!] == 2 {
+                        cell.nameLabel.text = "\(card.name) ×2"
+                        // Doesn't animate
                         cell.isPickedImageView.alpha = 1
                         cell.nameLabel.transform = CGAffineTransformMakeTranslation(paddingWidth, 0)
                         cell.thumbnailImage.transform = CGAffineTransformMakeTranslation(paddingWidth, 0)
                         cell.descriptionLabel.transform = CGAffineTransformMakeTranslation(paddingWidth, 0)
+                        
+                    } else if pickedCardsQuantity[pickedCards.indexOf(card!.id)!] == 1 {
+                        cell.nameLabel.text = "\(card.name) ×1"
+                        UIView.animateWithDuration(0.3, animations: { _ in
+                            // Animates
+                            cell.isPickedImageView.alpha = 1
+                            cell.nameLabel.transform = CGAffineTransformMakeTranslation(paddingWidth, 0)
+                            cell.thumbnailImage.transform = CGAffineTransformMakeTranslation(paddingWidth, 0)
+                            cell.descriptionLabel.transform = CGAffineTransformMakeTranslation(paddingWidth, 0)
+                        })
+                    }
+                    
+                    
+                    
+                } else {
+                    UIView.animateWithDuration(0.3, animations: { _ in
+                        cell.isPickedImageView.alpha = 0
+                        cell.nameLabel.transform = CGAffineTransformMakeTranslation(0, 0)
+                        cell.thumbnailImage.transform = CGAffineTransformMakeTranslation(0, 0)
+                        cell.descriptionLabel.transform = CGAffineTransformMakeTranslation(0, 0) 
                     })
+                    
                 }
-                
-                
-                
-            } else {
-                UIView.animateWithDuration(0.3, animations: { _ in
-                    cell.isPickedImageView.alpha = 0
-                    cell.nameLabel.transform = CGAffineTransformMakeTranslation(0, 0)
-                    cell.thumbnailImage.transform = CGAffineTransformMakeTranslation(0, 0)
-                    cell.descriptionLabel.transform = CGAffineTransformMakeTranslation(0, 0) 
-                })
-                
             }
-        }
         
         return cell
+        
     }
     
     func cardCellAtIndexPath(indexPath: NSIndexPath) -> UITableViewCell {
@@ -498,13 +553,38 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
     }
     
     override func viewWillAppear(animated: Bool) {
+        tableView.userInteractionEnabled = false
+        
+        //get the cards from core data
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            // do some task
+            self.fetchCard()
+            
+            self.fetchDeck()
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                // update some UI
+                self.isLoadingView = false
+                self.tableView.userInteractionEnabled = true
+                self.tableView.reloadData()
+            }
+        }
         
         self.navigationController?.setToolbarHidden(false, animated: true)
         
-        if lastSelectedRow != nil {
-            self.tableView.deselectRowAtIndexPath(lastSelectedRow!, animated: false)
-            self.tableView.reloadRowsAtIndexPaths([lastSelectedRow!], withRowAnimation: UITableViewRowAnimation.None)
-        }
+        self.searchController = UISearchController(searchResultsController: nil)
+        self.searchController.searchResultsUpdater = self
+        self.searchController.delegate = self
+        self.searchController.dimsBackgroundDuringPresentation = false
+        self.searchController.searchBar.sizeToFit()
+        self.tableView.tableHeaderView = self.searchController.searchBar
+        self.definesPresentationContext = true
+
+//        if lastSelectedRow != nil {
+//            self.tableView.deselectRowAtIndexPath(lastSelectedRow!, animated: false)
+//            self.tableView.reloadRowsAtIndexPaths([lastSelectedRow!], withRowAnimation: UITableViewRowAnimation.None)
+//        }
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -972,9 +1052,9 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
         print(number)
         // can't dismiss or view close on drag - copy-and-past dismiss...() function
         combinePredicates()
-        fetchCard()
-        self.tableView.reloadData()
-        print("reloaded")
+        //fetchCard()
+        //self.tableView.reloadData()
+        //print("reloaded")
     }
     
     // RARITY
