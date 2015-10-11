@@ -464,7 +464,21 @@
                             <constraint firstItem="dKS-HJ-EuM" firstAttribute="leading" secondItem="7vx-rp-QrK" secondAttribute="leadingMargin" constant="-20" id="xvN-s3-P1d"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="DUa-uz-tzC"/>
+                    <navigationItem key="navigationItem" title="Title" id="DUa-uz-tzC">
+                        <barButtonItem key="rightBarButtonItem" id="PD1-7y-Wx0">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="59i-yv-aWF">
+                                <rect key="frame" x="329" y="7" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <state key="normal" title="Button" image="Checkbox.png"/>
+                                <state key="selected" image="Checkbox-Checked.png"/>
+                                <state key="highlighted" image="Checkbox-Checked.png"/>
+                                <connections>
+                                    <action selector="ownedCheckboxChanged:" destination="flg-h5-ln8" eventType="touchUpInside" id="rPN-BP-gW9"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="attackDescLabel" destination="9nK-np-C73" id="Ifq-Ya-A6F"/>
@@ -477,6 +491,7 @@
                         <outlet property="healthLabel" destination="SLG-VE-8HM" id="oAE-Zb-cbu"/>
                         <outlet property="idLabel" destination="Zqg-0y-l9F" id="meh-1i-NQG"/>
                         <outlet property="loadingImageIndicator" destination="8iD-3l-0CQ" id="Sfm-cC-yF0"/>
+                        <outlet property="ownedCheckbox" destination="59i-yv-aWF" id="jf7-AO-GjT"/>
                         <outlet property="playerClassLabel" destination="req-D5-ZHk" id="NIh-9N-keI"/>
                         <outlet property="rarityLabel" destination="szt-sU-zyw" id="OPc-je-fAu"/>
                         <outlet property="textLabel" destination="DrP-2P-HHc" id="2fN-ql-44x"/>
@@ -1333,6 +1348,8 @@
         <image name="Attack-50.png" width="50" height="50"/>
         <image name="Card-50.png" width="50" height="50"/>
         <image name="Card-Picked-Icon.png" width="24" height="70"/>
+        <image name="Checkbox-Checked.png" width="100" height="100"/>
+        <image name="Checkbox.png" width="100" height="100"/>
         <image name="Delete Sign-50.png" width="50" height="50"/>
         <image name="Health-50.png" width="50" height="50"/>
         <image name="Icon Card.png" width="21" height="22"/>
@@ -1342,6 +1359,6 @@
         <image name="btn_primary_over.png" width="134" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ykL-Re-SkX"/>
+        <segue reference="Cc9-xn-RsB"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -32,6 +32,8 @@ class CardDetailViewController: UIViewController {
     @IBOutlet var attackDescLabel: UILabel!
     @IBOutlet var healthDescLabel: UILabel!
     
+    @IBOutlet var ownedCheckbox: UIButton!
+    var ownedCheckboxSelected: Bool = false
     var card: Card!
     
     var titleBar: String?
@@ -102,9 +104,25 @@ class CardDetailViewController: UIViewController {
         
         textLabel.attributedText = convertText(text!, sizeInPt: 15)
         
-        // Do any additional setup after loading the view.
+        let checkboxImage = UIImage(named: "Checkbox.png")?.imageWithRenderingMode(.AlwaysTemplate)
+        let checkboxImageChecked = UIImage(named: "Checkbox-Checked.png")?.imageWithRenderingMode(.AlwaysTemplate)
+
+        ownedCheckbox.setImage(checkboxImage, forState: .Normal)
+        ownedCheckbox.setImage(checkboxImageChecked, forState: .Selected)
+        ownedCheckbox.setImage(checkboxImageChecked, forState: .Highlighted)
+        ownedCheckbox.imageView?.tintColor = UIColor.whiteColor()
+        ownedCheckbox.adjustsImageWhenHighlighted = true
+        ownedCheckbox.selected = false
+        
     }
 
+    @IBAction func ownedCheckboxChanged(sender: AnyObject) {
+        // If checkbox is touched, change state
+        ownedCheckboxSelected = !ownedCheckboxSelected
+        ownedCheckbox.selected = ownedCheckboxSelected
+        
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
