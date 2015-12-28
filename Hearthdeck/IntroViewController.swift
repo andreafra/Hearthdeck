@@ -91,7 +91,7 @@ class IntroViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         
         languagePicker.delegate = self
         languagePicker.dataSource = self
-        
+        languagePicker.selectRow(3, inComponent: 0, animated: false)
         endSetupButton.enabled = false
         endSetupButton.hidden = true
         
@@ -266,8 +266,6 @@ class IntroViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
                                                         print("Placeholdered \(name)")
                                                     }
                                                     
-                                                    
-                                                    
                                                     // Save the card to the Core Data
                                                     Card.createCardInManagedObjectContext(moc, name: name, id: id, cost: cost, type: type, rarity: rarity, text: text!, flavor: flavor!, attack: attack!, health: health!, playerClass: playerClass!, durability: durability!, image: imageData!, hasImage: downloadImages.on, collectible: collectible, thumbnail: thumbnailData!, owned: false)
                                                 }
@@ -285,7 +283,9 @@ class IntroViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         }
         
         endSetupButton.enabled = true
-        endSetupButton.hidden = false
+        endSetupButton.hidden = true
+
+        endSetup(self)
     }
     
     func setDownloadProgressBar(value: Float) {

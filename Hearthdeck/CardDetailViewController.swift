@@ -32,8 +32,12 @@ class CardDetailViewController: UIViewController {
     @IBOutlet var attackDescLabel: UILabel!
     @IBOutlet var healthDescLabel: UILabel!
     
+    // to check if player owns that card
     @IBOutlet var ownedCheckbox: UIButton!
     var ownedCheckboxSelected: Bool = false
+    // test feature
+    @IBOutlet var ownedCardLabel: UILabel!
+    
     var card: Card!
     
     var titleBar: String?
@@ -48,8 +52,13 @@ class CardDetailViewController: UIViewController {
     var imageData: NSData?
     var durability: String?
     var flavor: String?
+    var owned: Bool?
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.translucent = true
@@ -58,9 +67,7 @@ class CardDetailViewController: UIViewController {
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         titleBarLabel.titleView?.tintColor = UIColor.whiteColor()
-    }
-    
-    override func viewDidAppear(animated: Bool) {
+        
         if card.hasImage {
             cardImageView.image = UIImage(data: imageData!)
             backgroundImage.image = UIImage(data: imageData!)
@@ -69,7 +76,20 @@ class CardDetailViewController: UIViewController {
         downloadImage()
     }
     
-
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
+        
+        //setup UI
+        self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
+        self.navigationController?.navigationBar.shadowImage = nil
+        self.navigationController?.navigationBar.translucent = true
+        self.navigationController?.navigationBar.backgroundColor = UIColor.whiteColor()
+        self.navigationController!.navigationBar.barTintColor = UIColor.whiteColor()
+        self.navigationController!.navigationBar.tintColor = UIColor(red:0, green:0.422, blue:0.969, alpha:1)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor()] //aqua color
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,7 +104,7 @@ class CardDetailViewController: UIViewController {
         playerClassLabel.text = playerClass
         rarityLabel.text = rarity
         typeLabel.text = type
-    
+        
         if type == "Spell" {
             attackLabel.hidden = true
             attackDescLabel.hidden = true
@@ -112,8 +132,7 @@ class CardDetailViewController: UIViewController {
         ownedCheckbox.setImage(checkboxImageChecked, forState: .Highlighted)
         ownedCheckbox.imageView?.tintColor = UIColor.whiteColor()
         ownedCheckbox.adjustsImageWhenHighlighted = true
-        ownedCheckbox.selected = false
-        
+        ownedCheckbox.selected = owned!
     }
 
     @IBAction func ownedCheckboxChanged(sender: AnyObject) {
@@ -121,6 +140,19 @@ class CardDetailViewController: UIViewController {
         ownedCheckboxSelected = !ownedCheckboxSelected
         ownedCheckbox.selected = ownedCheckboxSelected
         
+        // own card feature
+        if ownedCheckboxSelected {
+            ownedCardLabel.text = "You own this card"
+        } else {
+            ownedCardLabel.text = ""
+        }
+        
+        do {
+            card.owned = ownedCheckboxSelected
+            try moc.save()
+        } catch {
+            print(error)
+        }
         
     }
     override func didReceiveMemoryWarning() {
@@ -151,6 +183,7 @@ class CardDetailViewController: UIViewController {
             imageData = card.image
             durability = card.durability.stringValue
             flavor = card.flavor
+            owned = card.owned
             
         } catch {
             print("Fetch failed: \(error)")

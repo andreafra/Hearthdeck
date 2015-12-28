@@ -46,6 +46,9 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
     
     @IBOutlet var classPickerButton: UIBarButtonItem!
     
+    // used to prevent overloading of the tableview
+    var firstTimeViewIsAppering: Bool = false
+    
     // Alphabetic or mana cost order
     @IBOutlet var selectedImageView: UIImageView!
     @IBOutlet var sorterSelector: UISegmentedControl!
@@ -65,12 +68,23 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
     var rarityFilter: NSPredicate = NSPredicate(value: true)
     var activeRarity: String = ""
     
+    
     // END OF VARs
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // config SwiftLoader
+        var SLconfig : SwiftLoader.Config = SwiftLoader.Config()
+        SLconfig.size = 150
+        SLconfig.spinnerColor = UIColor(red:0, green:0.589, blue:1, alpha:1) // Acqua
+        SLconfig.foregroundColor = UIColor.whiteColor()
+        SLconfig.backgroundColor = UIColor.blackColor()
+        SLconfig.foregroundAlpha = 0.7
+        SLconfig.spinnerLineWidth = 1.5
+        
         isLoadingView = true
+        firstTimeViewIsAppering = true
         
         print(cards.count)
         
@@ -135,10 +149,9 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
 //        self.tableView.tableHeaderView = self.searchController.searchBar
 //        self.definesPresentationContext = true
         
-        
-        for i in pickedCardsQuantity {
-            numOfPickedCards += i
-        }
+//        for i in pickedCardsQuantity {
+//            numOfPickedCards += i
+//        }
         
         //let tapOnWrapper = UIGestureRecognizer(target: self, action: "handleTap:")
 
@@ -146,17 +159,6 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
     }
     
     override func viewDidAppear(animated: Bool) {
-        
-        //setup UI
-        self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
-        self.navigationController?.navigationBar.shadowImage = nil
-        self.navigationController?.navigationBar.translucent = true
-        self.navigationController?.navigationBar.backgroundColor = UIColor.whiteColor()
-        self.navigationController!.navigationBar.barTintColor = UIColor.whiteColor()
-        self.navigationController!.navigationBar.tintColor = UIColor(red:0, green:0.422, blue:0.969, alpha:1)
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor()] //aqua color
-        
-        
         if isPickingCard {
             self.title = "\(numOfPickedCards)/30"
             
@@ -164,9 +166,96 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
         }
     }
     
+    override func viewWillAppear(animated: Bool) {
+        
+        if isLoadingView {
+            SwiftLoader.show(title: "Loading...", animated: true)
+        }
+        
+        tableView.userInteractionEnabled = false
+        
+        if firstTimeViewIsAppering {
+            //get the cards from core data
+            let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+            dispatch_async(dispatch_get_global_queue(priority, 0)) {
+                // do some task
+                self.fetchCard()
+                
+                self.fetchDeck()
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    // update some UI
+                    self.isLoadingView = false
+                    self.tableView.userInteractionEnabled = true
+                    self.tableView.reloadData()
+                    self.firstTimeViewIsAppering = false
+                    
+                    SwiftLoader.hide()
+                }
+            }
+        } else {
+            tableView.userInteractionEnabled = true
+            
+            if lastSelectedRow != nil {
+                self.tableView.deselectRowAtIndexPath(lastSelectedRow!, animated: true)
+            }
+            
+        }
+        
+        self.navigationController?.setToolbarHidden(false, animated: true)
+        
+        self.searchController = UISearchController(searchResultsController: nil)
+        self.searchController.searchResultsUpdater = self
+        self.searchController.delegate = self
+        self.searchController.dimsBackgroundDuringPresentation = false
+        self.searchController.searchBar.sizeToFit()
+        self.tableView.tableHeaderView = self.searchController.searchBar
+        self.definesPresentationContext = true
+        
+        //        if lastSelectedRow != nil {
+        //            self.tableView.deselectRowAtIndexPath(lastSelectedRow!, animated: false)
+        //            self.tableView.reloadRowsAtIndexPaths([lastSelectedRow!], withRowAnimation: UITableViewRowAnimation.None)
+        //        }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        
+        self.navigationController?.setToolbarHidden(true, animated: true)
+        
+        if isPickingCard {
+            let fetchRequest = NSFetchRequest(entityName: "Deck")
+            fetchRequest.predicate = NSPredicate(format: "name = %@", deckName!)
+            
+            // Parse the 2 picked cards array into one string.
+            // " " divides two cards, quantity is expressed by "@" and a number
+            var resultString: String = ""
+            for var i = 0; i < pickedCards.count; i++ {
+                let block = pickedCards[i] + "@" + String(pickedCardsQuantity[i])
+                resultString += block + " "
+            }
+            
+            // Save data
+            do {
+                let fetchResults = try self.appDel.managedObjectContext.executeFetchRequest(fetchRequest)
+                if fetchResults.count != 0 {
+                    let managedObject = fetchResults[0] as! Deck
+                    
+                    managedObject.setValue(resultString, forKey: "cards")
+                    do {
+                        try self.moc.save()
+                    } catch _ {
+                    }
+                }
+            } catch {
+                
+            }
+        }
+    }
+    
     // MARK: - Custom functions
     
     func fetchDeck() {
+        print("HEY FETCHDECK WORKS")
         //first fetch deck and setup filters
         if isPickingCard {
             
@@ -196,6 +285,10 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
                             pickedCards.append(cardRaw[0])
                             pickedCardsQuantity.append(Int(cardRaw[1])!)
                         }
+                        for n in pickedCardsQuantity {
+                            numOfPickedCards += n
+                        }
+
                     }
                 }
             } catch {
@@ -203,7 +296,7 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
             }
         }
     }
-    
+
     func fetchCard() {
         
         cards = []
@@ -304,7 +397,7 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
             } else {
                 cell.thumbnailImage.image = UIImage()
             }
-            
+        
             switch card!.rarity {
                 case "Free", "Common":
                     cell.nameLabel.textColor = UIColor.blackColor()
@@ -413,210 +506,144 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        func alertDeckIsFull() {
-            let alertController = UIAlertController(title: "You're deck is full!", message: "Try to uncheck some cards.", preferredStyle: .Alert)
-            let cancelAction = UIAlertAction(title: "Ok", style: .Cancel) { (action) in }
-            alertController.addAction(cancelAction)
-            self.presentViewController(alertController, animated: true) {}
-        }
-        
-        
-        // Code to pick cards
-        if isPickingCard {
-
-            if numOfPickedCards < 30 {
+        if !isLoadingView {
             
-                if self.searchController.active { // IS SEARCHING
-                    let card = filteredCards[indexPath.row].id
-                    let card_rarity = filteredCards[indexPath.row].rarity
-
-                    
-                    // Cycle in this way: NO CARD -> 1 CARD -> 2 CARD -> NO CARD ...
-                    
-                    if pickedCards.contains(card) { // CARD IS PRESENT
-                        
-                        let cardIndex = pickedCards.indexOf(card)!
-                        
-                        if pickedCardsQuantity[cardIndex] >= 2{
-                            // Delete card
-                            pickedCards.removeAtIndex(cardIndex)
-                            pickedCardsQuantity.removeAtIndex(cardIndex)
-                            numOfPickedCards -= 2
-                        } else if card_rarity == "Legendary" && pickedCardsQuantity[cardIndex] >= 1 {
-                            // Only one legendary
-                            pickedCards.removeAtIndex(cardIndex)
-                            pickedCardsQuantity.removeAtIndex(cardIndex)
-                            numOfPickedCards -= 1
-
-                        } else {
-                            // Add second copy
-                            pickedCardsQuantity[cardIndex] += 1
-                            numOfPickedCards += 1
-                        }
-                    } else { // CARD NOT PRESENT
-                        // Add card
-                        pickedCards.append(card)
-                        pickedCardsQuantity.append(1)
-                        numOfPickedCards += 1
-                    }
-                    tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
-                    
-                } else {
-                    let card = cards[indexPath.row].id
-                    let card_rarity = cards[indexPath.row].rarity
-                    
-                    if pickedCards.contains(card) {
-                        
-                        let cardIndex = pickedCards.indexOf(card)!
-                        
-                        if pickedCardsQuantity[cardIndex] >= 2 {
-                            // Delete card
-                            pickedCards.removeAtIndex(cardIndex)
-                            pickedCardsQuantity.removeAtIndex(cardIndex)
-                            numOfPickedCards -= 2
-                        } else if card_rarity == "Legendary" && pickedCardsQuantity[cardIndex] >= 1 {
-                            // Only one legendary
-                            pickedCards.removeAtIndex(cardIndex)
-                            pickedCardsQuantity.removeAtIndex(cardIndex)
-                            numOfPickedCards -= 1
-                        } else {
-                            // Add second copy
-                            pickedCardsQuantity[cardIndex] += 1
-                            numOfPickedCards += 1
-                        }
-                    } else {
-                        // Add card
-                        pickedCards.append(card)
-                        pickedCardsQuantity.append(1)
-                        numOfPickedCards += 1
-                    }
-                    tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
-                }
-            } else {
-                // You can only delete:
-                if self.searchController.active { // IS SEARCHING
-                    let card = filteredCards[indexPath.row].id
-
-                    if pickedCards.contains(card) {
-                        let cardIndex = pickedCards.indexOf(card)!
-                        
-                        if pickedCardsQuantity[cardIndex] >= 1 {
-                            // Delete card
-                            pickedCards.removeAtIndex(cardIndex)
-                            pickedCardsQuantity.removeAtIndex(cardIndex)
-                            numOfPickedCards -= pickedCardsQuantity[cardIndex]
-                        }
-                    } else {
-                        alertDeckIsFull()
-                    }
-                    tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
-                } else {
-                    let card = cards[indexPath.row].id
-                    
-                    if pickedCards.contains(card) {
-                        let cardIndex = pickedCards.indexOf(card)!
-                        
-                        if pickedCardsQuantity[cardIndex] >= 2 {
-                            // Delete card
-                            pickedCards.removeAtIndex(cardIndex)
-                            pickedCardsQuantity.removeAtIndex(cardIndex)
-                            numOfPickedCards -= 2
-                        } else if pickedCardsQuantity[cardIndex] == 1 {
-                            pickedCards.removeAtIndex(cardIndex)
-                            pickedCardsQuantity.removeAtIndex(cardIndex)
-                            numOfPickedCards -= 1
-                        }
-                    } else {
-                        alertDeckIsFull()
-                    }
-                    tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
-                }
-            }
-            print(pickedCards)
-            print(pickedCardsQuantity)
-            self.title = "\(numOfPickedCards)/30"
-            
-            // Then, deselect the row
-            self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
-            
-            
-            //==========================END OF isPicking=========================//
-        } else {
-            if self.searchController.active {
-                // Remove search bar & hide it
-                //self.searchController.active = false
-                self.hideSearchBar()
+            func alertDeckIsFull() {
+                let alertController = UIAlertController(title: "You're deck is full!", message: "Try to uncheck some cards.", preferredStyle: .Alert)
+                let cancelAction = UIAlertAction(title: "Ok", style: .Cancel) { (action) in }
+                alertController.addAction(cancelAction)
+                self.presentViewController(alertController, animated: true) {}
             }
             
-            self.performSegueWithIdentifier("CardDetailSegue", sender: tableView)
-        }
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        tableView.userInteractionEnabled = false
-        
-        //get the cards from core data
-        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-        dispatch_async(dispatch_get_global_queue(priority, 0)) {
-            // do some task
-            self.fetchCard()
             
-            self.fetchDeck()
-            
-            dispatch_async(dispatch_get_main_queue()) {
-                // update some UI
-                self.isLoadingView = false
-                self.tableView.userInteractionEnabled = true
-                self.tableView.reloadData()
-            }
-        }
-        
-        self.navigationController?.setToolbarHidden(false, animated: true)
-        
-        self.searchController = UISearchController(searchResultsController: nil)
-        self.searchController.searchResultsUpdater = self
-        self.searchController.delegate = self
-        self.searchController.dimsBackgroundDuringPresentation = false
-        self.searchController.searchBar.sizeToFit()
-        self.tableView.tableHeaderView = self.searchController.searchBar
-        self.definesPresentationContext = true
+            // Code to pick cards
+            if isPickingCard {
 
-//        if lastSelectedRow != nil {
-//            self.tableView.deselectRowAtIndexPath(lastSelectedRow!, animated: false)
-//            self.tableView.reloadRowsAtIndexPaths([lastSelectedRow!], withRowAnimation: UITableViewRowAnimation.None)
-//        }
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        
-        self.navigationController?.setToolbarHidden(true, animated: true)
-        
-        if isPickingCard {
-            let fetchRequest = NSFetchRequest(entityName: "Deck")
-            fetchRequest.predicate = NSPredicate(format: "name = %@", deckName!)
-            
-            // Parse the 2 picked cards array into one string.
-            // " " divides two cards, quantity is expressed by "@" and a number
-            var resultString: String = ""
-            for var i = 0; i < pickedCards.count; i++ {
-                let block = pickedCards[i] + "@" + String(pickedCardsQuantity[i])
-                resultString += block + " "
-            }
-            
-            // Save data
-            do {
-                let fetchResults = try self.appDel.managedObjectContext.executeFetchRequest(fetchRequest)
-                if fetchResults.count != 0 {
-                    let managedObject = fetchResults[0] as! Deck
-                    
-                    managedObject.setValue(resultString, forKey: "cards")
-                    do {
-                        try self.moc.save()
-                    } catch _ {
-                    }
-                }
-            } catch {
+                if numOfPickedCards < 30 {
                 
+                    if self.searchController.active { // IS SEARCHING
+                        let card = filteredCards[indexPath.row].id
+                        let card_rarity = filteredCards[indexPath.row].rarity
+
+                        
+                        // Cycle in this way: NO CARD -> 1 CARD -> 2 CARD -> NO CARD ...
+                        
+                        if pickedCards.contains(card) { // CARD IS PRESENT
+                            
+                            let cardIndex = pickedCards.indexOf(card)!
+                            
+                            if pickedCardsQuantity[cardIndex] >= 2{
+                                // Delete card
+                                pickedCards.removeAtIndex(cardIndex)
+                                pickedCardsQuantity.removeAtIndex(cardIndex)
+                                numOfPickedCards -= 2
+                            } else if card_rarity == "Legendary" && pickedCardsQuantity[cardIndex] >= 1 {
+                                // Only one legendary
+                                pickedCards.removeAtIndex(cardIndex)
+                                pickedCardsQuantity.removeAtIndex(cardIndex)
+                                numOfPickedCards -= 1
+
+                            } else {
+                                // Add second copy
+                                pickedCardsQuantity[cardIndex] += 1
+                                numOfPickedCards += 1
+                            }
+                        } else { // CARD NOT PRESENT
+                            // Add card
+                            pickedCards.append(card)
+                            pickedCardsQuantity.append(1)
+                            numOfPickedCards += 1
+                        }
+                        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+                        
+                    } else {
+                        let card = cards[indexPath.row].id
+                        let card_rarity = cards[indexPath.row].rarity
+                        
+                        if pickedCards.contains(card) {
+                            
+                            let cardIndex = pickedCards.indexOf(card)!
+                            
+                            if pickedCardsQuantity[cardIndex] >= 2 {
+                                // Delete card
+                                pickedCards.removeAtIndex(cardIndex)
+                                pickedCardsQuantity.removeAtIndex(cardIndex)
+                                numOfPickedCards -= 2
+                            } else if card_rarity == "Legendary" && pickedCardsQuantity[cardIndex] >= 1 {
+                                // Only one legendary
+                                pickedCards.removeAtIndex(cardIndex)
+                                pickedCardsQuantity.removeAtIndex(cardIndex)
+                                numOfPickedCards -= 1
+                            } else {
+                                // Add second copy
+                                pickedCardsQuantity[cardIndex] += 1
+                                numOfPickedCards += 1
+                            }
+                        } else {
+                            // Add card
+                            pickedCards.append(card)
+                            pickedCardsQuantity.append(1)
+                            numOfPickedCards += 1
+                        }
+                        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+                    }
+                } else {
+                    // You can only delete:
+                    if self.searchController.active { // IS SEARCHING
+                        let card = filteredCards[indexPath.row].id
+
+                        if pickedCards.contains(card) {
+                            let cardIndex = pickedCards.indexOf(card)!
+                            
+                            if pickedCardsQuantity[cardIndex] >= 1 {
+                                // Delete card
+                                pickedCards.removeAtIndex(cardIndex)
+                                pickedCardsQuantity.removeAtIndex(cardIndex)
+                                numOfPickedCards -= pickedCardsQuantity[cardIndex]
+                            }
+                        } else {
+                            alertDeckIsFull()
+                        }
+                        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+                    } else {
+                        let card = cards[indexPath.row].id
+                        
+                        if pickedCards.contains(card) {
+                            let cardIndex = pickedCards.indexOf(card)!
+                            
+                            if pickedCardsQuantity[cardIndex] >= 2 {
+                                // Delete card
+                                pickedCards.removeAtIndex(cardIndex)
+                                pickedCardsQuantity.removeAtIndex(cardIndex)
+                                numOfPickedCards -= 2
+                            } else if pickedCardsQuantity[cardIndex] == 1 {
+                                pickedCards.removeAtIndex(cardIndex)
+                                pickedCardsQuantity.removeAtIndex(cardIndex)
+                                numOfPickedCards -= 1
+                            }
+                        } else {
+                            alertDeckIsFull()
+                        }
+                        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+                    }
+                }
+                print(pickedCards)
+                print(pickedCardsQuantity)
+                self.title = "\(numOfPickedCards)/30"
+                
+                // Then, deselect the row
+                self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+                
+                
+                //==========================END OF isPicking=========================//
+            } else {
+                if self.searchController.active {
+                    // Remove search bar & hide it
+                    //self.searchController.active = false
+                    self.hideSearchBar()
+                }
+                
+                self.performSegueWithIdentifier("CardDetailSegue", sender: tableView)
             }
         }
     }
@@ -739,7 +766,7 @@ class CardListTableViewController: UITableViewController, UISearchResultsUpdatin
         wrapperView!.backgroundColor = UIColor.grayColor()
         wrapperView!.alpha = 0.0
         UIView.animateWithDuration(0.4, animations: {
-            wrapperView?.alpha = 0.5
+            self.wrapperView?.alpha = 0.5
         })
         tableView.scrollEnabled = false
         tableView.allowsSelection = false
