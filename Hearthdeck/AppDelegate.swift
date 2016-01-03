@@ -1,6 +1,5 @@
 //
 //  AppDelegate.swift
-//  Swift 2 Test
 //
 //  Created by Andrea Franchini on 22/06/15.
 //  Copyright © 2015 Qubex_. All rights reserved.
@@ -8,6 +7,8 @@
 
 import UIKit
 import CoreData
+import Parse
+import Bolts
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        Parse.enableLocalDatastore()
+        
+        // Initialize Parse.
+        Parse.setApplicationId("MoaxmQGY2h063XRWiCoc9fSO13l7VbksZoK7H4pV",
+            clientKey: "5m9nHCc94PNWK7Y9ysnXjf4hroXxJjcZv14Rbyvu")
+        
+        // [Optional] Track statistics around application opens.
+        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
         UIApplication.sharedApplication().idleTimerDisabled = true
 
